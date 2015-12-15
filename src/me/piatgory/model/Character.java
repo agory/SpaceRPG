@@ -10,11 +10,14 @@ public class Character {
     private double stamina; //Résistance
     private double power;
     private double accurancy;
-    private int weight;
+    private double weight;
 
 
+    public Character(){
 
-    public Character(String name, double health, double stamina, double power, double accurancy) {
+    }
+
+    public Character(String name, double health, double stamina, double power, double accurancy, double weight){
         this.name = name;
         this.health = health;
         this.stamina = stamina;
