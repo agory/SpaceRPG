@@ -11,6 +11,9 @@ public class Character {
     private double power;
     private double accurancy;
     private double weight;
+    private double maxHealth;
+    private double maxDexterity;
+
 
 
     public Character(){
@@ -24,5 +27,61 @@ public class Character {
         this.power = power;
         this.accurancy = accurancy;
         this.weight = weight;
+    }
+
+    public void applyEffect(Effet effect){
+
+    }
+
+    public void equipWeapon(Weapon weapon){
+
+    }
+
+    public void equipArmor(Armor armor){
+
+    }
+
+    public int getInventoryWeight(){
+
+    }
+
+    public void removeInventory(Item item){
+
+    }
+
+    public void addInventory(Item item){
+
+    }
+
+    public void computeMaxHealth(){
+
+    }
+
+    public void computeMaxDexterity(){
+
+    }
+
+    public void incrementLevel(){
+
+    }
+
+    public void sumCarac(){
+
+    }
+
+    public int getValueCarac(Stats stats){
+
+    }
+
+    public void initStats(){
+
+    }
+
+    public void checkStats(){
+
+    }
+
+    public void initCapacity(){
+
     }
 }
