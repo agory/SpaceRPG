@@ -27,6 +27,7 @@ public class Inventory {
             if(myItems.get(i) == item){
                 myItems.remove(i);
             }
+
             // Faire le décalage dans la liste
         }
     }
