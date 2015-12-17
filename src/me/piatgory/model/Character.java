@@ -1,6 +1,7 @@
 package me.piatgory.model;
 
 import me.piatgory.model.Item.Item;
+import me.piatgory.model.Item.Weapon;
 
 /**
  * Created by Grégoire on 10/12/2015.
@@ -31,7 +32,7 @@ public class Character {
         this.weight = weight;
     }
 
-    public void applyEffect(Effet effect){
+    public void applyBuff(Buff buff){
 
     }
 
