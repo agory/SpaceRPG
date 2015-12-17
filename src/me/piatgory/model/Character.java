@@ -11,6 +11,9 @@ public class Character {
     private double power;
     private double accurancy;
     private double weight;
+    private double maxHealth;
+    private double maxDexterity;
+
 
 
     public Character(){
@@ -66,15 +69,15 @@ public class Character {
 
     }
 
-    public int getValueCarac(Caracteristique caracteristique){
+    public int getValueCarac(Stats stats){
 
     }
 
-    public void initCaracteristics(){
+    public void initStats(){
 
     }
 
-    public void checkCaracteristics(){
+    public void checkStats(){
 
     }
 
