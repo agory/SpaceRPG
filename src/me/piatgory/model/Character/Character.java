@@ -1,6 +1,7 @@
 package me.piatgory.model.Character;
 
 import me.piatgory.model.Buff;
+import me.piatgory.model.Inventory;
 import me.piatgory.model.Item.*;
 import me.piatgory.model.Stats;
 
@@ -23,6 +24,7 @@ public class Character {
     private HandArmor handArmor;
     private HeadArmor headArmor;
     private LegsArmor legsArmor;
+    private Inventory inventory;
 
 
     public Character(){
@@ -36,6 +38,7 @@ public class Character {
         this.power = power;
         this.accurancy = accurancy;
         this.weight = weight;
+        this.inventory = new Inventory();
     }
 
     public void applyBuff(Buff buff){
@@ -67,13 +70,11 @@ public class Character {
     }
 
     public int getInventoryWeight(){
-        int value = 0;
-
-        return value;
+        return inventory.getWeight();
     }
 
     public void removeInventory(Item item){
-
+        inventory.removeItem(item);
     }
 
     public void addInventory(Item item){
