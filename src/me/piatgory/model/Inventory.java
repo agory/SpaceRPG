@@ -20,7 +20,6 @@ public class Inventory {
             totalWeight+=myItems.get(i).getPoid();
         }
         return totalWeight;
-
     }
 
     public void removeItem(Item item){
