@@ -1,8 +1,7 @@
 package me.piatgory.model.Character;
 
 import me.piatgory.model.Buff;
-import me.piatgory.model.Item.Item;
-import me.piatgory.model.Item.Weapon;
+import me.piatgory.model.Item.*;
 import me.piatgory.model.Stats;
 
 /**
@@ -18,7 +17,12 @@ public class Character {
     private double weight;
     private double maxHealth;
     private double maxDexterity;
-
+    private Weapon weapon;
+    private ChestArmor chestArmor;
+    private FootArmor footArmor;
+    private HandArmor handArmor;
+    private HeadArmor headArmor;
+    private LegsArmor legsArmor;
 
 
     public Character(){
@@ -39,15 +43,33 @@ public class Character {
     }
 
     public void equipWeapon(Weapon weapon){
-
+        this.weapon = weapon;
     }
 
-    public void equipArmor(Armor armor){
+    public void equipChestArmor(ChestArmor chestArmor){
+        this.chestArmor=chestArmor;
+    }
 
+    public void equipFootArmor(FootArmor footArmor){
+        this.footArmor=footArmor;
+    }
+
+    public void equipHeadArmor(HeadArmor headArmor){
+        this.headArmor=headArmor;
+    }
+
+    public void equipHandArmor(HandArmor handArmor){
+        this.handArmor=handArmor;
+    }
+
+    public void equipLegsArmor(LegsArmor legsArmor){
+        this.legsArmor=legsArmor;
     }
 
     public int getInventoryWeight(){
+        int value = 0;
 
+        return value;
     }
 
     public void removeInventory(Item item){
@@ -75,7 +97,9 @@ public class Character {
     }
 
     public int getValueCarac(Stats stats){
+        int value = 0;
 
+        return value;
     }
 
     public void initStats(){
