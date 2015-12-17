@@ -67,7 +67,9 @@ public class Character {
     }
 
     public int getInventoryWeight(){
+        int value = 0;
 
+        return value;
     }
 
     public void removeInventory(Item item){
@@ -95,7 +97,9 @@ public class Character {
     }
 
     public int getValueCarac(Stats stats){
+        int value = 0;
 
+        return value;
     }
 
     public void initStats(){
