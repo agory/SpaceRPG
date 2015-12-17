@@ -25,4 +25,60 @@ public class Character {
         this.accurancy = accurancy;
         this.weight = weight;
     }
+
+    public void applyEffect(Effet effect){
+
+    }
+
+    public void equipWeapon(Weapon weapon){
+
+    }
+
+    public void equipArmor(Armor armor){
+
+    }
+
+    public int getInventoryWeight(){
+
+    }
+
+    public void removeInventory(Item item){
+
+    }
+
+    public void addInventory(Item item){
+
+    }
+
+    public void computeMaxHealth(){
+
+    }
+
+    public void computeMaxDexterity(){
+
+    }
+
+    public void incrementLevel(){
+
+    }
+
+    public void sumCarac(){
+
+    }
+
+    public int getValueCarac(Caracteristique caracteristique){
+
+    }
+
+    public void initCaracteristics(){
+
+    }
+
+    public void checkCaracteristics(){
+
+    }
+
+    public void initCapacity(){
+
+    }
 }
