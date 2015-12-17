@@ -1,5 +1,7 @@
 package me.piatgory.model;
 
+import me.piatgory.model.Item.Item;
+
 /**
  * Created by Grégoire on 10/12/2015.
  */

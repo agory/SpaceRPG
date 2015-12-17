@@ -1,18 +1,33 @@
-package me.piatgory.model;
+package me.piatgory.model.Item;
 
-import java.util.List;
+import me.piatgory.model.Buff;
+
 /**
  * Created by Grégoire on 10/12/2015.
  */
 public class Item {
     private String nom;
     private int poid;
-    private List<Buff> buffs;
+    private Buff buff;
 
-    public Item(int poid, String nom) {
-        this.poid = poid;
+    public Item(String nom, int poid, Buff buff) {
         this.nom = nom;
+        this.poid = poid;
+        this.buff = buff;
     }
+
+    public Item(String nom, int poid) {
+        this.nom = nom;
+        this.poid = poid;
+        this.buff = null;
+    }
+
+    public Item(String nom) {
+        this.nom = nom;
+        this.poid = 1;
+        this.buff = null;
+    }
+
 
     public String getNom() {
         return nom;

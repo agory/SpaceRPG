@@ -1,4 +1,6 @@
-package me.piatgory.model;
+package me.piatgory.model.Item;
+
+import me.piatgory.model.Stats;
 
 /**
  * Created by Alexandre Gory on 17/12/2015.
