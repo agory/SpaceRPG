@@ -1,7 +1,9 @@
-package me.piatgory.model;
+package me.piatgory.model.Character;
 
+import me.piatgory.model.Buff;
 import me.piatgory.model.Item.Item;
 import me.piatgory.model.Item.Weapon;
+import me.piatgory.model.Stats;
 
 /**
  * Created by Grégoire on 10/12/2015.
