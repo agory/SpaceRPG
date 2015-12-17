@@ -28,7 +28,6 @@ public class Item {
         this.buff = null;
     }
 
-
     public String getNom() {
         return nom;
     }
@@ -43,5 +42,20 @@ public class Item {
 
     public void setPoid(int poid) {
         this.poid = poid;
+    }
+
+    public void setBuff(Buff buff) {
+        this.buff = buff;
+    }
+
+    public boolean haveBuff() {
+        if (buff != null)
+            return true;
+        else
+            return false;
+    }
+
+    public Buff ActivateBuff() {
+        return this.buff;
     }
 }
