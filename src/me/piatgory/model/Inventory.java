@@ -17,7 +17,7 @@ public class Inventory {
     public int getWeight(){
         int totalWeight=0;
         for(int i=0;i<myItems.size();++i){
-            totalWeight+=myItems.get(i).getPoid();
+            totalWeight += myItems.get(i).getWeight();
         }
         return totalWeight;
     }
