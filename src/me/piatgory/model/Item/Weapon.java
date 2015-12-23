@@ -1,23 +1,31 @@
 package me.piatgory.model.Item;
 
-import me.piatgory.model.Stats;
+import me.piatgory.model.Stat;
 
 /**
  * Created by Alexandre Gory on 17/12/2015.
  */
 public class Weapon extends Equipment {
-    private int Degat;
+    private int damage;
 
-    public Weapon(int poid, String nom, Stats stats, int degat) {
-        super(poid, nom, stats);
-        Degat = degat;
+    public Weapon(int weight, String name, Stat Stat, int damage) {
+        super(name, weight, Stat);
+        this.setDamage(damage);
     }
 
-    public int getDegat() {
-        return Degat;
+    public int getDamage() {
+        return damage;
     }
 
-    public void setDegat(int degat) {
-        Degat = degat;
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    @Override
+    public String toString() {
+        String message = super.toString();
+        message += "\nEmplacement : Arme";
+        message += "\nDégat bonus de l'arme : " + damage;
+        return message;
     }
 }

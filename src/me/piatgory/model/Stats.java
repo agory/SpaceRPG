@@ -1,24 +1,17 @@
 package me.piatgory.model;
 
+import java.util.HashMap;
+
 /**
- * Created by Grégoire on 17/12/2015.
+ * Created by Alexandre Gory on 23/12/2015.
  */
-public enum Stats {
-    Stamina(0), Strenght(0), Power(0),
-    health(0), intelligence(0);//...
+public class Stats {
+    HashMap<String, Integer> stats = new HashMap<>();
 
-    private int value;
-
-    Stats(int value) {
-        this.value = value;
-    }
-
-    public int getValue() {
-        return this.value;
-    }
-
-    public void setValue(int value) {
-        this.value = value;
+    public Stats() {
+        for (Stat stat : Stat.values()) {
+            stats.put(stat.getName(), stat.getValue());
+        }
     }
 
 

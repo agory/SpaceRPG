@@ -1,34 +1,41 @@
 package me.piatgory.model.Item;
 
 import me.piatgory.model.Buff;
-import me.piatgory.model.Stats;
+import me.piatgory.model.Stat;
 
 /**
  * Created by Alexandre Gory on 17/12/2015.
  */
 public class Equipment extends Item {
-    private Stats stats;
+    private Stat Stat;
 
-    public Equipment(String nom, int poid, Buff buff, Stats stats) {
-        super(nom, poid, buff);
-        this.stats = stats;
+    public Equipment(String name, int weight, Buff buff, Stat Stat) {
+        super(name, weight, buff);
+        this.Stat = Stat;
     }
 
-    public Equipment(String nom, int poid, Stats stats) {
-        super(nom, poid);
-        this.stats = stats;
+    public Equipment(String name, int weight, Stat Stat) {
+        super(name, weight);
+        this.Stat = Stat;
     }
 
-    public Equipment(String nom, Stats stats) {
-        super(nom);
-        this.stats = stats;
+    public Equipment(String name, Stat Stat) {
+        super(name);
+        this.Stat = Stat;
     }
 
-    public Stats getStats() {
-        return stats;
+    public Stat getStat() {
+        return Stat;
     }
 
-    public void setStats(Stats stats) {
-        this.stats = stats;
+    public void setStat(Stat Stat) {
+        this.Stat = Stat;
+    }
+
+    @Override
+    public String toString() {
+        String message = super.toString();
+        message += Stat.toString();
+        return message;
     }
 }

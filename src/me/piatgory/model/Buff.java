@@ -5,12 +5,12 @@ package me.piatgory.model;
  */
 public class Buff {
     private String name;
-    private Stats stats;
+    private Stat Stat;
     private int healthEffect;
 
-    public Buff(String name, Stats stats, int healthEffect) {
+    public Buff(String name, Stat Stat, int healthEffect) {
         this.name = name;
-        this.stats = stats;
+        this.Stat = Stat;
         this.healthEffect = healthEffect;
     }
 

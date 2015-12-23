@@ -6,42 +6,43 @@ import me.piatgory.model.Buff;
  * Created by Grégoire on 10/12/2015.
  */
 public class Item {
-    private String nom;
-    private int poid;
+    private String name;
+    private int weight;
     private Buff buff;
+    private String descritption;
 
-    public Item(String nom, int poid, Buff buff) {
-        this.nom = nom;
-        this.poid = poid;
+    public Item(String name, int weight, Buff buff) {
+        this.name = name;
+        this.weight = weight;
         this.buff = buff;
     }
 
-    public Item(String nom, int poid) {
-        this.nom = nom;
-        this.poid = poid;
+    public Item(String name, int weight) {
+        this.name = name;
+        this.weight = weight;
         this.buff = null;
     }
 
-    public Item(String nom) {
-        this.nom = nom;
-        this.poid = 1;
+    public Item(String name) {
+        this.name = name;
+        this.weight = 1;
         this.buff = null;
     }
 
     public String getNom() {
-        return nom;
+        return name;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setNom(String name) {
+        this.name = name;
     }
 
-    public int getPoid() {
-        return poid;
+    public int getWeight() {
+        return weight;
     }
 
-    public void setPoid(int poid) {
-        this.poid = poid;
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
 
     public void setBuff(Buff buff) {
@@ -57,5 +58,13 @@ public class Item {
 
     public Buff ActivateBuff() {
         return this.buff;
+    }
+
+    @Override
+    public String toString() {
+        String message = "Nom : " + name;
+        message += "\nPoid : " + weight;
+        message += "\nDescription :" + descritption;
+        return message;
     }
 }

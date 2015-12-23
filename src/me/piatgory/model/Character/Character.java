@@ -2,7 +2,7 @@ package me.piatgory.model.Character;
 
 import me.piatgory.model.Buff;
 import me.piatgory.model.Item.*;
-import me.piatgory.model.Stats;
+import me.piatgory.model.Stat;
 
 /**
  * Created by Grégoire on 10/12/2015.
@@ -96,7 +96,7 @@ public class Character {
 
     }
 
-    public int getValueCarac(Stats stats){
+    public int getValueCarac(Stat Stat) {
         int value = 0;
 
         return value;
