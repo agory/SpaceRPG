@@ -1,6 +1,7 @@
 package me.piatgory.model;
 
 import me.piatgory.model.Item.Item;
+import me.piatgory.model.Inventory;
 
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class Inventory {
     }
 
         public void addItem(Item item){
-        this.myItems[myItems.size()]=item;
+        this.myItems.add(item);
     }
 
     public List<Item> getMyItems() {
