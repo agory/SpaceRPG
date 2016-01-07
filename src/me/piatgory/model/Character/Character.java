@@ -14,7 +14,6 @@ public class Character {
     private String name;
     private double health;
     private double stamina; //Résistance
-    private double power;
     private double weight; //Poids
     private double maxHealth;
     private int level;
@@ -34,7 +33,6 @@ public class Character {
         this.name = name;
         this.health = health;
         this.stamina = stamina;
-        this.power = power;
         this.weight = weight;
         this.inventory = new Inventory();
     }
