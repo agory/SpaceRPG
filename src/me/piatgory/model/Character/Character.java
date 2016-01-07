@@ -3,6 +3,7 @@ package me.piatgory.model.Character;
 import me.piatgory.model.Buff;
 import me.piatgory.model.Inventory;
 import me.piatgory.model.Item.*;
+import me.piatgory.model.Stats;
 import me.piatgory.model.enumStat;
 
 /**
@@ -34,7 +35,6 @@ public class Character {
         this.health = health;
         this.stamina = stamina;
         this.power = power;
-        this.accurancy = accurancy;
         this.weight = weight;
         this.inventory = new Inventory();
     }
@@ -71,11 +71,11 @@ public class Character {
         return inventory.getWeight();
     }
 
-    public void removeInventory(Item item){
+    public void removeFromInventory(Item item){
         inventory.removeItem(item);
     }
 
-    public void addInventory(Item item){
+    public void addToInventory(Item item){
         inventory.addItem(item);
     }
 
@@ -83,30 +83,13 @@ public class Character {
 
     }
 
-    public void computeMaxDexterity(){
-
-    }
-
     public void incrementLevel(){
         level++;
     }
 
-    public void sumCarac(){
-
-    }
-
-    public int getValueCarac(enumStat Stat) {
+    public int getValueCarac(Stats Stat) {
         int value = 0;
-
         return value;
-    }
-
-    public void initStats(){
-
-    }
-
-    public void checkStats(){
-
     }
 
     public void initCapacity(){
