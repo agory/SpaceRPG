@@ -14,10 +14,9 @@ public class Character {
     private double health;
     private double stamina; //Résistance
     private double power;
-    private double accurancy;
-    private double weight;
+    private double weight; //Poids
     private double maxHealth;
-    private double maxDexterity;
+    private int level;
     private Weapon weapon;
     private ChestArmor chestArmor;
     private FootArmor footArmor;
@@ -25,7 +24,6 @@ public class Character {
     private HeadArmor headArmor;
     private LegsArmor legsArmor;
     private Inventory inventory;
-
 
     public Character(){
 
@@ -90,7 +88,7 @@ public class Character {
     }
 
     public void incrementLevel(){
-
+        level++;
     }
 
     public void sumCarac(){

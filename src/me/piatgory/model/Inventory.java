@@ -9,6 +9,7 @@ import java.util.List;
  */
 public class Inventory {
 
+
     private List<Item> myItems;
 
     public Inventory() {
@@ -35,4 +36,14 @@ public class Inventory {
         public void addItem(Item item){
         this.myItems[myItems.size()]=item;
     }
+
+    public List<Item> getMyItems() {
+        return myItems;
+    }
+
+    public void setMyItems(List<Item> myItems) {
+        this.myItems = myItems;
+    }
+
+
 }
