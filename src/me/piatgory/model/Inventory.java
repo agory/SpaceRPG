@@ -22,17 +22,17 @@ public class Inventory {
         return totalWeight;
     }
 
-    public void removeItem(Item item){
-        for(int i=0;i<myItems.size();++i){
-            if(myItems.get(i) == item){
+    public void removeItem(Item item) {
+        for (int i = 0; i < myItems.size(); ++i) {
+            if (myItems.get(i) == item) {
                 myItems.remove(i);
             }
 
             // Faire le décalage dans la liste
         }
+    }
 
         public void addItem(Item item){
         this.myItems[myItems.size()]=item;
-    }
     }
 }
