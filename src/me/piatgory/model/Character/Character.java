@@ -91,10 +91,6 @@ public class Character {
         level++;
     }
 
-    public void sumCarac(){
-
-    }
-
     public int getValueCarac(Stats Stat) {
         int value = 0;
         return value;
