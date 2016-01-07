@@ -3,7 +3,7 @@ package me.piatgory.model.Character;
 import me.piatgory.model.Buff;
 import me.piatgory.model.Inventory;
 import me.piatgory.model.Item.*;
-import me.piatgory.model.Stat;
+import me.piatgory.model.enumStat;
 
 /**
  * Created by Grégoire on 10/12/2015.
@@ -97,7 +97,7 @@ public class Character {
 
     }
 
-    public int getValueCarac(Stat Stat) {
+    public int getValueCarac(enumStat Stat) {
         int value = 0;
 
         return value;

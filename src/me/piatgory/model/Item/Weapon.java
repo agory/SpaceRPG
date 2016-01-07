@@ -1,6 +1,6 @@
 package me.piatgory.model.Item;
 
-import me.piatgory.model.Stat;
+import me.piatgory.model.enumStat;
 
 /**
  * Created by Alexandre Gory on 17/12/2015.
@@ -8,7 +8,7 @@ import me.piatgory.model.Stat;
 public class Weapon extends Equipment {
     private int damage;
 
-    public Weapon(int weight, String name, Stat Stat, int damage) {
+    public Weapon(int weight, String name, enumStat Stat, int damage) {
         super(name, weight, Stat);
         this.setDamage(damage);
     }

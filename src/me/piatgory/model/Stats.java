@@ -9,9 +9,12 @@ public class Stats {
     HashMap<String, Integer> stats = new HashMap<>();
 
     public Stats() {
-        for (Stat stat : Stat.values()) {
+        for (enumStat stat : enumStat.values()) {
             stats.put(stat.getName(), stat.getValue());
         }
+    }
+    public void merge(){
+
     }
 
 

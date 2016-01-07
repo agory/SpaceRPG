@@ -1,12 +1,12 @@
 package me.piatgory.model.Item;
 
-import me.piatgory.model.Stat;
+import me.piatgory.model.enumStat;
 
 /**
  * Created by Grégoire on 17/12/2015.
  */
 public class HandArmor extends Equipment{
-    public HandArmor(int weight, String name, Stat Stat) {
+    public HandArmor(int weight, String name, enumStat Stat) {
         super(name, weight, Stat);
     }
 

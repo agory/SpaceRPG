@@ -1,34 +1,34 @@
 package me.piatgory.model.Item;
 
 import me.piatgory.model.Buff;
-import me.piatgory.model.Stat;
+import me.piatgory.model.enumStat;
 
 /**
  * Created by Alexandre Gory on 17/12/2015.
  */
 public class Equipment extends Item {
-    private Stat Stat;
+    private enumStat Stat;
 
-    public Equipment(String name, int weight, Buff buff, Stat Stat) {
+    public Equipment(String name, int weight, Buff buff, enumStat Stat) {
         super(name, weight, buff);
         this.Stat = Stat;
     }
 
-    public Equipment(String name, int weight, Stat Stat) {
+    public Equipment(String name, int weight, enumStat Stat) {
         super(name, weight);
         this.Stat = Stat;
     }
 
-    public Equipment(String name, Stat Stat) {
+    public Equipment(String name, enumStat Stat) {
         super(name);
         this.Stat = Stat;
     }
 
-    public Stat getStat() {
+    public enumStat getStat() {
         return Stat;
     }
 
-    public void setStat(Stat Stat) {
+    public void setStat(enumStat Stat) {
         this.Stat = Stat;
     }
 
