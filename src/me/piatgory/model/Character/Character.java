@@ -71,11 +71,11 @@ public class Character {
         return inventory.getWeight();
     }
 
-    public void removeInventory(Item item){
+    public void removeFromInventory(Item item){
         inventory.removeItem(item);
     }
 
-    public void addInventory(Item item){
+    public void addToInventory(Item item){
         inventory.addItem(item);
     }
 
@@ -90,14 +90,6 @@ public class Character {
     public int getValueCarac(Stats Stat) {
         int value = 0;
         return value;
-    }
-
-    public void initStats(){
-
-    }
-
-    public void checkStats(){
-
     }
 
     public void initCapacity(){
