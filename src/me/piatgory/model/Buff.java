@@ -5,13 +5,15 @@ package me.piatgory.model;
  */
 public class Buff {
     private String name;
-    private enumStat Stat;
+    private Stats stats;
     private int healthEffect;
+    private int nbTurn;
 
-    public Buff(String name, enumStat Stat, int healthEffect) {
+    public Buff(String name, enumStat Stat, int healthEffect, int nbTurn) {
         this.name = name;
-        this.Stat = Stat;
+        this.stats = stats;
         this.healthEffect = healthEffect;
+        this.nbTurn = nbTurn;
     }
 
     @Override

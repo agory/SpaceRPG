@@ -6,8 +6,8 @@ import me.piatgory.model.Stats;
  * Created by Grégoire on 17/12/2015.
  */
 public class ChestArmor extends Equipment {
-    public ChestArmor(int weight, String name, Stats Stat) {
-        super(name, weight, Stat);
+    public ChestArmor(int weight, String name, Stats stats) {
+        super(name, weight, stats);
     }
 
     @Override
