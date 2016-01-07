@@ -3,6 +3,7 @@ package me.piatgory.model.Character;
 import me.piatgory.model.Buff;
 import me.piatgory.model.Inventory;
 import me.piatgory.model.Item.*;
+import me.piatgory.model.Stats;
 import me.piatgory.model.enumStat;
 
 /**
@@ -34,7 +35,6 @@ public class Character {
         this.health = health;
         this.stamina = stamina;
         this.power = power;
-        this.accurancy = accurancy;
         this.weight = weight;
         this.inventory = new Inventory();
     }
@@ -95,9 +95,8 @@ public class Character {
 
     }
 
-    public int getValueCarac(enumStat Stat) {
+    public int getValueCarac(Stats Stat) {
         int value = 0;
-
         return value;
     }
 
