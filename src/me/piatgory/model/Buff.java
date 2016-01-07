@@ -11,7 +11,7 @@ public class Buff {
 
     public Buff(String name, enumStat Stat, int healthEffect, int nbTurn) {
         this.name = name;
-        this.stat = stats;
+        this.stats = stats;
         this.healthEffect = healthEffect;
         this.nbTurn = nbTurn;
     }
