@@ -30,5 +30,9 @@ public class Inventory {
 
             // Faire le décalage dans la liste
         }
+
+        public void addItem(Item item){
+        this.myItems[myItems.size()]=item;
+    }
     }
 }

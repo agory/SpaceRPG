@@ -63,8 +63,8 @@ public class Item {
     @Override
     public String toString() {
         String message = "Nom : " + name;
-        message += "\nPoid : " + weight;
-        message += "\nDescription :" + descritption;
+        message = message + "\nPoids : " + weight;
+        message = message + "\nDescription :" + descritption;
         return message;
     }
 }

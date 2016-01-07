@@ -78,7 +78,7 @@ public class Character {
     }
 
     public void addInventory(Item item){
-
+        inventory.addItem(item);
     }
 
     public void computeMaxHealth(){
