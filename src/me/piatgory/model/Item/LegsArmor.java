@@ -1,13 +1,13 @@
 package me.piatgory.model.Item;
 
-import me.piatgory.model.enumStat;
+import me.piatgory.model.Stats;
 
 /**
  * Created by Grégoire on 17/12/2015.
  */
 public class LegsArmor extends Equipment{
-    public LegsArmor(int weight, String name, enumStat Stat) {
-        super(name, weight, Stat);
+    public LegsArmor(int weight, String name, Stats stats) {
+        super(name, weight, stats);
     }
 
     @Override
