@@ -83,10 +83,6 @@ public class Character {
 
     }
 
-    public void computeMaxDexterity(){
-
-    }
-
     public void incrementLevel(){
         level++;
     }
