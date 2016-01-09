@@ -52,7 +52,7 @@ abstract class Entity {
     }
 
     public int attack(Entity entity){
-        int damage = this.getDamage()/**(Dice.roll(0,100)/100)*/;
+        int damage = this.getDamage() + (int)((float)this.getDamage()*((float)Dice.roll(-20,20)/40));
         return entity.damage(damage);
     }
 

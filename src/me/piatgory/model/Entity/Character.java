@@ -48,6 +48,7 @@ public class Character extends Entity{
     public void applyBuff(Buff buff){
 
     }
+
     /*
     * Le poids maximun portable augment en fonction de la puissance du personnage
     * */
@@ -115,6 +116,7 @@ public class Character extends Entity{
             );
         }
     }
+
     public void buildStats(){
         HashMap<String, Integer> stats = new HashMap<String, Integer>();
         for (StatsCharacter stat:StatsCharacter.values()) {
@@ -176,4 +178,5 @@ enum StatsCharacter {
     public void setName(String name) {
         this.name = name;
     }
+
 }

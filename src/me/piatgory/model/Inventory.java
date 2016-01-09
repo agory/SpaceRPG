@@ -34,7 +34,7 @@ public class Inventory {
         }
     }
 
-        public void addItem(Item item){
+    public void addItem(Item item){
         this.myItems.add(item);
     }
 

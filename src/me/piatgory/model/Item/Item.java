@@ -12,26 +12,16 @@ public class Item {
     private int id;
     private String name;
     private int weight;
-    private Buff buff;
     private String descritption;
-
-    public Item(String name, int weight, Buff buff) {
-        this.name = name;
-        this.weight = weight;
-        this.buff = buff;
-        this.id=ID++;
-    }
 
     public Item(String name, int weight) {
         this.name = name;
         this.weight = weight;
-        this.buff = null;
     }
 
     public Item(String name) {
         this.name = name;
         this.weight = 1;
-        this.buff = null;
     }
 
     public String getNom() {
@@ -50,31 +40,12 @@ public class Item {
         this.weight = weight;
     }
 
-    public void setBuff(Buff buff) {
-        this.buff = buff;
-    }
-
-    public boolean haveBuff() {
-        if (buff != null)
-            return true;
-        else
-            return false;
-    }
-
-    public Buff ActivateBuff() {
-        return this.buff;
-    }
-
     public int getId() {
         return id;
     }
 
     public String getName() {
         return name;
-    }
-
-    public Buff getBuff() {
-        return buff;
     }
 
     public String getDescritption() {
@@ -87,5 +58,17 @@ public class Item {
         message = message + "\nPoids : " + weight;
         message = message + "\nDescription :" + descritption;
         return message;
+    }
+
+    public void setDescritption(String descritption) {
+        this.descritption = descritption;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

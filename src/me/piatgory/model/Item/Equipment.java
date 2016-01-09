@@ -9,11 +9,6 @@ import me.piatgory.model.Stats;
 abstract class Equipment extends Item {
     private Stats stats;
 
-    public Equipment(String name, int weight, Buff buff, Stats stats) {
-        super(name, weight, buff);
-        this.stats = stats;
-    }
-
     public Equipment(String name, int weight, Stats stats) {
         super(name, weight);
         this.stats = stats;

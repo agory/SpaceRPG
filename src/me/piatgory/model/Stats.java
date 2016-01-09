@@ -17,6 +17,7 @@ public class Stats {
     public Stats() {
         this.buildStats();
     }
+
     public void merge(Stats stats){
         for (String key : stats.getStats().keySet()) {
             if(this.stats.containsKey(key)){
@@ -39,11 +40,16 @@ public class Stats {
         }
         return message;
     }
+
     public void buildStats(){
         this.stats = new HashMap<String, Integer>();
         for (StatsDefault stat:StatsDefault.values()) {
             this.stats.put(stat.getName(),stat.getValue());
         }
+    }
+
+    public void setStats(HashMap<String, Integer> stats) {
+        this.stats = stats;
     }
 }
 
@@ -51,8 +57,8 @@ enum StatsDefault {
     Stamina("Endurance", 0,0), Power("Puissance",0,0),
     Health("Santé", 0,0);
 
-    private String name;//defaultvalue
-    private int value;//defaultvalue
+    private String name;
+    private int value;
     private int valuePerLevel;
 
     StatsDefault(String name, int value,int valuePerLevel) {
@@ -64,6 +70,7 @@ enum StatsDefault {
     public int getValue() {
         return this.value;
     }
+
     public int getValuePerLevel() {
         return this.valuePerLevel;
     }

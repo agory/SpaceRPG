@@ -6,7 +6,6 @@ import me.piatgory.model.Entity.Monster;
 import me.piatgory.model.Item.*;
 import me.piatgory.model.Stats;
 import me.piatgory.model.StatsBuilder;
-import me.piatgory.persistance.Database;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +17,11 @@ public class Main {
 
     public static void main(String[] args) {
 	    Log.i("init project");
-        ChestArmor chestArmor =new ChestArmor("Armure en cuir",2,StatsBuilder.make(0,3,0));
+        Item item = new Item("toto",2);
         items = new ArrayList<Item>();
+        items.add(item);
 
+        ChestArmor chestArmor =new ChestArmor("Armure en cuir",2,StatsBuilder.make(0,3,0));
         Character character = new Character("Gregoire");
         character.equipChestArmor(chestArmor);
         character.equipFootArmor(new FootArmor("Bottes en cuir",2,StatsBuilder.make(0,1,0)));
@@ -32,7 +33,6 @@ public class Main {
         Monster monster = new Monster("Alien", 5);
         Log.i(monster);
         combat(character,monster);
-        //save();
     }
 
     public static void combat(Character character,Monster monster){
@@ -47,13 +47,6 @@ public class Main {
     }
 
     public static void save(){
-        Database db = new Database();
-        db.SaveItem(items);/*
-        try {
-
-        } catch (Exception e){
-            Log.e(e.toString());
-        }*/
 
     }
 }

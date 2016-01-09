@@ -10,6 +10,7 @@ import java.util.HashMap;
 public class Monster extends Entity {
 
     private Stats bonus;
+
     public Monster(String name,int level){
         super(name,level);
         bonus = new Stats();
@@ -45,7 +46,14 @@ public class Monster extends Entity {
                     this.stats.getStats().get(stat.getName()) + stat.getValuePerLevel()*getLevel()
             );
         }
+    }
 
+    public Stats getBonus() {
+        return bonus;
+    }
+
+    public void setBonus(Stats bonus) {
+        this.bonus = bonus;
     }
 }
 
@@ -66,6 +74,7 @@ enum StatsMonster {
     public int getValue() {
         return this.value;
     }
+
     public int getValuePerLevel() {
         return this.valuePerLevel;
     }
