@@ -6,14 +6,14 @@ import me.piatgory.model.Stats;
  * Created by Grégoire on 17/12/2015.
  */
 public class HeadArmor extends Equipment {
-    public HeadArmor(int weight, String name, Stats stats) {
+    public HeadArmor(String name,int weight , Stats stats) {
         super(name, weight, stats);
     }
 
     @Override
     public String toString() {
-        String message = super.toString();
-        message += "\nEmplacement : Tête";
+        String message = "Emplacement : Tête\n";
+        message += super.toString();
         return message;
     }
 }

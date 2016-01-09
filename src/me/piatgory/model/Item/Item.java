@@ -6,6 +6,10 @@ import me.piatgory.model.Buff;
  * Created by Grégoire on 10/12/2015.
  */
 public class Item {
+
+    private static int ID = 0;
+
+    private int id;
     private String name;
     private int weight;
     private Buff buff;
@@ -15,6 +19,7 @@ public class Item {
         this.name = name;
         this.weight = weight;
         this.buff = buff;
+        this.id=ID++;
     }
 
     public Item(String name, int weight) {
@@ -58,6 +63,22 @@ public class Item {
 
     public Buff ActivateBuff() {
         return this.buff;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Buff getBuff() {
+        return buff;
+    }
+
+    public String getDescritption() {
+        return descritption;
     }
 
     @Override

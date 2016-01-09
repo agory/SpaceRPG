@@ -6,7 +6,7 @@ import me.piatgory.model.Stats;
 /**
  * Created by Alexandre Gory on 17/12/2015.
  */
-public class Equipment extends Item {
+abstract class Equipment extends Item {
     private Stats stats;
 
     public Equipment(String name, int weight, Buff buff, Stats stats) {
@@ -24,17 +24,17 @@ public class Equipment extends Item {
         this.stats = stats;
     }
 
-    public Stats getstats() {
+    public Stats getStats() {
         return stats;
     }
 
-    public void setstats(Stats stats) {
+    public void setStats(Stats stats) {
         this.stats = stats;
     }
 
     @Override
     public String toString() {
-        String message = super.toString();
+        String message = super.toString() +"\n";
         message += stats.toString();
         return message;
     }

@@ -9,14 +9,14 @@ public class Buff {
     private int healthEffect;
     private int nbTurn;
 
-    public Buff(String name, enumStat Stat, int healthEffect, int nbTurn) {
+    public Buff(String name, Stats stats, int healthEffect, int nbTurn) {
         this.name = name;
         this.stats = stats;
         this.healthEffect = healthEffect;
         this.nbTurn = nbTurn;
     }
 
-    @Override
+
     public String toString() {
         return name;
     }
