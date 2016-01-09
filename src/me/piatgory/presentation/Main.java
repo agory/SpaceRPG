@@ -36,7 +36,7 @@ public class Main {
     }
 
     public static void combat(Character character,Monster monster){
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 4; i++) {
             Log.i("Attaque du personnage : " + character.attack(monster) + " domages");
             Log.i("Attaque du Monstre : " +monster.attack(character) + " domages");
             Log.i(character.showName());
