@@ -3,18 +3,20 @@ package me.piatgory.presentation.Manager;
 import me.grea.antoine.utils.Log;
 import me.grea.antoine.utils.Menu;
 import me.piatgory.model.Entity.Character;
+import me.piatgory.model.Item.Item;
+
+import java.awt.event.ItemListener;
+import java.util.List;
 
 /**
  * Created by Alexandre on 10/01/2016.
  */
 public class CharacterManager extends Manager{
-    private Character character;
     private Menu menu;
     private Menu menuInventaire;
-    private Menu menuEquipment;
 
     public CharacterManager(Character character){
-        this.character = character;
+        super(character);
     }
 
 
@@ -24,7 +26,7 @@ public class CharacterManager extends Manager{
 
     public Menu getMenu() {
         if(menu == null) {
-            String[] items = {"Menu l'inventaire","Menu Equipement","Character description"};
+            String[] items = {"Menu l'inventaire","Voir Equipement","Voir les stats","voir Character all description"};
             menu = new Menu("Character Menu", "Tapez un autre nombre pour quitter", items) {
                 @Override
                 protected void on(int i) {
@@ -35,15 +37,19 @@ public class CharacterManager extends Manager{
                             this.display();
                             break;
                         case 1:
-                            getMenuEquipment().display();
+                            write(character.showEquipement());
                             this.display();
                             break;
                         case 2:
-                            System.out.println(character);
+                            write(character.showStats());
+                            this.display();
+                            break;
+                        case 3:
+                            write(character);
                             this.display();
                             break;
                         default:
-                            System.out.println("Choix : Quitter");
+                            write("Choix : Quitter");
                             break;
                     }
                 }
@@ -54,19 +60,17 @@ public class CharacterManager extends Manager{
 
     public Menu getMenuInventaire() {
         if(menuInventaire == null) {
-            String[] items = {"Menu l'inventaire","Menu Equipement","Voir le sac"};
-            menuInventaire = new Menu("Character Menu", "Quitter", items) {
+            String[] items = {"Selectionner un equipement","Voir le sac"};
+            menuInventaire = new Menu("Character Menu", "Tapez un autre nombre pour quitter", items) {
                 @Override
                 protected void on(int i) {
                     switch (i)
                     {
                         case 0:
+                            new ItemManager(character).getMenuSelectItem(character.getInventory().getMyItems()).display();
                             this.display();
                             break;
                         case 1:
-                            this.display();
-                            break;
-                        case 2:
                             System.out.println(character.getInventory());
                             this.display();
                             break;
@@ -80,16 +84,6 @@ public class CharacterManager extends Manager{
         return menuInventaire;
     }
 
-    public Menu getMenuEquipment() {
-        if(menuInventaire == null) {
-            String[] items = {"Menu l'inventaire","Menu Equipement","Voir les stats"};
-            menuInventaire = new Menu("Character Menu", "Quitter", items) {
-                @Override
-                protected void on(int i) {
 
-                }
-            };
-        }
-        return menuEquipment;
-    }
+
 }

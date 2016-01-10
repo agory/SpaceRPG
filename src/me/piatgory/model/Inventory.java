@@ -52,6 +52,8 @@ public class Inventory {
         return this.getMyItems().get(i);
     }
 
+
+
     public String showItems(){
         String message ="\n――――――――――――――――――――――――――――";
         int i = 0;

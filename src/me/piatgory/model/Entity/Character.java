@@ -136,6 +136,50 @@ public class Character extends Entity{
         this.getInventory().addItem(item);
     }
 
+    public Equipment takePlaceOf(Equipment equipment){
+        Equipment currentEquipment = null;
+        if(equipment.getClass() == Weapon.class){
+            currentEquipment = getWeapon();
+        }
+        if(equipment.getClass() == ChestArmor.class){
+            currentEquipment = getChestArmor();
+        }
+        if(equipment.getClass() == FootArmor.class){
+            currentEquipment = getFootArmor();
+        }
+        if(equipment.getClass() == HeadArmor.class){
+            currentEquipment = getHeadArmor();
+        }
+        if(equipment.getClass() == HandArmor.class){
+            currentEquipment = getHandArmor();
+        }
+        if(equipment.getClass() == LegsArmor.class){
+            currentEquipment = getLegsArmor();
+        }
+        return currentEquipment;
+    }
+
+    public void equip(Equipment equipment){
+        if(equipment.getClass() == Weapon.class){
+            equipWeapon((Weapon) equipment);
+        }
+        if(equipment.getClass() == ChestArmor.class){
+            equipChestArmor((ChestArmor) equipment);
+        }
+        if(equipment.getClass() == FootArmor.class){
+            equipFootArmor((FootArmor) equipment);
+        }
+        if(equipment.getClass() == HeadArmor.class){
+            equipHeadArmor((HeadArmor) equipment);
+        }
+        if(equipment.getClass() == HandArmor.class){
+            equipHandArmor((HandArmor) equipment);
+        }
+        if(equipment.getClass() == LegsArmor.class){
+            equipLegsArmor((LegsArmor) equipment);
+        }
+    }
+
     public void equipWeapon(Weapon weapon){
         this.balanceCurrentHealth((this.weapon != null) ? this.weapon.getStats() : null, (weapon != null) ? weapon.getStats() : null);
         this.weapon = weapon;
