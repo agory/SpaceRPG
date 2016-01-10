@@ -132,6 +132,10 @@ public class Character extends Entity{
             return this.computeAllStats().getStats().get("Puissance");
     }
 
+    public void makeItemIntoInventaire(Item item){
+        this.getInventory().addItem(item);
+    }
+
     public void equipWeapon(Weapon weapon){
         this.balanceCurrentHealth((this.weapon != null) ? this.weapon.getStats() : null, (weapon != null) ? weapon.getStats() : null);
         this.weapon = weapon;

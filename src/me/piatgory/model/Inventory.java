@@ -48,16 +48,29 @@ public class Inventory {
         this.myItems = myItems;
     }
 
-    public String showItems(){
-        String message = "";
-        for (Item item : getMyItems()){
+    public Item findItem(int i){
+        return this.getMyItems().get(i);
+    }
 
+    public String showItems(){
+        String message ="\n――――――――――――――――――――――――――――";
+        int i = 0;
+        for (Item item : getMyItems()){
+            message+="\nNumero : "+ i++;
+            message+="\n"+item;
+            message+="\n――――――――――――――――――――――――――――";
         }
-        return "";
+        return message;
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        String message ="\n――――――――――――――――――――――――――――";
+        message+="\n――――――――― Inventaire ――――――――――――";
+        message+="\n――――――――――――――――――――――――――――";
+        message+="\n――― Poids de l'inventaire : " + getWeight();
+        message+="\n――――――――――――――――――――――――――――";
+        message+= showItems();
+        return message;
     }
 }

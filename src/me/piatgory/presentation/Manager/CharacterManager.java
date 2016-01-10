@@ -31,10 +31,12 @@ public class CharacterManager extends Manager{
                     switch (i)
                     {
                         case 0:
-                            getMenuInventaire();
+                            getMenuInventaire().display();
+                            this.display();
                             break;
                         case 1:
-                            getMenuEquipment();
+                            getMenuEquipment().display();
+                            this.display();
                             break;
                         case 2:
                             System.out.println(character);
@@ -59,10 +61,10 @@ public class CharacterManager extends Manager{
                     switch (i)
                     {
                         case 0:
-                            getMenuInventaire();
+                            this.display();
                             break;
                         case 1:
-                            getMenuEquipment();
+                            this.display();
                             break;
                         case 2:
                             System.out.println(character.getInventory());

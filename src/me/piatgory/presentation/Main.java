@@ -20,6 +20,7 @@ public class Main {
     public static void main(String[] args) {
 	    Log.i("init project");
         dataGame = JAXBserializer.Read();
+        dataGame.getCharacter().makeItemIntoInventaire(dataGame.itemFind(12));
         characterManager = new CharacterManager(dataGame.getCharacter());
         characterManager.show();
 
