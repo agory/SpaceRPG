@@ -2,24 +2,34 @@ package me.piatgory.model.Entity;
 
 import me.piatgory.model.Stats;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.HashMap;
 
 /**
  * Created by Alexandre on 09/01/2016.
  */
+@XmlRootElement
 public class Monster extends Entity {
 
+    private static int ID=0;
     private Stats bonus;
+    private int id;
 
     public Monster(String name,int level){
         super(name,level);
         bonus = new Stats();
         this.currentHealth = computeMaxHealth();
+        this.id= ID++;
     }
 
     public Monster(String name,int level, Stats bonus){
         super(name,level);
         this.bonus = bonus;
+        this.id= ID++;
+    }
+
+    public Monster() {
+        ID++;
     }
 
     protected Stats computeAllStats(){
@@ -55,11 +65,26 @@ public class Monster extends Entity {
     public void setBonus(Stats bonus) {
         this.bonus = bonus;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int giveExperience(){
+        return getLevel()*50;
+    }
+    public static void resetID(){
+        ID=0;
+    }
 }
 
 enum StatsMonster {
     Stamina("Endurance", 0,1), Power("Puissance", 5,5),
-    Health("Santé", 40,5);
+    Health("Santé", 40,15);
 
     private String name;//defaultvalue
     private int value;//defaultvalue
@@ -86,4 +111,6 @@ enum StatsMonster {
     public void setName(String name) {
         this.name = name;
     }
+
+
 }

@@ -1,5 +1,6 @@
 package me.piatgory.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.List;
 /**
  * Created by Alexandre Gory on 23/12/2015.
  */
+@XmlRootElement
 public class Stats {
     HashMap<String, Integer> stats = new HashMap<String, Integer>();
 

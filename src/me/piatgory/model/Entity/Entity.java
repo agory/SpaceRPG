@@ -3,10 +3,13 @@ package me.piatgory.model.Entity;
 import me.piatgory.model.Stats;
 import me.grea.antoine.utils.Dice;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Created by Alexandre on 09/01/2016.
  */
-abstract class Entity {
+@XmlRootElement
+public abstract class Entity {
     private String name;
     private int level;
     protected int currentHealth;
@@ -19,7 +22,8 @@ abstract class Entity {
         this.buildStats();
     }
 
-
+    public Entity() {
+    }
 
     public int computeMaxHealth(){
         return this.computeAllStats().getStats().get("Santé");

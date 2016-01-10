@@ -2,35 +2,24 @@ package me.piatgory.model.Item;
 
 import me.piatgory.model.Buff;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Created by Grégoire on 10/12/2015.
  */
+@XmlRootElement
 public class Item {
 
     private static int ID = 0;
-
     private int id;
     private String name;
     private int weight;
     private String descritption;
 
-    public Item(String name, int weight) {
-        this.name = name;
-        this.weight = weight;
-    }
-
-    public Item(String name) {
-        this.name = name;
-        this.weight = 1;
-    }
-
-    public String getNom() {
-        return name;
-    }
-
-    public void setNom(String name) {
-        this.name = name;
-    }
+    /*
+    * Setter and Getter
+    * */
 
     public int getWeight() {
         return weight;
@@ -52,14 +41,6 @@ public class Item {
         return descritption;
     }
 
-    @Override
-    public String toString() {
-        String message = "Nom : " + name;
-        message = message + "\nPoids : " + weight;
-        message = message + "\nDescription :" + descritption;
-        return message;
-    }
-
     public void setDescritption(String descritption) {
         this.descritption = descritption;
     }
@@ -71,4 +52,40 @@ public class Item {
     public void setName(String name) {
         this.name = name;
     }
+
+    /*
+    * Constructor
+    * */
+    public Item(String name,String descritption, int weight) {
+        this.name = name;
+        this.weight = weight;
+        this.id = ID++;
+        this.descritption = descritption;
+    }
+
+    public Item(String name, int weight) {
+        this(name,"Pas de description",weight);
+    }
+
+    public Item(String name) {
+        this(name,1);
+    }
+    public Item(){ID++;}
+
+    /*
+    * Method
+    * */
+    @Override
+    public String toString() {
+        String message = "Nom : " + name;
+        message = message + "\nPoids : " + weight;
+        message = message + "\nDescription :" + descritption;
+        return message;
+    }
+
+    public static void resetID(){
+        ID=0;
+    }
+
+
 }

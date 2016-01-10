@@ -3,12 +3,14 @@ package me.piatgory.model.Entity;
 import me.piatgory.model.*;
 import me.piatgory.model.Item.*;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.HashMap;
 
 
 /**
  * Created by Grégoire on 10/12/2015.
  */
+@XmlRootElement
 public class Character extends Entity{
 
     private Weapon weapon;
@@ -18,13 +20,80 @@ public class Character extends Entity{
     private HeadArmor headArmor;
     private LegsArmor legsArmor;
     private Inventory inventory;
+    private int experience;
 
 
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
+
+    public ChestArmor getChestArmor() {
+        return chestArmor;
+    }
+
+    public void setChestArmor(ChestArmor chestArmor) {
+        this.chestArmor = chestArmor;
+    }
+
+    public FootArmor getFootArmor() {
+        return footArmor;
+    }
+
+    public void setFootArmor(FootArmor footArmor) {
+        this.footArmor = footArmor;
+    }
+
+    public HandArmor getHandArmor() {
+        return handArmor;
+    }
+
+    public void setHandArmor(HandArmor handArmor) {
+        this.handArmor = handArmor;
+    }
+
+    public HeadArmor getHeadArmor() {
+        return headArmor;
+    }
+
+    public void setHeadArmor(HeadArmor headArmor) {
+        this.headArmor = headArmor;
+    }
+
+    public LegsArmor getLegsArmor() {
+        return legsArmor;
+    }
+
+    public void setLegsArmor(LegsArmor legsArmor) {
+        this.legsArmor = legsArmor;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
+
+    public int getExperience() {
+        return experience;
+    }
+
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
 
     public Character(String name){
         super(name,1);
         this.inventory = new Inventory();
         this.currentHealth = computeMaxHealth();
+    }
+
+    public Character() {
     }
 
     public Stats computeAllStats(){
@@ -107,6 +176,30 @@ public class Character extends Entity{
         inventory.addItem(item);
     }
 
+    public int upExperience(int value){
+        int expForUp = experienceForUp();
+        if(experience + value > expForUp){
+            incrementLevel();
+            experience = experience + value - expForUp;
+            overExperience();
+        } else {
+            experience += value;
+        }
+        return experience;
+    }
+
+    public void overExperience(){
+        int expForUp = experienceForUp();
+        while (experience  > expForUp) {
+            incrementLevel();
+            experience = experience - expForUp;
+            expForUp = experienceForUp();
+        }
+    }
+
+    public int experienceForUp(){
+        return (int)(this.getLevel() * 100 * Math.pow(1.10,this.getLevel()));
+    }
     public void incrementLevel(){
         this.setLevel(this.getLevel()+1);
         for (StatsCharacter stat:StatsCharacter.values()) {
@@ -151,8 +244,8 @@ public class Character extends Entity{
 }
 
 enum StatsCharacter {
-    Stamina("Endurance", 1,1), Power("Puissance",20,5),
-    Health("Santé", 100,100);
+    Stamina("Endurance", 1,2), Power("Puissance",20,10),
+    Health("Santé", 100,40);
 
     private String name;//defaultvalue
     private int value;//defaultvalue
