@@ -31,6 +31,9 @@ public class Stats {
     }
 
     public HashMap<String, Integer> getStats() {
+        if(stats == null){
+            this.buildStats();
+        }
         return stats;
     }
 

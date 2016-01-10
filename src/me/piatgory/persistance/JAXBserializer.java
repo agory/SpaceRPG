@@ -38,13 +38,9 @@ public class JAXBserializer {
         DataGame datagame=null;
         try {
             File file = new File(".\\Data\\datagame.xml");
-            Log.i(file.canRead());
             JAXBContext jaxbContext = JAXBContext.newInstance(DataGame.class);
-
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-
             datagame = (DataGame) jaxbUnmarshaller.unmarshal(file);
-
         } catch (JAXBException e) {
             e.printStackTrace();
         }

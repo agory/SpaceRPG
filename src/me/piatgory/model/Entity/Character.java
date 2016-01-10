@@ -200,6 +200,7 @@ public class Character extends Entity{
     public int experienceForUp(){
         return (int)(this.getLevel() * 100 * Math.pow(1.10,this.getLevel()));
     }
+
     public void incrementLevel(){
         this.setLevel(this.getLevel()+1);
         for (StatsCharacter stat:StatsCharacter.values()) {
@@ -219,25 +220,38 @@ public class Character extends Entity{
     }
 
     public String showEquipement(){
-        String message = "Equipement : ";
+        String message = "―――――――――  Equipement : ――――――――――";
+        message+="\n――――――――――――――――――――――――――――";
         if(this.weapon != null)
             message+=  "\n - " +weapon.toString();
+        message+="\n――――――――――――――――――――――――――――";
         if(this.chestArmor != null)
             message+=  "\n - " + chestArmor.toString();
+        message+="\n――――――――――――――――――――――――――――";
         if(this.footArmor != null)
             message+=  "\n - " + footArmor.toString();
+        message+="\n――――――――――――――――――――――――――――";
         if(this.handArmor != null)
             message+=  "\n - " + handArmor.toString();
+        message+="\n――――――――――――――――――――――――――――";
         if(this.headArmor != null)
             message+=  "\n - " + headArmor.toString();
+        message+="\n――――――――――――――――――――――――――――";
         if(this.legsArmor != null)
             message+=  "\n - " + legsArmor.toString();
+        message+="\n――――――――――――――――――――――――――――";
         return message;
+    }
+
+    public String showWeight(){
+        return  "Poids : " + getInventoryWeight() + " / " + getWeight();
     }
 
     @Override
     public String toString() {
         String message = super.toString();
+        message+="\n" + showWeight();
+        message+="\n――――――――――――――――――――――――――――";
         message += "\n" + showEquipement();
         return message;
     }

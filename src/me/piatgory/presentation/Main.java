@@ -8,22 +8,22 @@ import me.piatgory.model.Stats;
 import me.piatgory.model.StatsBuilder;
 import me.piatgory.persistance.DataGame;
 import me.piatgory.persistance.JAXBserializer;
+import me.piatgory.presentation.Manager.CharacterManager;
 
 import java.util.*;
 
 public class Main {
 
     public static DataGame dataGame;
+    public static CharacterManager characterManager;
 
     public static void main(String[] args) {
 	    Log.i("init project");
-        //resetDataGame("phave");
         dataGame = JAXBserializer.Read();
-        List<Item> items = dataGame.itemFindByText("gangster");
-        Log.i(items.isEmpty());
-        for (Item item : items) {
-            Log.i(item);
-        }
+        characterManager = new CharacterManager(dataGame.getCharacter());
+        characterManager.show();
+
+
     }
 
     public static void combat(Character character,Monster monster){

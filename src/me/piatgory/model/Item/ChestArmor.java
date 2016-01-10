@@ -9,13 +9,17 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 public class ChestArmor extends Equipment {
+
     public ChestArmor(String name,int weight , Stats stats) {
         super(name, weight, stats);
     }
+
     public ChestArmor(String name,String description,int weight , Stats stats) {
         super(name,description ,weight, stats);
     }
+
     public ChestArmor(){}
+
     @Override
     public String toString() {
         String message = "Emplacement : Torse\n";
@@ -23,4 +27,5 @@ public class ChestArmor extends Equipment {
 
         return message;
     }
+
 }

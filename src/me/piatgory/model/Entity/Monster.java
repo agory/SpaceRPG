@@ -77,6 +77,7 @@ public class Monster extends Entity {
     public int giveExperience(){
         return getLevel()*50;
     }
+
     public static void resetID(){
         ID=0;
     }

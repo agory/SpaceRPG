@@ -10,11 +10,11 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 public abstract class Entity {
+
     private String name;
     private int level;
     protected int currentHealth;
     protected Stats stats;
-
 
     public Entity(String name,int level){
         this.level = level;
@@ -71,6 +71,7 @@ public abstract class Entity {
         this.setCurrentHealth(this.currentHealth - value);
         return value;
     }
+
     public void damageBalance(int value){
         this.setCurrentHealth(this.currentHealth - value);
     }
@@ -86,9 +87,20 @@ public abstract class Entity {
     protected void setLevel(int level){
         this.level = level;
     }
+
     protected abstract Stats computeAllStats();
+
     public abstract void buildStats();
+
     public abstract int getDamage();
+
+    public Stats getStats() {
+        return stats;
+    }
+
+    public void setStats(Stats stats) {
+        this.stats = stats;
+    }
 
     public String showStats() {
         String message =  "Stats : ";
@@ -100,6 +112,7 @@ public abstract class Entity {
         }
         return message;
     }
+
     public String showHealth(){
         String message ="Point de vie total  : " + this.computeMaxHealth();
         message = message + "\nPoint de vie actuel : " + currentHealth;
@@ -109,11 +122,16 @@ public abstract class Entity {
     public String showName(){
         return  this.name + " : " + this.getClass().getSimpleName() + " ( "+ this.level+" lvl )";
     }
+
     @Override
     public String toString() {
-        String message = showName();
+        String message="\n――――――――――――――――――――――――――――";
+        message += "\n――― " + showName();
+        message+="\n――――――――――――――――――――――――――――";
         message = message + "\n" + showStats();
+        message+="\n――――――――――――――――――――――――――――";
         message = message + "\n" + showHealth();
+        message+="\n――――――――――――――――――――――――――――";
         return message;
     }
 }

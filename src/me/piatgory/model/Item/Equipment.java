@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 public abstract class Equipment extends Item {
+
     private Stats stats;
 
     public Equipment(String name, int weight, Stats stats) {
@@ -26,6 +27,7 @@ public abstract class Equipment extends Item {
         super(name,description,weight);
         this.stats = stats;
     }
+
     public Equipment(){}
 
     public Stats getStats() {

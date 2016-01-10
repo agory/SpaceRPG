@@ -9,6 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 public class Weapon extends Equipment {
+
     private int damage;
 
     public Weapon(String name,int weight , Stats stats, int damage) {
@@ -33,7 +34,7 @@ public class Weapon extends Equipment {
 
     @Override
     public String toString() {
-        String message = "\nEmplacement : Arme\n";
+        String message = "Emplacement : Arme\n";
         message += super.toString();
         message += "\nDégat bonus de l'arme : " + damage;
         return message;

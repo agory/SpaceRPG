@@ -9,14 +9,17 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 public class FootArmor extends Equipment {
+
     public FootArmor(String name,int weight , Stats stats) {
         super(name, weight, stats);
     }
+
     public FootArmor(String name,String description,int weight , Stats stats) {
         super(name,description ,weight, stats);
     }
 
     public FootArmor(){}
+
     @Override
     public String toString() {
         String message = "Emplacement : Pied\n";

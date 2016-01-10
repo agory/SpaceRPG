@@ -3,6 +3,7 @@ package me.piatgory.model;
 import me.piatgory.model.Item.Item;
 import me.piatgory.model.Inventory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,6 +15,7 @@ public class Inventory {
     private List<Item> myItems;
 
     public Inventory() {
+        myItems = new ArrayList<Item>();
     }
 
     public int getWeight(){
@@ -46,5 +48,16 @@ public class Inventory {
         this.myItems = myItems;
     }
 
+    public String showItems(){
+        String message = "";
+        for (Item item : getMyItems()){
 
+        }
+        return "";
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
