@@ -1,5 +1,9 @@
 package me.piatgory.model.Item;
 
+import me.piatgory.model.Entity.Character;
+import me.piatgory.model.Inventory;
+import me.piatgory.presentation.Manager.CharacterManager;
+
 import java.util.List;
 
 /**
@@ -23,5 +27,10 @@ public class Chest {
             message+= "Nom : "+currentItem.getName()+"\n Description : "+currentItem.getDescritption()+"\n Poids : "+currentItem.getWeight()+"------------------------------\n";
         }
         return message;
+    }
+
+    //Return the whole content of the chest
+    public List<Item> lootWholeChest(){
+        return chestContent;
     }
 }
