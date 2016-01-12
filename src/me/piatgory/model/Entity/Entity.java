@@ -1,9 +1,11 @@
 package me.piatgory.model.Entity;
 
+import me.piatgory.model.Event;
 import me.piatgory.model.Stats;
 import me.grea.antoine.utils.Dice;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import java.lang.reflect.Method;
 
 /**
  * Created by Alexandre on 09/01/2016.
@@ -55,9 +57,52 @@ public abstract class Entity {
         }
     }
 
-    public int attack(Entity entity){
+    public boolean isDead(){
+        return currentHealth == 0;
+    }
+
+    public String attack(Entity entity){
         int damage = this.getDamage() + (int)((float)this.getDamage()*((float)Dice.roll(-20,20)/40));
-        return entity.damage(damage);
+        return "Frappe " + entity.getName()+ " et lui inflige " + entity.damage(damage) + " point de vie";
+    }
+
+    public Event attackEvent(Entity entity){
+        return new Event(this,entity,"attack",5);
+    }
+
+    public String pass(Entity entity){
+        String[] sentences = {
+                "Raconte une blaque à " + entity.getName(),
+                "Execute un pas de dance pour " + entity.getName(),
+                "Chantonner un air pour " + entity.getName(),
+                "Propose de faire la paix à "+ entity.getName(),
+                "Prie dieu pour avoir de la chance",
+                "Sort ses cartes pokemon et dit à "+ entity.getName() + " : veut tu jouer avec moi."
+        };
+
+        return sentences[Dice.roll(sentences.length-1)];
+    }
+
+    public Event passEvent(Entity entity){
+        return new Event(this,entity,"pass",5);
+    }
+
+    public String provoke(Entity entity){
+        String[] sentences = {
+                "Montre ses fesse à " + entity.getName(),
+                "Se cure le nez tout en ignorant " + entity.getName(),
+                "Même si t'as un curseur rouge au dessus de la tête, ben avec toi, je me sens jamais en danger. T'es le moins méchant des méchants !(By sparadrap)",
+                "Lance une série injure !",
+                "Se pose dans un coin de l'aréne et pique un somme",
+                "Dis à "+ entity.getName() + " : Même Sparadrap est meilleur que toi",
+                "Rigole en regardant " + entity.getName(),
+        };
+
+        return sentences[Dice.roll(sentences.length-1)] ;
+    }
+
+    public Event provokeEvent(Entity entity){
+        return new Event(this,entity,"provoke",0);
     }
 
     public void heal(int value){
@@ -133,5 +178,41 @@ public abstract class Entity {
         message = message + "\n" + showHealth();
         message+="\n――――――――――――――――――――――――――――";
         return message;
+    }
+
+
+
+    public Event getCombatAction(int i,Entity entity){
+        Event event = null;
+        switch (i){
+            case 0:
+                event = this.attackEvent(entity);
+                break;
+            case 1:
+                event = this.passEvent(entity);
+                break;
+            case 2:
+                event = this.provokeEvent(entity);
+                break;
+        }
+        return  event;
+    }
+
+    public Method getMethodAction(String action) throws Exception{
+        Method method = null;
+        if(action == "attack")
+            method = this.getClass().getMethod("attack",Entity.class);
+        else if(action == "provoke")
+            method = this.getClass().getMethod("provoke",Entity.class);
+        else if(action == "pass")
+            method = this.getClass().getMethod("pass",Entity.class);
+        else
+            throw new Exception("Action not found!");
+        return method;
+    }
+
+    public static String[] getCombatAction(){
+        String[] action = {"Attaquer","passer","provoquer"};
+        return  action;
     }
 }

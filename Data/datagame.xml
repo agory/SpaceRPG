@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <dataGame>
     <character>
-        <name>Phave</name>
+        <name>phave</name>
         <stats>
             <stats>
                 <entry>
@@ -421,7 +421,7 @@
             </stats>
         </items>
         <items xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="weapon">
-            <descritption>Bouclier volé anti-emeute par un gangster plutot bourrin. Arme idéal pour ceux qui aime prendre des coups.
+            <descritption>Bouclier anti-emeute volé par un gangster plutot bourrin. Arme idéal pour ceux qui aime prendre des coups.
  </descritption>
             <id>12</id>
             <name>Bouclier  anti-emeute volé</name>

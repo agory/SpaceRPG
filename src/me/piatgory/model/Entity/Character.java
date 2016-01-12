@@ -91,6 +91,7 @@ public class Character extends Entity{
         super(name,1);
         this.inventory = new Inventory();
         this.currentHealth = computeMaxHealth();
+
     }
 
     public Character() {
@@ -236,7 +237,7 @@ public class Character extends Entity{
         return experience;
     }
 
-    public void overExperience(){
+    private void overExperience(){
         int expForUp = experienceForUp();
         while (experience  > expForUp) {
             incrementLevel();

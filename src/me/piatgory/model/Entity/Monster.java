@@ -16,15 +16,13 @@ public class Monster extends Entity {
     private int id;
 
     public Monster(String name,int level){
-        super(name,level);
-        bonus = new Stats();
-        this.currentHealth = computeMaxHealth();
-        this.id= ID++;
+        this(name,level,new Stats());
     }
 
     public Monster(String name,int level, Stats bonus){
         super(name,level);
         this.bonus = bonus;
+        this.currentHealth = computeMaxHealth();
         this.id= ID++;
     }
 

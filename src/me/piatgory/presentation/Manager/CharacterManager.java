@@ -20,7 +20,7 @@ public class CharacterManager extends Manager{
     }
 
 
-    public void show(){
+    public void run(){
         getMenu().display();
     }
 

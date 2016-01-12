@@ -28,7 +28,7 @@ public class JAXBserializer {
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
             jaxbMarshaller.marshal(dataGame, file);
-            jaxbMarshaller.marshal(dataGame, System.out);
+            //jaxbMarshaller.marshal(dataGame, System.out);
         }catch (JAXBException e){
             e.printStackTrace();
         }
