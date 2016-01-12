@@ -59,6 +59,8 @@ public class Main {
         dataGame.setCharacter(character);
     }
     public static void addMonster(){
+
+        // TODO Delete for MonsterGenerator class
         List<Monster> monsters =new ArrayList<Monster>();
         for (int i=1;i < 100;i++){
             monsters.add(new Monster("Gansters",i,StatsBuilder.make(0,0,0)));
