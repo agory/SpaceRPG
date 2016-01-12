@@ -98,7 +98,7 @@ public class Main {
         items.add(new LegsArmor("Jean de gangster",description,2,StatsBuilder.make(0,2,1)));
 
         items.add(new Weapon("Fouet laser de gangster","L'arme idéale du gangster sadique",2,StatsBuilder.make(10,0,5),5));
-        items.add(new Weapon("Bouclier  anti-emeute volé","Bouclier volé anti-emeute par un gangster plutot bourrin. Arme idéal pour ceux qui aime prendre des coups.\n ",2,StatsBuilder.make(30,5,0),2));
+        items.add(new Weapon("Bouclier  anti-emeute volé","Bouclier anti-emeute volé par un gangster plutot bourrin. Arme idéal pour ceux qui aime prendre des coups.\n ",2,StatsBuilder.make(30,5,0),2));
         items.add(new Weapon("Blaster laser","Utiliser par les tapettes qui tapent à distant. Utiliser par les gangster qui n'assume par leur coté masochiste.",2,StatsBuilder.make(0,0,10),5));
 
         description = "Vétement utilisé en général par les forces de l'ordre.";

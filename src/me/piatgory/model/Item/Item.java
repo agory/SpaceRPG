@@ -88,5 +88,10 @@ public class Item {
         ID=0;
     }
 
+    public static String[] getMenuAction(){
+        String[] action = {"Afficher","Equiper","Jeter"};
+        return  action;
+    }
+
 
 }

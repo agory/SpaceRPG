@@ -44,4 +44,10 @@ public abstract class Equipment extends Item {
         message += stats.toString();
         return message;
     }
+
+
+    public static String [] getMenuAction(){
+        String[] action = {"Afficher","Equiper","Jeter"};
+        return  action;
+    }
 }

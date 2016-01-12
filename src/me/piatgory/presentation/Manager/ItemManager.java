@@ -13,9 +13,6 @@ import java.util.List;
 public class ItemManager extends Manager{
     private List<Item>  itemsTemp;
     private Item  itemTemp;
-    private static String[] actionEquipment = {"Afficher","Equiper","Jeter"};
-    private static String[] actionItem = {"Afficher","Jeter"};
-    private int typeTemp;
 
     public ItemManager(Character character) {
         super(character);
@@ -43,13 +40,14 @@ public class ItemManager extends Manager{
     public Menu getMenuItemInventaireAction(Item item){
         itemTemp = item;
         String[] items;
-        typeTemp = 0;
+        final int typeTemp;
         if(item instanceof Equipment){
-            items = actionEquipment;
+            items = Equipment.getMenuAction();
             typeTemp = 1;
         } else {
+            typeTemp = 0;
             write("C'est un item !!");
-            items = actionItem;
+            items = Item.getMenuAction();
         }
 
         Menu menu = new Menu("Selection d'un item", "Tapez un autre nombre pour quitter", items) {
