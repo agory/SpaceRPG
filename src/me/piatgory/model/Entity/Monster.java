@@ -3,10 +3,13 @@ package me.piatgory.model.Entity;
 import me.grea.antoine.utils.Dice;
 import me.piatgory.model.Item.Chest;
 import me.piatgory.model.Item.Item;
+import me.piatgory.model.Item.Weapon;
 import me.piatgory.model.Stats;
+import me.piatgory.model.StatsBuilder;
 import me.piatgory.persistance.DataGame;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -19,8 +22,9 @@ public class Monster extends Entity {
     private static int ID=0;
     private Stats bonus;
     private int id;
-    private List<Item> monsterItems;
-    private List<Item> chestItems;
+
+    private List<Item> monsterItems = new ArrayList<Item>();
+    private List<Item> chestItems = new ArrayList<Item>();
 
     public Monster(String name,int level){
         this(name,level,new Stats());
@@ -79,6 +83,14 @@ public class Monster extends Entity {
         this.id = id;
     }
 
+    public List<Item> getMonsterItems() {
+        return monsterItems;
+    }
+
+    public void setMonsterItems(List<Item> monsterItems) {
+        this.monsterItems = monsterItems;
+    }
+
     public int giveExperience(){
         return getLevel()*50;
     }
@@ -96,27 +108,29 @@ public class Monster extends Entity {
                     ||item.getClass().equals("HandArmor")
                     ||item.getClass().equals("HeadArmor")
                     ||item.getClass().equals("LegsArmor")) && nbItems>chestItems.size()){
-                if(Dice.roll(100)<10){
+                if(Dice.roll(100)<99){
                     chestItems.add(item);
                 }
             }
             else if(item.getClass().equals("Weapon") && nbItems>chestItems.size()){
-                if(dice.roll(100)<5){
+                if(dice.roll(100)<99){
                     chestItems.add(item);
                 }
             }
         }
-        while(chestItems.size()<nbItems){
+        //while(chestItems.size()<nbItems){
             //Ajouter consommable
-        }
+        //}
+        Item testItem = new Weapon("Pistolet à bille","Arme de départ légérement pourrie.",2,StatsBuilder.make(0,0,0),2);
+        chestItems.add(testItem);
         Chest chest = new Chest(chestItems);
         return chest;
+
     }
 
-    public void openMonsterChest(){
+    public String openMonsterChest(){
         Chest chest = generateChest();
-        chest.openChest();
-
+        return chest.openChest();
     }
 }
 
