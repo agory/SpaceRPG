@@ -40,12 +40,12 @@ public class Event {
     }
 
     public String run(){
-        String message =null;
+        String message = null;
         try {
             message = (String) source.getMethodAction(action).invoke(source,target);
         } catch (Exception e){
             e.printStackTrace();
-            message ="Un probléme c'est passé !!!";
+            message ="Un probléme s'est passé !!!";
         }
         return message;
     }

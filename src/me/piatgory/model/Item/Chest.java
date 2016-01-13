@@ -1,5 +1,6 @@
 package me.piatgory.model.Item;
 
+import me.grea.antoine.utils.Dice;
 import me.piatgory.model.Entity.Character;
 import me.piatgory.model.Inventory;
 import me.piatgory.persistance.DataGame;
@@ -16,24 +17,35 @@ import java.util.List;
 public class Chest {
 
     private List<Item> chestContent;
+    private List<Item> generatedContent;
 
-    public Chest(List<Item> chestContent){
-        this.chestContent = chestContent;
+    public Chest(List<Item> generatedContent){
+        this.generatedContent = generatedContent;
+    }
+
+    public void generateChestContent(){
+        Dice dice = new Dice();
+        int value = dice.roll(1,3);
+        for (int i=0;i<generatedContent.size();++i){
+            
+        }
+
     }
 
     public String openChest(){
-        String message = "-------------------------------------\n"
-                        +"----------Contenu du coffre----------\n"+
-                         "-------------------------------------\n";
+
+        String message = "――――――――――――――――――――――\n"
+                        +"――――――Contenu du coffre――――――\n"+
+                         "――――――――――――――――――――――\n";
         message += "Poids total du coffre : "+this.getChestWeight()+"\n";
         message += "Nombre d'objets : "+ chestContent.size()+"\n";
         Item currentItem;
         for(int i=0;i<chestContent.size();++i){
             currentItem=chestContent.get(i);
-            message+= "---ITEM "+i+" ---\nNom : "+currentItem.getName()+
+            message+= "――ITEM "+i+" ――\nNom : "+currentItem.getName()+
                     "\n Description : "+currentItem.getDescritption()+
                     "\n Poids : "+currentItem.getWeight()+
-                    "------------------------------\n";
+                    "――――――――――――――――――――――\n";
         }
         return message;
     }

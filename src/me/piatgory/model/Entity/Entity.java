@@ -63,7 +63,7 @@ public abstract class Entity {
 
     public String attack(Entity entity){
         int damage = this.getDamage() + (int)((float)this.getDamage()*((float)Dice.roll(-20,20)/40));
-        return "Frappe " + entity.getName()+ " et lui inflige " + entity.damage(damage) + " point de vie";
+        return "Frappe " + entity.getName()+ " et lui inflige " + entity.damage(damage) + " point(s) de dégats";
     }
 
     public Event attackEvent(Entity entity){
@@ -74,10 +74,10 @@ public abstract class Entity {
         String[] sentences = {
                 "Raconte une blaque à " + entity.getName(),
                 "Execute un pas de dance pour " + entity.getName(),
-                "Chantonner un air pour " + entity.getName(),
+                "Chantonne un air pour " + entity.getName(),
                 "Propose de faire la paix à "+ entity.getName(),
                 "Prie dieu pour avoir de la chance",
-                "Sort ses cartes pokemon et dit à "+ entity.getName() + " : veut tu jouer avec moi."
+                "Sort ses cartes pokemon et dit à "+ entity.getName() + " : Veux-tu jouer avec moi ?"
         };
 
         return sentences[Dice.roll(sentences.length-1)];
@@ -89,10 +89,10 @@ public abstract class Entity {
 
     public String provoke(Entity entity){
         String[] sentences = {
-                "Montre ses fesse à " + entity.getName(),
+                "Montre ses fesses à " + entity.getName(),
                 "Se cure le nez tout en ignorant " + entity.getName(),
                 "Même si t'as un curseur rouge au dessus de la tête, ben avec toi, je me sens jamais en danger. T'es le moins méchant des méchants !(By sparadrap)",
-                "Lance une série injure !",
+                "Lance une série d'injures !",
                 "Se pose dans un coin de l'aréne et pique un somme",
                 "Dis à "+ entity.getName() + " : Même Sparadrap est meilleur que toi",
                 "Rigole en regardant " + entity.getName(),
@@ -159,8 +159,8 @@ public abstract class Entity {
     }
 
     public String showHealth(){
-        String message ="Point de vie total  : " + this.computeMaxHealth();
-        message = message + "\nPoint de vie actuel : " + currentHealth;
+        String message ="Points de vie total  : " + this.computeMaxHealth();
+        message = message + "\nPoints de vie actuel : " + currentHealth;
         return message;
     }
 
@@ -212,7 +212,7 @@ public abstract class Entity {
     }
 
     public static String[] getCombatAction(){
-        String[] action = {"Attaquer","passer","provoquer"};
+        String[] action = {"Attaquer","Passer","Provoquer"};
         return  action;
     }
 }

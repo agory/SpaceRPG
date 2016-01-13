@@ -1,9 +1,14 @@
 package me.piatgory.model.Entity;
 
+import me.grea.antoine.utils.Dice;
+import me.piatgory.model.Item.Chest;
+import me.piatgory.model.Item.Item;
 import me.piatgory.model.Stats;
+import me.piatgory.persistance.DataGame;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Alexandre on 09/01/2016.
@@ -14,6 +19,8 @@ public class Monster extends Entity {
     private static int ID=0;
     private Stats bonus;
     private int id;
+    private List<Item> monsterItems;
+    private List<Item> chestItems;
 
     public Monster(String name,int level){
         this(name,level,new Stats());
@@ -47,7 +54,7 @@ public class Monster extends Entity {
             stats.put(stat.getName(),stat.getValue());
         }
         this.stats = new Stats(stats);
-        // Update Level monter
+        // Update Level monster
         for (StatsMonster stat: StatsMonster.values()) {
             this.stats.getStats().put(
                     stat.getName(),
@@ -78,6 +85,35 @@ public class Monster extends Entity {
 
     public static void resetID(){
         ID=0;
+    }
+
+    public Chest generateChest(){
+        Dice dice = new Dice();
+        for(Item item : monsterItems){
+            if(item.getClass().equals("ChestArmor")
+                    ||item.getClass().equals("FootArmor")
+                    ||item.getClass().equals("HandArmor")
+                    ||item.getClass().equals("HeadArmor")
+                    ||item.getClass().equals("LegsArmor")){
+                if(Dice.roll(100)<10){
+                    chestItems.add(item);
+                }
+            }
+            else if(item.getClass().equals("Weapon")){
+                if(dice.roll(100)<5){
+                    chestItems.add(item);
+                }
+            }
+            chestItems.add(item);
+        }
+        Chest chest = new Chest(chestItems);
+        return chest;
+    }
+
+    public void openMonsterChest(){
+        Chest chest = generateChest();
+        chest.openChest();
+
     }
 }
 

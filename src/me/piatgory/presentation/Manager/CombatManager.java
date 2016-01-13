@@ -88,6 +88,7 @@ public class CombatManager extends Manager{
                 combatEndTurn();
             } else {
                 win = true;
+
             }
             i++;
         }
@@ -96,6 +97,8 @@ public class CombatManager extends Manager{
             write("GG vous avez gagné");
             // Logique victoire
             character.upExperience(monster.giveExperience());
+            // Fonctionnera une fois la génération des objets du monstre faite
+            //monster.openMonsterChest();
         } else {
             // logique defaite
         }
