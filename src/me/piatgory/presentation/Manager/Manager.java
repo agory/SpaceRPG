@@ -1,13 +1,9 @@
-package me.piatgory.presentation.Manager;
+package me.piatgory.presentation.manager;
 
-import me.grea.antoine.utils.Menu;
 import me.piatgory.model.Entity.Character;
 import me.piatgory.model.Item.Item;
 
 import java.util.List;
-import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by Alexandre on 10/01/2016.
@@ -19,6 +15,7 @@ public class Manager {
     public Manager(Character character) {
         this.character = character;
     }
+
 
     public static void textSpacer(){
         System.out.println("――――――――――――――――――――――――――――");

@@ -37,6 +37,14 @@ public class Monster extends Entity {
         this.id= ID++;
     }
 
+    public Monster(String name,int level, Stats bonus,List<Item> monsterItems){
+        super(name,level);
+        this.bonus = bonus;
+        this.currentHealth = computeMaxHealth();
+        this.monsterItems = monsterItems;
+        this.id= ID++;
+    }
+
     public Monster() {
         ID++;
     }

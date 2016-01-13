@@ -20,7 +20,7 @@ public class Main {
     public static void main(String[] args) {
 	    Log.i("init project");
         dataGame = JAXBserializer.Read();
-        dataGame = DataGame.resetDataGame("phave"); // Pour avoir un jeu toujours clean pour les tests.
+        dataGame = new DataGame("phave"); // Pour avoir un jeu toujours clean pour les tests.
         Monster monster = new Monster("Gansters",1,StatsBuilder.make(0,0,0));
         Log.i(dataGame.getCharacter().provokeEvent(monster).run());
 
