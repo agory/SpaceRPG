@@ -89,22 +89,25 @@ public class Monster extends Entity {
 
     public Chest generateChest(){
         Dice dice = new Dice();
+        int nbItems = dice.roll(1,3); // The number of items that the player will find on the chest
         for(Item item : monsterItems){
-            if(item.getClass().equals("ChestArmor")
+            if((item.getClass().equals("ChestArmor")
                     ||item.getClass().equals("FootArmor")
                     ||item.getClass().equals("HandArmor")
                     ||item.getClass().equals("HeadArmor")
-                    ||item.getClass().equals("LegsArmor")){
+                    ||item.getClass().equals("LegsArmor")) && nbItems>chestItems.size()){
                 if(Dice.roll(100)<10){
                     chestItems.add(item);
                 }
             }
-            else if(item.getClass().equals("Weapon")){
+            else if(item.getClass().equals("Weapon") && nbItems>chestItems.size()){
                 if(dice.roll(100)<5){
                     chestItems.add(item);
                 }
             }
-            chestItems.add(item);
+        }
+        while(chestItems.size()<nbItems){
+            //Ajouter consommable
         }
         Chest chest = new Chest(chestItems);
         return chest;
