@@ -1,11 +1,9 @@
-package me.piatgory.presentation.Manager;
+package me.piatgory.presentation.manager;
 
-import me.grea.antoine.utils.Log;
 import me.grea.antoine.utils.Menu;
 import me.piatgory.model.Entity.Character;
 import me.piatgory.model.Entity.Monster;
 import me.piatgory.model.Event;
-import me.piatgory.model.Item.Item;
 
 import java.util.ArrayList;
 import java.util.List;

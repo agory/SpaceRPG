@@ -1,12 +1,7 @@
-package me.piatgory.presentation.Manager;
+package me.piatgory.presentation.manager;
 
-import me.grea.antoine.utils.Log;
 import me.grea.antoine.utils.Menu;
 import me.piatgory.model.Entity.Character;
-import me.piatgory.model.Item.Item;
-
-import java.awt.event.ItemListener;
-import java.util.List;
 
 /**
  * Created by Alexandre on 10/01/2016.

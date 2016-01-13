@@ -1,4 +1,4 @@
-package me.piatgory.presentation.Manager;
+package me.piatgory.presentation.manager;
 
 import me.grea.antoine.utils.Dice;
 import me.piatgory.model.Entity.Character;

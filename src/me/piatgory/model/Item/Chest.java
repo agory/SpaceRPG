@@ -1,10 +1,6 @@
 package me.piatgory.model.Item;
 
 import me.grea.antoine.utils.Dice;
-import me.piatgory.model.Entity.Character;
-import me.piatgory.model.Inventory;
-import me.piatgory.persistance.DataGame;
-import me.piatgory.presentation.Manager.CharacterManager;
 
 import java.util.List;
 

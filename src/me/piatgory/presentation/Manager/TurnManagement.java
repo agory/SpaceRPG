@@ -1,9 +1,7 @@
-package me.piatgory.presentation.Manager;
+package me.piatgory.presentation.manager;
 
 import me.grea.antoine.utils.Dice;
-import me.grea.antoine.utils.Log;
 import me.piatgory.model.Entity.Character;
-import me.piatgory.model.Entity.Entity;
 import me.piatgory.model.Entity.Monster;
 import me.piatgory.model.Event;
 

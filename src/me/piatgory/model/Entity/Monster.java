@@ -7,20 +7,20 @@ import me.piatgory.model.Stats;
 import me.piatgory.persistance.DataGame;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 /**
  * Created by Alexandre on 09/01/2016.
  */
-@XmlRootElement
 public class Monster extends Entity {
 
     private static int ID=0;
     private Stats bonus;
     private int id;
     private List<Item> monsterItems;
-    private List<Item> chestItems;
+
 
     public Monster(String name,int level){
         this(name,level,new Stats());
@@ -30,6 +30,14 @@ public class Monster extends Entity {
         super(name,level);
         this.bonus = bonus;
         this.currentHealth = computeMaxHealth();
+        this.id= ID++;
+    }
+
+    public Monster(String name,int level, Stats bonus,List<Item> items){
+        super(name,level);
+        this.bonus = bonus;
+        this.currentHealth = computeMaxHealth();
+        this.monsterItems = items;
         this.id= ID++;
     }
 
@@ -90,6 +98,7 @@ public class Monster extends Entity {
     public Chest generateChest(){
         Dice dice = new Dice();
         int nbItems = dice.roll(1,3); // The number of items that the player will find on the chest
+        List<Item> chestItems = new ArrayList<Item>();
         for(Item item : monsterItems){
             if((item.getClass().equals("ChestArmor")
                     ||item.getClass().equals("FootArmor")
@@ -111,12 +120,6 @@ public class Monster extends Entity {
         }
         Chest chest = new Chest(chestItems);
         return chest;
-    }
-
-    public void openMonsterChest(){
-        Chest chest = generateChest();
-        chest.openChest();
-
     }
 }
 
