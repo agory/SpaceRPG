@@ -2,6 +2,7 @@ package me.piatgory.model.Item;
 
 import me.grea.antoine.utils.Dice;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,24 +13,18 @@ import java.util.List;
 
 public class Chest {
 
-    private List<Item> chestContent;
-    private List<Item> generatedContent;
+    private List<Item> chestContent = new ArrayList<Item>();
+    private List<Item> generatedContent= new ArrayList<Item>();;
 
-    public Chest(List<Item> generatedContent){
-        this.generatedContent = generatedContent;
+    public Chest(List<Item> chestContent){
+        this.chestContent = chestContent;
     }
 
-    public void generateChestContent(){
-        Dice dice = new Dice();
-        int value = dice.roll(1,3);
-        for (int i=0;i<generatedContent.size();++i){
-            
-        }
-
+    public void setChestContent(List<Item> chestContent) {
+        this.chestContent = chestContent;
     }
 
     public String openChest(){
-
         String message = "――――――――――――――――――――――\n"
                         +"――――――Contenu du coffre――――――\n"+
                          "――――――――――――――――――――――\n";
@@ -41,7 +36,7 @@ public class Chest {
             message+= "――ITEM "+i+" ――\nNom : "+currentItem.getName()+
                     "\n Description : "+currentItem.getDescritption()+
                     "\n Poids : "+currentItem.getWeight()+
-                    "――――――――――――――――――――――\n";
+                    "\n――――――――――――――――――――――\n";
         }
         return message;
     }
@@ -62,9 +57,12 @@ public class Chest {
 
     public int getChestWeight(){
         int chestWeight=0;
-        for (Item item : chestContent){
-            chestWeight+=item.getWeight();
+        if(!chestContent.isEmpty()){
+            for (Item item : chestContent){
+                chestWeight+=item.getWeight();
+            }
         }
+
         return chestWeight;
     }
 }

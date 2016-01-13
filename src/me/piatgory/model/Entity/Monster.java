@@ -3,7 +3,9 @@ package me.piatgory.model.Entity;
 import me.grea.antoine.utils.Dice;
 import me.piatgory.model.Item.Chest;
 import me.piatgory.model.Item.Item;
+import me.piatgory.model.Item.Weapon;
 import me.piatgory.model.Stats;
+import me.piatgory.model.StatsBuilder;
 import me.piatgory.persistance.DataGame;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -14,13 +16,15 @@ import java.util.List;
 /**
  * Created by Alexandre on 09/01/2016.
  */
+@XmlRootElement
 public class Monster extends Entity {
 
     private static int ID=0;
     private Stats bonus;
     private int id;
-    private List<Item> monsterItems;
 
+    private List<Item> monsterItems = new ArrayList<Item>();
+    private List<Item> chestItems = new ArrayList<Item>();
 
     public Monster(String name,int level){
         this(name,level,new Stats());
@@ -30,14 +34,6 @@ public class Monster extends Entity {
         super(name,level);
         this.bonus = bonus;
         this.currentHealth = computeMaxHealth();
-        this.id= ID++;
-    }
-
-    public Monster(String name,int level, Stats bonus,List<Item> items){
-        super(name,level);
-        this.bonus = bonus;
-        this.currentHealth = computeMaxHealth();
-        this.monsterItems = items;
         this.id= ID++;
     }
 
@@ -87,6 +83,14 @@ public class Monster extends Entity {
         this.id = id;
     }
 
+    public List<Item> getMonsterItems() {
+        return monsterItems;
+    }
+
+    public void setMonsterItems(List<Item> monsterItems) {
+        this.monsterItems = monsterItems;
+    }
+
     public int giveExperience(){
         return getLevel()*50;
     }
@@ -98,28 +102,35 @@ public class Monster extends Entity {
     public Chest generateChest(){
         Dice dice = new Dice();
         int nbItems = dice.roll(1,3); // The number of items that the player will find on the chest
-        List<Item> chestItems = new ArrayList<Item>();
         for(Item item : monsterItems){
             if((item.getClass().equals("ChestArmor")
                     ||item.getClass().equals("FootArmor")
                     ||item.getClass().equals("HandArmor")
                     ||item.getClass().equals("HeadArmor")
                     ||item.getClass().equals("LegsArmor")) && nbItems>chestItems.size()){
-                if(Dice.roll(100)<10){
+                if(Dice.roll(100)<99){
                     chestItems.add(item);
                 }
             }
             else if(item.getClass().equals("Weapon") && nbItems>chestItems.size()){
-                if(dice.roll(100)<5){
+                if(dice.roll(100)<99){
                     chestItems.add(item);
                 }
             }
         }
-        while(chestItems.size()<nbItems){
+        //while(chestItems.size()<nbItems){
             //Ajouter consommable
-        }
+        //}
+        Item testItem = new Weapon("Pistolet à bille","Arme de départ légérement pourrie.",2,StatsBuilder.make(0,0,0),2);
+        chestItems.add(testItem);
         Chest chest = new Chest(chestItems);
         return chest;
+
+    }
+
+    public String openMonsterChest(){
+        Chest chest = generateChest();
+        return chest.openChest();
     }
 }
 
