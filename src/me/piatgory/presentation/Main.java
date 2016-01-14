@@ -21,7 +21,9 @@ public class Main {
         dataGame = JAXBserializer.Read();
         dataGame = new DataGame("phave"); // Pour avoir un jeu toujours clean pour les tests.
         Monster monster = new Monster("Gansters",1,StatsBuilder.make(0,0,0));
-        Log.i(dataGame.getMonsterGenerators().get(0).generateMonster(1).getMonsterItems().get(1));/*
+        Log.i(dataGame.getMonsterGenerators().get(0).generateMonster(1).getMonsterItems().get(1));
+        /*
+
 
 
         CombatManager combat = new CombatManager(dataGame.getCharacter(),monster);
