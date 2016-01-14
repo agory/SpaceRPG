@@ -2,6 +2,7 @@ package me.piatgory.model.Entity;
 
 import me.grea.antoine.utils.Dice;
 import me.piatgory.model.Item.Chest;
+import me.piatgory.model.Item.Equipment;
 import me.piatgory.model.Item.Item;
 import me.piatgory.model.Item.Weapon;
 import me.piatgory.model.Stats;
@@ -108,20 +109,19 @@ public class Monster extends Entity {
     }
 
     public Chest generateChest(){
-        Dice dice = new Dice();
+        if (Dice.roll(100) < 5) {
+            chestItems.add(monsterItems.get(Dice.roll(monsterItems.size()-1)););
+        }
+        i
         int nbItems = dice.roll(1,3); // The number of items that the player will find on the chest
         for(Item item : monsterItems){
-            if((item.getClass().equals("ChestArmor")
-                    ||item.getClass().equals("FootArmor")
-                    ||item.getClass().equals("HandArmor")
-                    ||item.getClass().equals("HeadArmor")
-                    ||item.getClass().equals("LegsArmor")) && nbItems>chestItems.size()){
-                if(Dice.roll(100)<99){
+            if((item instanceof Weapon){
+                if (Dice.roll(100) < 5) {
                     chestItems.add(item);
                 }
             }
-            else if(item.getClass().equals("Weapon") && nbItems>chestItems.size()){
-                if(dice.roll(100)<99){
+            else ((item instanceof Weapon) && (item instanceof Equipment)){
+                if(dice.roll(100)<5){
                     chestItems.add(item);
                 }
             }
@@ -134,11 +134,6 @@ public class Monster extends Entity {
         Chest chest = new Chest(chestItems);
         return chest;
 
-    }
-
-    public String openMonsterChest(){
-        Chest chest = generateChest();
-        return chest.openChest();
     }
 }
 

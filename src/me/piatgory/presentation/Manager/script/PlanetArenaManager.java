@@ -27,7 +27,7 @@ public class PlanetArenaManager extends ScriptManager{
 
     public MonsterGenerator menuArena(){
         monsterGeneratorTemps = null;
-        (new Menu("Quel aréne vous les vous choisir","Entrer 0 pour quitter la planète" + name, dataGame.getStageMonster().toArray(new String[dataGame.getStageMonster().size()])) {
+        (new Menu("Quelle arène voulez-vous choisir ?","Entrer 0 pour quitter la planète" + name, dataGame.getStageMonster().toArray(new String[dataGame.getStageMonster().size()])) {
             @Override
             protected void on(int i) {
                 if(i > items.length )
@@ -43,7 +43,7 @@ public class PlanetArenaManager extends ScriptManager{
         textSpacer();
         write("――― Bienvenue sur la planète " + name);
         textSpacer();
-        write("Vous pourrez ici affronter plein d'aversaires différents dans de multiple arène.");
+        write("Ici, vous pourrez affronter plein d'adversaires différents dans de multiples arènes.");
         textSpacer();
     }
 

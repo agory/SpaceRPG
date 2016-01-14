@@ -14,7 +14,6 @@ import java.util.List;
 public class Chest {
 
     private List<Item> chestContent = new ArrayList<Item>();
-    private List<Item> generatedContent= new ArrayList<Item>();;
 
     public Chest(List<Item> chestContent){
         this.chestContent = chestContent;
