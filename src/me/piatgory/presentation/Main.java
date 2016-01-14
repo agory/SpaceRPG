@@ -1,7 +1,6 @@
 package me.piatgory.presentation;
 
 import me.grea.antoine.utils.Log;
-import me.piatgory.model.Entity.Character;
 import me.piatgory.model.Entity.Monster;
 import me.piatgory.model.Item.*;
 import me.piatgory.model.StatsBuilder;
@@ -22,7 +21,8 @@ public class Main {
         dataGame = JAXBserializer.Read();
         dataGame = new DataGame("phave"); // Pour avoir un jeu toujours clean pour les tests.
         Monster monster = new Monster("Gansters",1,StatsBuilder.make(0,0,0));
-        Log.i(dataGame.getCharacter().provokeEvent(monster).run());
+        Log.i(dataGame.getMonsterGenerators().get(0).generateMonster(1).getMonsterItems().get(1));/*
+
 
         CombatManager combat = new CombatManager(dataGame.getCharacter(),monster);
 

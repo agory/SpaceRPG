@@ -1,4 +1,4 @@
-package me.piatgory.presentation.manager.script;
+package me.piatgory.presentation.script;
 
 import me.piatgory.model.Entity.Character;
 import me.piatgory.persistance.DataGame;

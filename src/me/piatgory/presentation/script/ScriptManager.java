@@ -1,8 +1,6 @@
-package me.piatgory.presentation.manager.script;
+package me.piatgory.presentation.script;
 
-import me.piatgory.model.Entity.Character;
 import me.piatgory.persistance.DataGame;
-import me.piatgory.presentation.manager.Manager;
 
 /**
  * Created by Alexandre on 13/01/2016.

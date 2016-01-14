@@ -1,7 +1,6 @@
-package me.piatgory.presentation.manager.script;
+package me.piatgory.presentation.script;
 
 import me.grea.antoine.utils.Menu;
-import me.piatgory.model.Entity.Character;
 import me.piatgory.persistance.DataGame;
 import me.piatgory.persistance.MonsterGenerator;
 
