@@ -4,6 +4,7 @@ import me.grea.antoine.utils.Menu;
 import me.piatgory.model.Entity.Character;
 import me.piatgory.model.Entity.Monster;
 import me.piatgory.model.Event;
+import me.piatgory.model.Item.Chest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -97,7 +98,8 @@ public class CombatManager extends Manager{
             character.upExperience(monster.giveExperience());
             // Fonctionnera une fois la génération des objets du monstre faite
             write("Ouverture du coffre");
-            write(monster.openMonsterChest());
+            Chest chest = monster.generateChest();
+            write(chest.openChest());
         } else {
             // logique defaite
         }

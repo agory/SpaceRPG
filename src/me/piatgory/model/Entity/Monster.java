@@ -110,18 +110,12 @@ public class Monster extends Entity {
 
     public Chest generateChest(){
         if (Dice.roll(100) < 5) {
-            chestItems.add(monsterItems.get(Dice.roll(monsterItems.size()-1)););
+            chestItems.add(monsterItems.get(Dice.roll(monsterItems.size()-1)));
         }
-        i
-        int nbItems = dice.roll(1,3); // The number of items that the player will find on the chest
+        int nbItems = Dice.roll(1,3); // The number of items that the player will find on the chest
         for(Item item : monsterItems){
-            if((item instanceof Weapon){
-                if (Dice.roll(100) < 5) {
-                    chestItems.add(item);
-                }
-            }
-            else ((item instanceof Weapon) && (item instanceof Equipment)){
-                if(dice.roll(100)<5){
+            if(item instanceof Equipment){
+                if (Dice.roll(100) < 10) {
                     chestItems.add(item);
                 }
             }
