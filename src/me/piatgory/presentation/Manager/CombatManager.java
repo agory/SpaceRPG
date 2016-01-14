@@ -89,7 +89,7 @@ public class CombatManager extends Manager{
                 win = true;
 
             }
-            i++;
+            ++i;
         }
 
         if(win){
@@ -97,9 +97,12 @@ public class CombatManager extends Manager{
             // Logique victoire
             character.upExperience(monster.giveExperience());
             // Fonctionnera une fois la génération des objets du monstre faite
-            write("Ouverture du coffre");
             Chest chest = monster.generateChest();
-            write(chest.openChest());
+            if(chest.getChestWeight()!=0){
+                write("Ouverture du coffre");
+                write(chest.openChest());
+            }
+
         } else {
             // logique defaite
         }

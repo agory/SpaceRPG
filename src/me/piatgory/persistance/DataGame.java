@@ -148,8 +148,8 @@ public class DataGame {
 
         String description = "Vétement de départ légérement pourrie.";
         items.add(new ChestArmor("T-Shirt usé",description,2, StatsBuilder.make(0,0,0)));
-        items.add(new FootArmor("Sandales usé",description,2,StatsBuilder.make(0,0,0)));
-        items.add(new HandArmor("Gants usé",description,2,StatsBuilder.make(0,0,0)));
+        items.add(new FootArmor("Sandales usées",description,2,StatsBuilder.make(0,0,0)));
+        items.add(new HandArmor("Gants usés",description,2,StatsBuilder.make(0,0,0)));
         items.add(new HeadArmor("Casquette de sacha",description + "\n Elément de collection porté par sacha lui-même !!!",2,StatsBuilder.make(0,0,0)));
         items.add(new LegsArmor("Jean usé",description,2,StatsBuilder.make(0,0,0)));
         items.add(new Weapon("Pistolet à bille","Arme de départ légérement pourrie.",2,StatsBuilder.make(0,0,0),2));

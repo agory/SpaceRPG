@@ -27,14 +27,7 @@ public class Main {
         CombatManager combat = new CombatManager(dataGame.getCharacter(),monster);
 
         // To be removed later
-        List<Item> itemsMonster = new ArrayList<Item>();
-        String description = "Test";
-        itemsMonster.add(new ChestArmor("T-Shirt usé",description,2,StatsBuilder.make(0,0,0)));
-        itemsMonster.add(new FootArmor("Sandales usé",description,2,StatsBuilder.make(0,0,0)));
-        itemsMonster.add(new HandArmor("Gants usé",description,2,StatsBuilder.make(0,0,0)));
-        itemsMonster.add(new HeadArmor("Casquette de sacha",description + "\n Elément de collection porté par sacha lui-même !!!",2,StatsBuilder.make(0,0,0)));
-        itemsMonster.add(new LegsArmor("Jean usé",description,2,StatsBuilder.make(0,0,0)));
-        itemsMonster.add(new Weapon("Pistolet à bille","Arme de départ légérement pourrie.",2,StatsBuilder.make(0,0,0),2));
+        List<Item> itemsMonster = dataGame.getMonsterGenerators().get(0).generateMonster(1).getMonsterItems();
         monster.setMonsterItems(itemsMonster);
         ///////////////////////////////////
 
@@ -42,14 +35,5 @@ public class Main {
         /*dataGame.getCharacter().makeItemIntoInventaire(dataGame.itemFind(12));
         characterManager = new CharacterManager(dataGame.getCharacter());
         characterManager.show();*/
-
-
     }
-
-
-
-
-
-
-
 }

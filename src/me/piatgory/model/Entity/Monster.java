@@ -109,6 +109,7 @@ public class Monster extends Entity {
     }
 
     public Chest generateChest(){
+
         if (Dice.roll(100) < 5) {
             chestItems.add(monsterItems.get(Dice.roll(monsterItems.size()-1)));
         }
@@ -123,11 +124,8 @@ public class Monster extends Entity {
         //while(chestItems.size()<nbItems){
             //Ajouter consommable
         //}
-        Item testItem = new Weapon("Pistolet à bille","Arme de départ légérement pourrie.",2,StatsBuilder.make(0,0,0),2);
-        chestItems.add(testItem);
         Chest chest = new Chest(chestItems);
         return chest;
-
     }
 }
 
