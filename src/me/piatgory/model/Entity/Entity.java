@@ -4,6 +4,7 @@ import me.piatgory.model.Event;
 import me.piatgory.model.Stats;
 import me.grea.antoine.utils.Dice;
 
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -16,8 +17,10 @@ import java.util.List;
 public abstract class Entity {
 
     private String name;
-    private int level;
-    protected int currentHealth;
+    @XmlElement
+    private Integer level;
+    @XmlElement
+    protected Integer currentHealth;
     protected Stats stats;
 
     public Entity(String name,int level){
@@ -29,26 +32,20 @@ public abstract class Entity {
     public Entity() {
     }
 
+
     public int computeMaxHealth(){
         return this.computeAllStats().getStats().get("Santé");
     }
 
-    public int getLevel() {
+    public Integer getLevel() {
         return level;
     }
 
-    public double getCurrentHealth() {
+    public Integer getCurrentHealth() {
         return currentHealth;
     }
 
-    protected void balanceCurrentHealth(Stats statsRemove, Stats statsAdd){
-        if(statsRemove != null)
-            this.damageBalance(statsRemove.getStats().get("Santé"));
-        if(statsAdd != null)
-            this.heal(statsAdd.getStats().get("Santé"));
-    }
-
-    protected void setCurrentHealth(int currentHealth) {
+    public void setCurrentHealth(int currentHealth) {
         int maxHealth = computeMaxHealth();
         if(currentHealth > maxHealth) {
             this.currentHealth = maxHealth;
@@ -58,6 +55,19 @@ public abstract class Entity {
             this.currentHealth = currentHealth;
         }
     }
+
+    public void setLevel(int level){
+        this.level = level;
+    }
+
+    protected void balanceCurrentHealth(Stats statsRemove, Stats statsAdd){
+        if(statsRemove != null)
+            this.damageBalance(statsRemove.getStats().get("Santé"));
+        if(statsAdd != null)
+            this.heal(statsAdd.getStats().get("Santé"));
+    }
+
+
 
     public boolean isDead(){
         return currentHealth == 0;
@@ -131,9 +141,7 @@ public abstract class Entity {
         this.name = name;
     }
 
-    protected void setLevel(int level){
-        this.level = level;
-    }
+
 
     protected abstract Stats computeAllStats();
 
@@ -161,9 +169,7 @@ public abstract class Entity {
     }
 
     public String showHealth(){
-        String message ="Points de vie total  : " + this.computeMaxHealth();
-        message = message + "\nPoints de vie actuel : " + currentHealth;
-        return message;
+        return "Points de vie : " + currentHealth + "/" + this.computeMaxHealth();
     }
 
     public String showName(){

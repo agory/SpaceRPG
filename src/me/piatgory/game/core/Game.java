@@ -1,7 +1,7 @@
 package me.piatgory.game.core;
 
 import me.grea.antoine.utils.Log;
-import me.piatgory.game.controller.CharacterController;
+import me.piatgory.game.controller.story.PlanetArenaController;
 import me.piatgory.model.Entity.Character;
 import me.piatgory.persistance.DataGame;
 
@@ -30,13 +30,23 @@ public class Game {
         System.out.println(text);
     }
 
+    public static void write(Object text,int tempo){
+        write(text);
+        try {
+            Thread.sleep(tempo);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 
     protected Character getCharacter(){
         return dataGame.getCharacter();
     }
 
     public void run(){
-        new CharacterController(dataGame).run();
+        new PlanetArenaController(dataGame).run();
+        dataGame.save();
     }
 
     public static final int showMenu(String title, String leave, List<String>  items) {
@@ -61,11 +71,11 @@ public class Game {
         }
     }
 
-    public static final boolean validation(){
+    public static final boolean validation(String question){
         List<String> items = new ArrayList<String>();
         items.add("Oui");
         items.add("Non");
-        if(showMenu("Validation","",items)==0)
+        if(showMenu(question,"",items)==0)
             return true;
         else
             return false;

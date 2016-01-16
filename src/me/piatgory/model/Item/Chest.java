@@ -23,7 +23,7 @@ public class Chest {
         this.chestContent = chestContent;
     }
 
-    public String openChest(){
+    public String showChest(){
         String message = "――――――――――――――――――――――\n"
                         +"――――――Contenu du coffre――――――\n"+
                          "――――――――――――――――――――――\n";
@@ -38,6 +38,10 @@ public class Chest {
                     "\n――――――――――――――――――――――\n";
         }
         return message;
+    }
+
+    public List<Item> openChest(){
+        return chestContent;
     }
 
     //Return the whole content of the chest
@@ -63,5 +67,9 @@ public class Chest {
         }
 
         return chestWeight;
+    }
+
+    public boolean haveItem(){
+        return chestContent.size() > 0;
     }
 }

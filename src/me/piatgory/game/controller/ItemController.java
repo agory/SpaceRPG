@@ -51,9 +51,10 @@ public class ItemController extends CoreController {
             items = Item.getMenuInventaireAction();
         }
 
-        if(isInInventory(item)){
+        if(!isInInventory(item)){
             items.set(items.size()-1,"Mettre dans le sac");
         }
+
 
         int i = showMenu("Selection d'un item", "Tapez un autre nombre pour quitter", items);
 
@@ -103,14 +104,11 @@ public class ItemController extends CoreController {
         }
     }
 
-    private boolean isInInventory(Item item){
-        return getCharacter().getInventory().getMyItems().contains(item);
-    }
+
 
     private void itemSwitchActionRemovePut(Item item){
         if (isInInventory(item)){
-            write("Etes-vous sûre de vouloir jeter cette item");
-            if(validation()){
+            if(validation("Etes-vous sûre de vouloir jeter cette item ?")){
                 getCharacter().getInventory().removeItem(itemTemp);
             }else {
                 write("Action annuler.");
@@ -135,9 +133,10 @@ public class ItemController extends CoreController {
         write("Á la place de :");
         textSpacer();
         write(this.getCharacter().takePlaceOf((Equipment)item));
-        if(validation()){
-            getCharacter().equip((Equipment) item);
-            getCharacter().getInventory().removeItem(item);
+        if(validation("Etes-vous sûre de vouloir Equiper cette item ?")){
+            getCharacter().getInventory().addItem(getCharacter().equip((Equipment) item));
+            if(isInInventory(item))
+                getCharacter().getInventory().removeItem(item);
         }else {
             write("Action annuler.");
             textSpacer();

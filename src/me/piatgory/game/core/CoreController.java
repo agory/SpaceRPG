@@ -25,4 +25,16 @@ public abstract class CoreController extends Game{
         return itemsMenu;
     }
 
+    public boolean isInInventory(Item item){
+        return getCharacter().getInventory().getMyItems().contains(item);
+    }
+
+    public List<Item> removeDoubloonItem(List<Item> items){
+        for(int i =0; i<items.size();i++){
+            if (isInInventory(items.get(i)))
+                items.remove(items.get(i));
+        }
+        return items;
+    }
+
 }

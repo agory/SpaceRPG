@@ -110,17 +110,10 @@ public class Monster extends Entity {
 
     public Chest generateChest(){
 
-        if (Dice.roll(100) < 5) {
+        if (Dice.roll(100) < 10) {
             chestItems.add(monsterItems.get(Dice.roll(monsterItems.size()-1)));
         }
-        int nbItems = Dice.roll(1,3); // The number of items that the player will find on the chest
-        for(Item item : monsterItems){
-            if(item instanceof Equipment){
-                if (Dice.roll(100) < 10) {
-                    chestItems.add(item);
-                }
-            }
-        }
+
         //while(chestItems.size()<nbItems){
             //Ajouter consommable
         //}
@@ -130,8 +123,8 @@ public class Monster extends Entity {
 }
 
 enum StatsMonster {
-    Stamina("Endurance", 0,1), Power("Puissance", 5,5),
-    Health("Santé", 40,15);
+    Stamina("Endurance", 0,2), Power("Puissance", 5,6),
+    Health("Santé", 40,20);
 
     private String name;//defaultvalue
     private int value;//defaultvalue

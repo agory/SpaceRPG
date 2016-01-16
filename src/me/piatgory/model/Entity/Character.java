@@ -3,6 +3,7 @@ package me.piatgory.model.Entity;
 import me.piatgory.model.*;
 import me.piatgory.model.Item.*;
 
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,6 +25,21 @@ public class Character extends Entity{
     private Inventory inventory;
     private int experience;
 
+    public Integer getLevel() {
+        return super.getLevel();
+    }
+
+    public Integer getCurrentHealth() {
+        return super.getCurrentHealth();
+    }
+
+    public void setCurrentHealth(int currentHealth) {
+        super.setCurrentHealth(currentHealth);
+    }
+
+    public void setLevel(int level){
+        super.setLevel(level);
+    }
 
     public Weapon getWeapon() {
         return weapon;
@@ -274,6 +290,7 @@ public class Character extends Entity{
                     this.stats.getStats().get(stat.getName()) + stat.getValuePerLevel()
             );
         }
+        this.heal(computeMaxHealth());
     }
 
     public void buildStats(){
@@ -344,7 +361,7 @@ public class Character extends Entity{
 }
 
 enum StatsCharacter {
-    Stamina("Endurance", 1,2), Power("Puissance",20,10),
+    Stamina("Endurance", 4,2), Power("Puissance",20,10),
     Health("Santé", 100,40);
 
     private String name;//defaultvalue

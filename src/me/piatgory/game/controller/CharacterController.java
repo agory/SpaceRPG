@@ -13,7 +13,6 @@ public class CharacterController extends CoreController {
         super(dataGame);
     }
 
-
     public void run(){
         showMenuCharacter();
     }

@@ -1,4 +1,4 @@
-package me.piatgory.persistance;
+package me.piatgory.game.Generator;
 
 import me.piatgory.model.Entity.Monster;
 import me.piatgory.model.Item.Item;
@@ -36,7 +36,7 @@ public class MonsterGenerator {
                 bonus.getStats().get("Santé")* (level),
                 bonus.getStats().get("Endurance")* (level),
                 bonus.getStats().get("Puissance")* (level));
-        return new Monster(name + " affaiblie",level, stats,loot);
+        return new Monster(name ,level, stats,loot);
     }
 
     public Monster generateMonsterPowerfull(int level){
@@ -72,7 +72,7 @@ public class MonsterGenerator {
                 bonus.getStats().get("Santé")* (level+10),
                 bonus.getStats().get("Endurance")* (level+10),
                 bonus.getStats().get("Puissance")* (level+10));
-        return new Monster(name + " vicieux",level, stats,loot);
+        return new Monster(name + " Boss",level, stats,loot);
     }
 
     public String getName() {

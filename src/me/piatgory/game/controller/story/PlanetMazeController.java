@@ -6,8 +6,8 @@ import me.piatgory.persistance.DataGame;
 /**
  * Created by Alexandre on 13/01/2016.
  */
-public class MazePlanet extends CoreController {
-    public MazePlanet(DataGame dataGame) {
+public class PlanetMazeController extends CoreController {
+    public PlanetMazeController(DataGame dataGame) {
         super(dataGame);
     }
 

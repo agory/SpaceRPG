@@ -1,6 +1,8 @@
 package me.piatgory.persistance;
 
+import me.piatgory.game.Generator.MonsterGenerator;
 import me.piatgory.model.Entity.Character;
+import me.piatgory.model.Entity.Entity;
 import me.piatgory.model.Item.*;
 import me.piatgory.model.StatsBuilder;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -28,7 +30,7 @@ import java.util.regex.Pattern;
         me.piatgory.model.Stats.class
         })
 public class DataGame {
-    private Character character;
+    private Entity character;
     private List<Item> items;
     private List<MonsterGenerator> monsterGenerators;
 
@@ -42,10 +44,13 @@ public class DataGame {
         JAXBserializer.Save(this);
     }
 
+    public void save(){
+        JAXBserializer.Save(this);
+    }
 
 
     public Character getCharacter() {
-        return character;
+        return (Character) character;
     }
 
     public void setCharacter(Character character) {
@@ -91,9 +96,10 @@ public class DataGame {
 
     public List<String> getStageMonster(){
         List<String> stages = new ArrayList<String>();
-        for (MonsterGenerator monsterGenerator:this.monsterGenerators ) {
-            if(!(monsterGenerator.getName() == "Licorne" && this.character.getLevel() < 50))
+        for (MonsterGenerator monsterGenerator : this.monsterGenerators ) {
+            if(!(monsterGenerator.getName() == "Licorne" && this.character.getLevel() < 50)) {
                 stages.add(monsterGenerator.getName());
+            }
         }
         return  stages;
     }
@@ -110,16 +116,15 @@ public class DataGame {
 
     public void buildCharacter(String name){
         this.character = new Character(name);
-        character.equipChestArmor((ChestArmor)this.itemFind(0));
-        character.equipFootArmor((FootArmor)this.itemFind(1));
-        character.equipHandArmor((HandArmor)this.itemFind(2));
-        character.equipHeadArmor((HeadArmor)this.itemFind(3));
-        character.equipLegsArmor((LegsArmor)this.itemFind(4));
-        character.equipWeapon((Weapon)this.itemFind(5));
-        character.getInventory().addItem(itemFind(20));
-
-
+        getCharacter().equipChestArmor((ChestArmor)this.itemFind(0));
+        getCharacter().equipFootArmor((FootArmor)this.itemFind(1));
+        getCharacter().equipHandArmor((HandArmor)this.itemFind(2));
+        getCharacter().equipHeadArmor((HeadArmor)this.itemFind(3));
+        getCharacter().equipLegsArmor((LegsArmor)this.itemFind(4));
+        getCharacter().equipWeapon((Weapon)this.itemFind(5));
+        getCharacter().getInventory().addItem(itemFind(20));
     }
+
     public static void addMonsterGenerator(DataGame dataGame){
         List<MonsterGenerator> MonsterGenerator =new ArrayList<MonsterGenerator>();
         MonsterGenerator.add(new MonsterGenerator("Gansters",StatsBuilder.make(5,1,1),dataGame.itemFindByText("gangster")));

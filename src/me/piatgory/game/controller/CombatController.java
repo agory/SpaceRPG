@@ -7,6 +7,7 @@ import me.piatgory.model.Entity.Character;
 import me.piatgory.model.Entity.Monster;
 import me.piatgory.model.Event;
 import me.piatgory.model.Item.Chest;
+import me.piatgory.model.Item.Item;
 import me.piatgory.persistance.DataGame;
 
 import java.util.ArrayList;
@@ -99,14 +100,18 @@ public class CombatController extends CoreController {
             write("GG vous avez gagné");
             // Logique victoire
             getCharacter().upExperience(monster.giveExperience());
-            // Fonctionnera une fois la génération des objets du monstre faite
-            write("Ouverture du coffre");
             Chest chest = monster.generateChest();
-            write(chest.openChest());
+            removeDoubloonItem(chest.openChest());
+            if(chest.haveItem()) {
+                write(chest.showChest());
+                new ItemController(dataGame).showMenuSelectItem(chest.openChest());
+            }
         } else {
-            // logique defaite
+            write("Bouh vous avez loose! au faite ta une tache pistache !!!!!!!!!!!!");
         }
     }
+
+
 
 
 }
