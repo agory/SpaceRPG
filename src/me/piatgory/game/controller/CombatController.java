@@ -1,10 +1,13 @@
-package me.piatgory.presentation.manager;
+package me.piatgory.game.controller;
 
 import me.grea.antoine.utils.Menu;
+import me.piatgory.game.core.CoreController;
+import me.piatgory.game.ia.MonsterIA;
 import me.piatgory.model.Entity.Character;
 import me.piatgory.model.Entity.Monster;
 import me.piatgory.model.Event;
 import me.piatgory.model.Item.Chest;
+import me.piatgory.persistance.DataGame;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,13 +15,13 @@ import java.util.List;
 /**
  * Created by Alexandre on 12/01/2016.
  */
-public class CombatManager extends Manager{
+public class CombatController extends CoreController {
     private Monster monster;
     private MonsterIA monsterIA;
     private static Event eventTemp;
 
-    public CombatManager(Character character, Monster monster) {
-        super(character);
+    public CombatController(DataGame dataGame, Monster monster) {
+        super(dataGame);
         this.monster = monster;
         this.monsterIA = new MonsterIA(monster);
     }
@@ -28,8 +31,8 @@ public class CombatManager extends Manager{
         textSpacer();
         write("――― Combat");
         textSpacer();
-        write(character.showName());
-        write(character.showHealth());
+        write(getCharacter().showName());
+        write(getCharacter().showHealth());
         textSpacer();
         write("――― Contre");
         textSpacer();
@@ -40,8 +43,8 @@ public class CombatManager extends Manager{
     public void combatEndTurn(){
 
         textSpacer();
-        write(character.showName());
-        write(character.showHealth());
+        write(getCharacter().showName());
+        write(getCharacter().showHealth());
         textSpacer();
         write(monster.showName());
         write(monster.showHealth());
@@ -56,33 +59,33 @@ public class CombatManager extends Manager{
     }
 
     private Event getCombatAction() {
-        (new Menu("Veuillez choisir une action","", Character.getCombatAction()) {
-            @Override
-            protected void on(int i) {
-                eventTemp = character.getCombatAction(i, monster);
-                if (eventTemp == null){
-                    write("Action incorrecte !!!");
-                    this.display();
-                }
-            }
-        }).display();
-        return eventTemp;
+
+        eventTemp = getCharacter().getCombatAction(
+                showMenu("Veuillez choisir une action","", getCharacter().getCombatAction())
+                , monster
+        );
+        if (eventTemp == null){
+            write("Action incorrecte !!!");
+            return this.getCombatAction();
+        }else {
+            return eventTemp;
+        }
     }
 
     public void run(){
         int i = 0;
         boolean win =false;
         combatIntroMessage();
-        while (!character.isDead()&& !monster.isDead()) {
+        while (!getCharacter().isDead()&& !monster.isDead()) {
             combatBeginTurn(i);
             List<Event> events = new ArrayList<Event>();
             Event evc = getCombatAction();
-            Event evm = monsterIA.getAction(character);
+            Event evm = monsterIA.getAction(getCharacter());
             write("debug : " + evc.getAction());
             write("debug : " + evm.getAction());
             events.add(evc);
             events.add(evm);
-            (new TurnManagement(character, monster,events)).run();
+            (new TurnManagement(dataGame, monster,events)).run();
             if(!monster.isDead()){
                 combatEndTurn();
             } else {
@@ -95,7 +98,7 @@ public class CombatManager extends Manager{
         if(win){
             write("GG vous avez gagné");
             // Logique victoire
-            character.upExperience(monster.giveExperience());
+            getCharacter().upExperience(monster.giveExperience());
             // Fonctionnera une fois la génération des objets du monstre faite
             write("Ouverture du coffre");
             Chest chest = monster.generateChest();

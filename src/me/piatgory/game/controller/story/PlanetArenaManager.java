@@ -1,13 +1,14 @@
-package me.piatgory.presentation.script;
+package me.piatgory.game.controller.story;
 
 import me.grea.antoine.utils.Menu;
+import me.piatgory.game.core.CoreController;
 import me.piatgory.persistance.DataGame;
 import me.piatgory.persistance.MonsterGenerator;
 
 /**
  * Created by Alexandre on 13/01/2016.
  */
-public class PlanetArenaManager extends ScriptManager{
+public class PlanetArenaManager extends CoreController {
     private static MonsterGenerator monsterGeneratorTemps;
     private static String name ="Arés";
 
@@ -26,15 +27,16 @@ public class PlanetArenaManager extends ScriptManager{
 
     public MonsterGenerator menuArena(){
         monsterGeneratorTemps = null;
-        (new Menu("Quelle arène voulez-vous choisir ?","Entrer 0 pour quitter la planète" + name, dataGame.getStageMonster().toArray(new String[dataGame.getStageMonster().size()])) {
-            @Override
-            protected void on(int i) {
-                if(i > items.length )
-                    this.display();
-                else
-                    monsterGeneratorTemps = dataGame.getMonsterGenerators().get(i);
-            }
-        }).display();
+        int i = showMenu("Quelle arène voulez-vous choisir ?","Entrer 0 pour quitter la planète" + name, dataGame.getStageMonster());
+        if(i >= dataGame.getStageMonster().size() ) {
+            write("Choix incorrecte");
+            this.menuArena();
+        } else if(i < 0) {
+            write("Choix : quitter la planéte");
+        } else {
+            monsterGeneratorTemps = dataGame.getMonsterGenerators().get(i);
+        }
+
         return monsterGeneratorTemps;
     }
 

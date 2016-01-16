@@ -1,7 +1,4 @@
-package me.piatgory.model;
-
-import me.piatgory.model.Item.Item;
-import me.piatgory.model.Inventory;
+package me.piatgory.model.Item;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,12 +52,17 @@ public class Inventory {
 
 
     public String showItems(){
-        String message ="\n――――――――――――――――――――――――――――";
+        String message ="";
         int i = 0;
-        for (Item item : getMyItems()){
-            message+="\nNumero : "+ i++;
-            message+="\n"+item;
+        if(myItems.isEmpty()){
+            message+="\n Pas d'item dans l'inventaire.";
             message+="\n――――――――――――――――――――――――――――";
+        } else {
+            for (Item item : getMyItems()) {
+                message += "\nNumero : " + i++;
+                message += "\n" + item;
+                message += "\n――――――――――――――――――――――――――――";
+            }
         }
         return message;
     }
@@ -74,5 +76,12 @@ public class Inventory {
         message+="\n――――――――――――――――――――――――――――";
         message+= showItems();
         return message;
+    }
+
+    public List<String> getItemsMenuInventory(){
+        List<String> items = new ArrayList<String>();
+        items.add("Selectionner un equipement");
+        items.add("Voir le sac");
+        return items;
     }
 }

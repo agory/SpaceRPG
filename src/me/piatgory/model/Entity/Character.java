@@ -4,7 +4,9 @@ import me.piatgory.model.*;
 import me.piatgory.model.Item.*;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 /**
@@ -160,55 +162,69 @@ public class Character extends Entity{
         return currentEquipment;
     }
 
-    public void equip(Equipment equipment){
+    public Equipment equip(Equipment equipment){
+        Equipment lastEquipment = null;
         if(equipment.getClass() == Weapon.class){
-            equipWeapon((Weapon) equipment);
+            lastEquipment = equipWeapon((Weapon) equipment);
         }
         if(equipment.getClass() == ChestArmor.class){
-            equipChestArmor((ChestArmor) equipment);
+            lastEquipment = equipChestArmor((ChestArmor) equipment);
         }
         if(equipment.getClass() == FootArmor.class){
-            equipFootArmor((FootArmor) equipment);
+            lastEquipment = equipFootArmor((FootArmor) equipment);
         }
         if(equipment.getClass() == HeadArmor.class){
-            equipHeadArmor((HeadArmor) equipment);
+            lastEquipment = equipHeadArmor((HeadArmor) equipment);
         }
         if(equipment.getClass() == HandArmor.class){
-            equipHandArmor((HandArmor) equipment);
+            lastEquipment = equipHandArmor((HandArmor) equipment);
         }
         if(equipment.getClass() == LegsArmor.class){
-            equipLegsArmor((LegsArmor) equipment);
+            lastEquipment = equipLegsArmor((LegsArmor) equipment);
         }
+        return lastEquipment;
     }
 
-    public void equipWeapon(Weapon weapon){
+    public Equipment equipWeapon(Weapon weapon){
+        Equipment lastEquipment = this.weapon;
         this.balanceCurrentHealth((this.weapon != null) ? this.weapon.getStats() : null, (weapon != null) ? weapon.getStats() : null);
         this.weapon = weapon;
+        return lastEquipment;
     }
 
-    public void equipChestArmor(ChestArmor chestArmor){
+    public Equipment equipChestArmor(ChestArmor chestArmor){
+        Equipment lastEquipment = this.chestArmor;
         this.balanceCurrentHealth((this.chestArmor != null) ? this.chestArmor.getStats() : null,(chestArmor != null) ? chestArmor.getStats() : null);
         this.chestArmor=chestArmor;
+        return lastEquipment;
     }
 
-    public void equipFootArmor(FootArmor footArmor){
+    public Equipment equipFootArmor(FootArmor footArmor){
+        Equipment lastEquipment = this.footArmor;
         this.balanceCurrentHealth((this.footArmor != null) ? this.footArmor.getStats() : null,(footArmor != null) ? footArmor.getStats() : null);
         this.footArmor=footArmor;
+        return lastEquipment;
     }
 
-    public void equipHeadArmor(HeadArmor headArmor){
+    public Equipment equipHeadArmor(HeadArmor headArmor){
+        Equipment lastEquipment = this.headArmor;
         this.balanceCurrentHealth((this.headArmor != null) ? this.headArmor.getStats() : null,(headArmor != null) ? headArmor.getStats() : null);
         this.headArmor=headArmor;
+        return lastEquipment;
     }
 
-    public void equipHandArmor(HandArmor handArmor){
+    public Equipment equipHandArmor(HandArmor handArmor){
+        Equipment lastEquipment = this.handArmor;
         this.balanceCurrentHealth((this.handArmor != null) ? this.handArmor.getStats() : null,(handArmor != null) ? handArmor.getStats() : null);
         this.handArmor=handArmor;
+        return lastEquipment;
     }
 
-    public void equipLegsArmor(LegsArmor legsArmor){
+    public Equipment equipLegsArmor(LegsArmor legsArmor){
+        Equipment lastEquipment = this.legsArmor;
         this.balanceCurrentHealth((this.legsArmor != null) ? this.legsArmor.getStats() : null,(legsArmor != null) ? legsArmor.getStats() : null);
         this.legsArmor=legsArmor;
+        return lastEquipment;
     }
 
     public int getInventoryWeight(){
@@ -273,21 +289,33 @@ public class Character extends Entity{
         message+="\n――――――――――――――――――――――――――――";
         if(this.weapon != null)
             message+=  "\n - " +weapon.toString();
+        else
+            message+= "\n Pas d'arme equipée.";
         message+="\n――――――――――――――――――――――――――――";
         if(this.chestArmor != null)
             message+=  "\n - " + chestArmor.toString();
+        else
+            message+= "\n Pas d'armure de torse equipée.";
         message+="\n――――――――――――――――――――――――――――";
         if(this.footArmor != null)
             message+=  "\n - " + footArmor.toString();
+        else
+            message+= "\n Pas de bottes equipée.";
         message+="\n――――――――――――――――――――――――――――";
         if(this.handArmor != null)
             message+=  "\n - " + handArmor.toString();
+        else
+            message+= "\n Pas de gants equipé";
         message+="\n――――――――――――――――――――――――――――";
         if(this.headArmor != null)
             message+=  "\n - " + headArmor.toString();
+        else
+            message+= "\n Pas de casque equipé.";
         message+="\n――――――――――――――――――――――――――――";
         if(this.legsArmor != null)
             message+=  "\n - " + legsArmor.toString();
+        else
+            message+= "\n Pas de jambières equipée.";
         message+="\n――――――――――――――――――――――――――――";
         return message;
     }
@@ -303,6 +331,15 @@ public class Character extends Entity{
         message+="\n――――――――――――――――――――――――――――";
         message += "\n" + showEquipement();
         return message;
+    }
+
+    public List<String> getItemsMenuCharacter(){
+        List<String> items = new ArrayList<String>();
+        items.add("Menu l'inventaire");
+        items.add("Voir Equipement");
+        items.add("Voir les stats");
+        items.add("voir Character all description");
+        return items;
     }
 }
 

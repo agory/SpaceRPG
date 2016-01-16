@@ -4,6 +4,8 @@ import me.piatgory.model.Buff;
 import me.piatgory.model.Stats;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Alexandre Gory on 17/12/2015.
@@ -46,8 +48,11 @@ public abstract class Equipment extends Item {
     }
 
 
-    public static String [] getMenuAction(){
-        String[] action = {"Afficher","Equiper","Jeter"};
-        return  action;
+    public static List<String> getMenuInventaireAction(){
+        List<String> actions = new ArrayList<String>();
+        actions.add("Afficher");
+        actions.add("Equiper");
+        actions.add("Jeter");
+        return  actions;
     }
 }

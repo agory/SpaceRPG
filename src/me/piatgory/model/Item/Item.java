@@ -4,6 +4,8 @@ import me.piatgory.model.Buff;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Grégoire on 10/12/2015.
@@ -88,10 +90,11 @@ public class Item {
         ID=0;
     }
 
-    public static String[] getMenuAction(){
-        String[] action = {"Afficher","Equiper","Jeter"};
-        return  action;
+    public static List<String> getMenuInventaireAction(){
+        List<String> actions = new ArrayList<String>();
+        actions.add("Afficher");
+        actions.add("Jeter");
+        return  actions;
     }
-
 
 }

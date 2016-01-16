@@ -6,6 +6,8 @@ import me.grea.antoine.utils.Dice;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Alexandre on 09/01/2016.
@@ -211,8 +213,11 @@ public abstract class Entity {
         return method;
     }
 
-    public static String[] getCombatAction(){
-        String[] action = {"Attaquer","Passer","Provoquer"};
-        return  action;
+    public static List<String> getCombatAction(){
+        List<String> actions = new ArrayList<String>();
+        actions.add("Attaquer");
+        actions.add("Passer");
+        actions.add("Provoquer");
+        return  actions;
     }
 }

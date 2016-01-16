@@ -1,20 +1,11 @@
 package me.piatgory.persistance;
 
-import com.sun.xml.internal.txw2.annotation.XmlElement;
 import me.piatgory.model.Entity.Character;
-import me.piatgory.model.Entity.Entity;
-import me.piatgory.model.Entity.Monster;
 import me.piatgory.model.Item.*;
-import me.piatgory.model.Stats;
 import me.piatgory.model.StatsBuilder;
-
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.Hashtable;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,33 +15,31 @@ import java.util.regex.Pattern;
  */
 @XmlRootElement
 @XmlSeeAlso({
-        Character.class,
-        Entity.class,
-        Monster.class,
-        Equipment.class,
-        ChestArmor.class,
-        FootArmor.class,
-        HandArmor.class,
-        HeadArmor.class,
-        LegsArmor.class,
-        Weapon.class,
-        Stats.class
+        me.piatgory.model.Entity.Character.class,
+        me.piatgory.model.Entity.Entity.class,
+        me.piatgory.model.Entity.Monster.class,
+        me.piatgory.model.Item.Equipment.class,
+        me.piatgory.model.Item.ChestArmor.class,
+        me.piatgory.model.Item.FootArmor.class,
+        me.piatgory.model.Item.HandArmor.class,
+        me.piatgory.model.Item.HeadArmor.class,
+        me.piatgory.model.Item.LegsArmor.class,
+        me.piatgory.model.Item.Weapon.class,
+        me.piatgory.model.Stats.class
         })
 public class DataGame {
-    private static DataGame dataGame;
     private Character character;
     private List<Item> items;
     private List<MonsterGenerator> monsterGenerators;
 
 
     public DataGame(){
-        addItems(this);
-        addMonsterGenerator(this);
-        dataGame = this;
+        initDataGame();
     }
     public DataGame(String name){
         this();
         buildCharacter(name);
+        JAXBserializer.Save(this);
     }
 
 
@@ -63,47 +52,47 @@ public class DataGame {
         this.character = character;
     }
 
-    public static Item itemFind(int id){
-        if(dataGame != null) {
-            for (Item item : dataGame.items) {
-                if (item.getId() == id)
-                    return item;
-            }
+    public Item itemFind(int id){
+        for (Item item : this.items) {
+            if (item.getId() == id)
+                return item;
         }
         return null;
     }
 
-    public static List<Item> itemFindByText(String text){
-        List<Item> items = new ArrayList<Item>();
-        if(dataGame != null) {
-            Pattern pattern = Pattern.compile(text);
-            for (Item item : dataGame.items) {
-                Matcher matcher = pattern.matcher(item.getDescritption());
-                Matcher matcher2 = pattern.matcher(item.getName());
-                if (matcher2.find() || matcher.find())
-                    items.add(item);
-            }
-        }
+    public List<Item> itemAll(){
         return items;
     }
 
-    public static MonsterGenerator monsterFindByText(String text){
-        MonsterGenerator monsterGenerator = null;
-        if(dataGame != null){
-            Pattern pattern = Pattern.compile(text);
-            for (MonsterGenerator m:dataGame.monsterGenerators) {
-                Matcher matcher = pattern.matcher(m.getName());
-                if(matcher.find())
-                    monsterGenerator = m;
-            }
+    public List<Item> itemFindByText(String text){
+        List<Item> items = new ArrayList<Item>();
+        Pattern pattern = Pattern.compile(text);
+        for (Item item : this.items) {
+            Matcher matcher = pattern.matcher(item.getDescritption());
+            Matcher matcher2 = pattern.matcher(item.getName());
+            if (matcher2.find() || matcher.find())
+                items.add(item);
         }
+
+        return items;
+    }
+
+    public MonsterGenerator monsterFindByText(String text){
+        MonsterGenerator monsterGenerator = null;
+        Pattern pattern = Pattern.compile(text);
+        for (MonsterGenerator m:this.monsterGenerators) {
+            Matcher matcher = pattern.matcher(m.getName());
+            if(matcher.find())
+                monsterGenerator = m;
+        }
+
         return monsterGenerator;
     }
 
     public List<String> getStageMonster(){
         List<String> stages = new ArrayList<String>();
-        for (MonsterGenerator monsterGenerator:dataGame.monsterGenerators ) {
-            if(!(monsterGenerator.getName() == "Licorne" && dataGame.character.getLevel() < 50))
+        for (MonsterGenerator monsterGenerator:this.monsterGenerators ) {
+            if(!(monsterGenerator.getName() == "Licorne" && this.character.getLevel() < 50))
                 stages.add(monsterGenerator.getName());
         }
         return  stages;
@@ -115,10 +104,8 @@ public class DataGame {
 
     public void initDataGame(){
         Item.resetID();
-        Monster.resetID();
         addItems(this);
         addMonsterGenerator(this);
-
     }
 
     public void buildCharacter(String name){
@@ -129,6 +116,8 @@ public class DataGame {
         character.equipHeadArmor((HeadArmor)this.itemFind(3));
         character.equipLegsArmor((LegsArmor)this.itemFind(4));
         character.equipWeapon((Weapon)this.itemFind(5));
+        character.getInventory().addItem(itemFind(20));
+
 
     }
     public static void addMonsterGenerator(DataGame dataGame){
