@@ -3,7 +3,7 @@ package me.piatgory.game.controller;
 import me.piatgory.game.core.CoreController;
 import me.piatgory.game.ia.MonsterIA;
 import me.piatgory.model.Entity.Monster;
-import me.piatgory.model.Event;
+import me.piatgory.game.core.Action;
 import me.piatgory.model.Item.Chest;
 import me.piatgory.persistance.DataGame;
 
@@ -47,17 +47,17 @@ public class CombatController extends CoreController {
         textSpacer();
     }
 
-    private Event getCombatAction() {
+    private Action getCombatAction() {
 
-        Event event = getCharacter().getCombatAction(
+        Action action = getCharacter().getCombatAction(
                 showMenu("Veuillez choisir une action","", getCharacter().getCombatAction())
                 , monster
         );
-        if (event == null){
+        if (action == null){
             write("Action incorrecte !!!");
             return this.getCombatAction();
         }
-        return event;
+        return action;
 
     }
 
@@ -67,14 +67,14 @@ public class CombatController extends CoreController {
         combatIntroMessage();
         while (!getCharacter().isDead()&& !monster.isDead()) {
             combatBeginTurn(i);
-            List<Event> events = new ArrayList<Event>();
-            Event evc = getCombatAction();
-            Event evm = monsterIA.getAction(getCharacter());
+            List<Action> actions = new ArrayList<Action>();
+            Action evc = getCombatAction();
+            Action evm = monsterIA.getAction(getCharacter());
             write("debug : " + evc.getAction());
             write("debug : " + evm.getAction());
-            events.add(evc);
-            events.add(evm);
-            (new TurnManagement(dataGame, monster,events)).run();
+            actions.add(evc);
+            actions.add(evm);
+            (new TurnController(dataGame, monster, actions)).run();
             if(!monster.isDead()){
                 combatEndTurn();
             } else {
@@ -97,8 +97,6 @@ public class CombatController extends CoreController {
         } else {
             write("Bouh tu as loose! au faite ta une tache pistache !!!!!!!!!!!!");
             getCharacter().removeLevel();
-            write("On vient de cloner pour que tu puisse encore jouer. sa coute chère tu sais...");
-            write("Par contre pleure !! tu vien de perdre un level !!! Hahaha !! ");
         }
     }
 

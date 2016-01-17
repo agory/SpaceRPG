@@ -1,6 +1,11 @@
 package me.piatgory.game.core;
 
+import me.grea.antoine.utils.Dice;
+import me.grea.antoine.utils.Log;
+import me.piatgory.game.Generator.MonsterGenerator;
 import me.piatgory.game.controller.CharacterController;
+import me.piatgory.game.controller.CombatController;
+import me.piatgory.model.Entity.Monster;
 import me.piatgory.model.Item.Item;
 import me.piatgory.persistance.DataGame;
 
@@ -71,5 +76,16 @@ public abstract class CoreController extends Game{
         }
         return text;
     }
+
+    protected boolean fightRandom(){
+        MonsterGenerator monsterGenerator = dataGame.getMonsterGenerators().get(Dice.roll(dataGame.getMonsterGenerators().size()-1));
+        Monster monster = monsterGenerator.generateRandom(dataGame.getCharacter().getLevel());
+        new CombatController(dataGame,monster).run();
+        if(getCharacter().isDead())
+            return false;
+        return true;
+    }
+
+    public abstract void run();
 
 }

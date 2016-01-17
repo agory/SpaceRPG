@@ -1,6 +1,6 @@
 package me.piatgory.model.Entity;
 
-import me.piatgory.model.Event;
+import me.piatgory.game.core.Action;
 import me.piatgory.model.Stats;
 import me.grea.antoine.utils.Dice;
 
@@ -78,8 +78,8 @@ public abstract class Entity {
         return "Frappe " + entity.getName()+ " et lui inflige " + entity.damage(damage) + " point(s) de dégats";
     }
 
-    public Event attackEvent(Entity entity){
-        return new Event(this,entity,"attack",5);
+    public Action attackEvent(Entity entity){
+        return new Action(this,entity,"attack",5);
     }
 
     public String pass(Entity entity){
@@ -95,8 +95,8 @@ public abstract class Entity {
         return sentences[Dice.roll(sentences.length-1)];
     }
 
-    public Event passEvent(Entity entity){
-        return new Event(this,entity,"pass",5);
+    public Action passEvent(Entity entity){
+        return new Action(this,entity,"pass",5);
     }
 
     public String provoke(Entity entity){
@@ -113,8 +113,8 @@ public abstract class Entity {
         return sentences[Dice.roll(sentences.length-1)] ;
     }
 
-    public Event provokeEvent(Entity entity){
-        return new Event(this,entity,"provoke",0);
+    public Action provokeEvent(Entity entity){
+        return new Action(this,entity,"provoke",0);
     }
 
     public void heal(int value){
@@ -190,20 +190,20 @@ public abstract class Entity {
 
 
 
-    public Event getCombatAction(int i,Entity entity){
-        Event event = null;
+    public Action getCombatAction(int i, Entity entity){
+        Action action = null;
         switch (i){
             case 0:
-                event = this.attackEvent(entity);
+                action = this.attackEvent(entity);
                 break;
             case 1:
-                event = this.passEvent(entity);
+                action = this.passEvent(entity);
                 break;
             case 2:
-                event = this.provokeEvent(entity);
+                action = this.provokeEvent(entity);
                 break;
         }
-        return  event;
+        return action;
     }
 
     public Method getMethodAction(String action) throws Exception{

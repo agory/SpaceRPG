@@ -64,7 +64,8 @@ public class PlanetArenaController extends CoreController {
 
         int i = 0;
         List<CombatController> combatControllers = buildBattleList(monsterGenerator);
-        while (startBattle(combatControllers.get(i)) && i < combatControllers.size() - 1  ){
+        boolean alive = false;
+        while ( alive = startBattle(combatControllers.get(i))&& i < combatControllers.size() - 1  ){
             i++;
             getCharacter().heal(((getCharacter().computeMaxHealth()/10)*4));
             if(i == 3 || i == 5){
@@ -72,7 +73,10 @@ public class PlanetArenaController extends CoreController {
                 breakMenu();
             }
         }
-
+        if(!alive){
+            write("On vient de te cloner pour que tu puisse encore jouer. sa coute chère tu sais...");
+            write("Par contre tu peux pleurer !! tu vien de perdre un level !!! Hahaha !! ");
+        }
     }
 
 
@@ -95,7 +99,7 @@ public class PlanetArenaController extends CoreController {
     }
 
 
-
-
-
+    public static String getName() {
+        return name;
+    }
 }

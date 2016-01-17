@@ -12,28 +12,36 @@ import java.util.List;
  * Created by Alexandre on 13/01/2016.
  */
 public class PlanetMazeController extends CoreController {
-    private List<String> mazes;
     private static List lost;
-    public static String name= "Dédale";
+    private static String name= "Dédale";
+    private List<String> mazes;
+    private String currentMaze;
     private Integer position;
     private int level;
+
+    public static String getName() {
+        return name;
+    }
 
     public PlanetMazeController(DataGame dataGame) {
         super(dataGame);
         mazes = new ArrayList<String>();
-        mazes.add("cnJsbHV1cg==");
-        mazes.add("bHJ1bHJ1cg==");
-        mazes.add("cnVsbHVydQ==");
-        mazes.add("bHJybHVycmxy");
-        mazes.add("cnJ1bGx1cmxy");
-        mazes.add("bHJscmxybHJsdXV1");
-        mazes.add("ZGRkbHJscnVsbGQ=");// 12 variation
+
     }
 
     @Override
     public void run() {
         level =0;
         introMessage();
+        boolean leave = true;
+        while (leave){
+            messageStart();
+            if(mazes.size()-3 < level)
+                generateMaze();
+            leave = startMaze(level);
+            level++;
+        }
+
     }
 
 
@@ -45,9 +53,14 @@ public class PlanetMazeController extends CoreController {
         textSpacer();
     }
 
+    public void messageStart(){
+        textSpacer();
+        write("――― Labyrinthe level : " + level);
+        textSpacer();
+    }
     private void generateMaze(){
         String maze = "";
-        for (int i = 0; i < mazes.size();i++){
+        for (int i = 0; i < mazes.size()+3;i++){
             switch (Dice.roll(3)){
                 case 0:
                     maze+="r";
@@ -64,19 +77,22 @@ public class PlanetMazeController extends CoreController {
 
             }
         }
-        mazes.add(Base64.getEncoder().encodeToString(maze.getBytes()));
+        mazes.add(maze);
     }
 
     private boolean startMaze(int level){
-        String maze = Base64.getDecoder().decode(mazes.get(level)).toString();
+        currentMaze = mazes.get(level).toString();
+
         position = 0;
         boolean leave = true;
-        while(position < maze.length()&& leave){
+        while(position < currentMaze.length()&& leave){
+
             char direction = directionMenu();
             if(direction == 's') {
                 leave = false;
-            } else if(maze.charAt(position) == directionMenu()){
+            } else if(currentMaze.charAt(position) == direction){
                 position++;
+                battleWay();
             } else {
                 position = 0;
                 write(lost.get(Dice.roll(lost.size()-1)));
@@ -88,6 +104,7 @@ public class PlanetMazeController extends CoreController {
     private char directionMenu(){
         char direction = 's';
         int i = showMenu("Veuillez choisir une direction","Impossible de partir vous ne connaisser pas la sortie.", itemDirectionMenu());
+        write("% "+ i +" %");
         switch (i){
             case 0:
                 direction = 'r';
@@ -132,10 +149,27 @@ public class PlanetMazeController extends CoreController {
         return items;
     }
 
+    public void battleWay(){
+        if(Dice.roll(100) < 25){
+            if(!this.fightRandom()){
+                getCharacter().heal(((getCharacter().computeMaxHealth()/10)*1));
+            } else {
+                position = 0;
+                level=0;
+                currentMaze=mazes.get(level);
+                getCharacter().heal(((getCharacter().computeMaxHealth()/10)*5));
+                write("La main de dieu vous à extrait du combat juste avant que vous mourrez. Vous avez perdu une part de votre ame ( -1 lvl).");
+                write("Vos blessure fatal ont été guerie(pas toute ^^) cependant vous êtes de retour à la case départ");
+            }
+        }
+    }
+
     static {
         lost = new ArrayList();
-        lost.add("Vous entendez un léger courant d'air montrant que vous vous approchez de l'entrée.");
-        lost.add("De la lumière enfin!! Non !!!!!!!!! C'est l'entrée!");
-        lost.add("Vous vous trouvez devant une magnifique porte de pierre qui ressemble à celle de l'entrée.");
+        lost.add("- Vous entendez un léger courant d'air montrant que vous vous approchez de l'entrée. -");
+        lost.add("- De la lumière enfin!! Non !!!!!!!!! C'est l'entrée! -");
+        lost.add("- Vous vous trouvez devant une magnifique porte de pierre qui ressemble à celle de l'entrée. -");
     }
+
+
 }

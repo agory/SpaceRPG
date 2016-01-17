@@ -1,4 +1,4 @@
-package me.piatgory.model;
+package me.piatgory.game.core;
 
 import me.piatgory.model.Entity.Entity;
 
@@ -9,14 +9,14 @@ import java.util.List;
 /**
  * Created by Alexandre on 12/01/2016.
  */
-public class Event {
+public class Action {
     private static int maxPriority = 5;
     private Entity source;
     private Entity target;
     private String action;
     private int priority;
 
-    public Event(Entity source, Entity target, String action, int priority) {
+    public Action(Entity source, Entity target, String action, int priority) {
         this.source = source;
         this.target = target;
         this.action = action;

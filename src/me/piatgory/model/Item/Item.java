@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Grégoire on 10/12/2015.
+ * Created by Alexandre on 10/12/2015.
  */
 @XmlRootElement
 public class Item {

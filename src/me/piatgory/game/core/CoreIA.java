@@ -1,7 +1,6 @@
 package me.piatgory.game.core;
 
 import me.piatgory.model.Entity.Entity;
-import me.piatgory.model.Event;
 
 /**
  * Created by Alexandre on 16/01/2016.
@@ -13,5 +12,5 @@ public abstract class CoreIA {
         this.entity = entity;
     }
 
-    abstract public Event getAction(Entity target);
+    abstract public Action getAction(Entity target);
 }

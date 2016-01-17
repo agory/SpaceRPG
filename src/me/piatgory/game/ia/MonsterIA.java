@@ -2,10 +2,9 @@ package me.piatgory.game.ia;
 
 import me.grea.antoine.utils.Dice;
 import me.piatgory.game.core.CoreIA;
-import me.piatgory.model.Entity.Character;
 import me.piatgory.model.Entity.Entity;
 import me.piatgory.model.Entity.Monster;
-import me.piatgory.model.Event;
+import me.piatgory.game.core.Action;
 
 /**
  * Created by Alexandre on 12/01/2016.
@@ -17,26 +16,26 @@ public class MonsterIA extends CoreIA{
         super(monster);
     }
 
-    public Event getAction(Entity target){
-        Event event = null;
+    public Action getAction(Entity target){
+        Action action = null;
         if(target.getCurrentHealth() < getMonster().getDamage()){
             if(Dice.roll(100)<25){
-                event = getMonster().provokeEvent(target);
+                action = getMonster().provokeEvent(target);
             } else if (Dice.roll(100)<10){
-                event = getMonster().passEvent(target);
+                action = getMonster().passEvent(target);
             } else {
-                event = getMonster().attackEvent(target);
+                action = getMonster().attackEvent(target);
             }
         } else {
             if(Dice.roll(100)<5){
-                event = getMonster().provokeEvent(target);
+                action = getMonster().provokeEvent(target);
             } else  if (Dice.roll(100)<5){
-                event = getMonster().passEvent(target);
+                action = getMonster().passEvent(target);
             } else {
-                event = getMonster().attackEvent(target);
+                action = getMonster().attackEvent(target);
             }
         }
-        return event;
+        return action;
     }
 
     public Monster getMonster(){

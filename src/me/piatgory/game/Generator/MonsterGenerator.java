@@ -1,10 +1,14 @@
 package me.piatgory.game.Generator;
 
+import me.grea.antoine.utils.Dice;
+import me.grea.antoine.utils.Log;
 import me.piatgory.model.Entity.Monster;
 import me.piatgory.model.Item.Item;
 import me.piatgory.model.Stats;
 import me.piatgory.model.StatsBuilder;
 
+import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -73,6 +77,25 @@ public class MonsterGenerator {
                 bonus.getStats().get("Endurance")* (level+10),
                 bonus.getStats().get("Puissance")* (level+10));
         return new Monster(name + " Boss",level, stats,loot);
+    }
+
+    public Monster generateRandom(int level){
+        Monster monster = null;
+        List<String> types = new ArrayList<String>();
+        types.add("Weak");
+        types.add("Powerfull");
+        types.add("Robust");
+        types.add("Vicious");
+        types.add("");
+        String type = types.get(Dice.roll(types.size()-1));
+        try {
+            Method method = this.getClass().getMethod("generateMonsterRobust",int.class);
+            monster = (Monster)method.invoke(this,level);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return monster;
     }
 
     public String getName() {

@@ -2,6 +2,8 @@ package me.piatgory.game.core;
 
 import me.grea.antoine.utils.Log;
 import me.piatgory.game.controller.story.PlanetArenaController;
+import me.piatgory.game.controller.story.PlanetMazeController;
+import me.piatgory.game.controller.story.SpaceShipController;
 import me.piatgory.model.Entity.Character;
 import me.piatgory.persistance.DataGame;
 
@@ -21,6 +23,11 @@ public class Game {
 
     public Game(DataGame dataGame) {
         this.dataGame = dataGame;
+    }
+
+    public void run(){
+        new SpaceShipController(dataGame).run();
+        dataGame.save();
     }
 
     public static void textSpacer(){
@@ -52,12 +59,6 @@ public class Game {
         return dataGame.getCharacter();
     }
 
-    public void run(){
-
-        new PlanetArenaController(dataGame).run();
-        dataGame.save();
-    }
-
     public static final int showMenu(String title, String leave, List<String>  items) {
         write("# " + title + " #");
 
@@ -75,8 +76,7 @@ public class Game {
             scanner.nextLine();
             return ex;
         } catch (InputMismatchException var2) {
-            Log.e(var2);
-            return 999;
+            return -1;
         }
     }
 
@@ -103,8 +103,6 @@ public class Game {
         dataGame.save();
         write("La partie est sauvegardée.");
     }
-
-
 
     static {
         scanner = new Scanner(System.in);

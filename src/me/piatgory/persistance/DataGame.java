@@ -126,12 +126,12 @@ public class DataGame {
 
     public static void addMonsterGenerator(DataGame dataGame){
         List<MonsterGenerator> MonsterGenerator =new ArrayList<MonsterGenerator>();
-        MonsterGenerator.add(new MonsterGenerator("Gansters",StatsBuilder.make(5,1,1),dataGame.itemFindByText("gangster")));
+        MonsterGenerator.add(new MonsterGenerator("Gansters",StatsBuilder.make(5,2,2),dataGame.itemFindByText("gangster")));
         MonsterGenerator.add(new MonsterGenerator("Policier",StatsBuilder.make(10,3,3),dataGame.itemFindByText("forces de l'ordre")));
-        MonsterGenerator.add(new MonsterGenerator("Mercenaire",StatsBuilder.make(20,5,5),dataGame.itemFindByText("mercenaire")));
-        MonsterGenerator.add(new MonsterGenerator("Inquisiteur Sith",StatsBuilder.make(5,5,10),dataGame.itemFindByText("assassin")));
-        MonsterGenerator.add(new MonsterGenerator("Assemblage de Replicateur ",StatsBuilder.make(40,10,10),dataGame.itemFindByText("cybernétique")));
-        MonsterGenerator.add(new MonsterGenerator("Licorne",StatsBuilder.make(60,15,15),dataGame.itemFindByText("licorne")));
+        MonsterGenerator.add(new MonsterGenerator("Mercenaire",StatsBuilder.make(15,4,4),dataGame.itemFindByText("mercenaire")));
+        MonsterGenerator.add(new MonsterGenerator("Inquisiteur Sith",StatsBuilder.make(10,5,7),dataGame.itemFindByText("assassin")));
+        MonsterGenerator.add(new MonsterGenerator("Assemblage de Replicateur ",StatsBuilder.make(25,7,7),dataGame.itemFindByText("cybernétique")));
+        MonsterGenerator.add(new MonsterGenerator("Licorne",StatsBuilder.make(40,10,10),dataGame.itemFindByText("licorne")));
 
         dataGame.monsterGenerators = MonsterGenerator;
     }
