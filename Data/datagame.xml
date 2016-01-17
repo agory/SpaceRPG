@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <dataGame>
     <character>
-        <level>2</level>
-        <currentHealth>145</currentHealth>
-        <name>Phave</name>
+        <level>1</level>
+        <currentHealth>100</currentHealth>
+        <name>Alia</name>
         <stats>
             <stats>
                 <entry>
                     <key>Puissance</key>
-                    <value>30</value>
+                    <value>20</value>
                 </entry>
                 <entry>
                     <key>Endurance</key>
-                    <value>6</value>
+                    <value>4</value>
                 </entry>
                 <entry>
                     <key>Santé</key>
-                    <value>140</value>
+                    <value>100</value>
                 </entry>
             </stats>
         </stats>
@@ -42,7 +42,7 @@
                 </stats>
             </stats>
         </chestArmor>
-        <experience>338</experience>
+        <experience>0</experience>
         <footArmor>
             <descritption>Vétement de départ légérement pourrie.</descritption>
             <id>1</id>
@@ -66,23 +66,23 @@
             </stats>
         </footArmor>
         <handArmor>
-            <descritption>Vétement utilisé en général par les forces de l'ordre.</descritption>
-            <id>16</id>
-            <name>Gants de policier</name>
+            <descritption>Vétement de départ légérement pourrie.</descritption>
+            <id>2</id>
+            <name>Gants usés</name>
             <weight>2</weight>
             <stats>
                 <stats>
                     <entry>
                         <key>Puissance</key>
-                        <value>1</value>
+                        <value>0</value>
                     </entry>
                     <entry>
                         <key>Endurance</key>
-                        <value>2</value>
+                        <value>0</value>
                     </entry>
                     <entry>
                         <key>Santé</key>
-                        <value>5</value>
+                        <value>0</value>
                     </entry>
                 </stats>
             </stats>
@@ -110,30 +110,7 @@
                 </stats>
             </stats>
         </headArmor>
-        <inventory>
-            <myItems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="handArmor">
-                <descritption>Vétement de départ légérement pourrie.</descritption>
-                <id>2</id>
-                <name>Gants usés</name>
-                <weight>2</weight>
-                <stats>
-                    <stats>
-                        <entry>
-                            <key>Puissance</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>Endurance</key>
-                            <value>0</value>
-                        </entry>
-                        <entry>
-                            <key>Santé</key>
-                            <value>0</value>
-                        </entry>
-                    </stats>
-                </stats>
-            </myItems>
-        </inventory>
+        <inventory/>
         <legsArmor>
             <descritption>Vétement de départ légérement pourrie.</descritption>
             <id>4</id>

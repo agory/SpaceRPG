@@ -28,7 +28,7 @@ public class SpaceShipController extends CoreController{
     private void menuSpaceShip(){
         getCharacter().heal(getCharacter().computeMaxHealth());
         this.save();
-        int i = showMenu("Quel sera votre action ?","O pour quitter le jeu",itemsMenuSpaceShip());
+        int i = showMenu("Quelle sera votre action ?","O pour quitter le jeu",itemsMenuSpaceShip());
         switch (i){
             case -1:
                 break;
@@ -41,13 +41,13 @@ public class SpaceShipController extends CoreController{
                 menuSpaceShip();
                 break;
             default:
-                write("Choix incorrecte !!");
+                write("Choix incorrect !!");
                 menuSpaceShip();
         }
     }
 
     private void menuDestination(){
-        int i = showMenu("Quel sera votre prochaine destination ?","O pour quitter",itemsMenuDestination());
+        int i = showMenu("Quelle sera votre prochaine destination ?","O pour quitter",itemsMenuDestination());
         switch (i){
             case -1:
                 break;

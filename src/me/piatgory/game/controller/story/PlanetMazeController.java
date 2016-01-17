@@ -49,7 +49,7 @@ public class PlanetMazeController extends CoreController {
         textSpacer();
         write("――― Bienvenue sur la planète " + name);
         textSpacer();
-        write("L'endroit est jolie et on peut facilement trouver de la companie.");
+        write("L'endroit est joli et on peut facilement trouver de la companie.");
         textSpacer();
     }
 
@@ -159,7 +159,7 @@ public class PlanetMazeController extends CoreController {
                 currentMaze=mazes.get(level);
                 getCharacter().heal(((getCharacter().computeMaxHealth()/10)*5));
                 write("La main de dieu vous à extrait du combat juste avant que vous mourrez. Vous avez perdu une part de votre ame ( -1 lvl).");
-                write("Vos blessure fatal ont été guerie(pas toute ^^) cependant vous êtes de retour à la case départ");
+                write("Vos blessures fatales ont été gueriees(pas toutes ^^) cependant vous êtes de retour à la case départ");
             }
         }
     }

@@ -74,8 +74,8 @@ public class PlanetArenaController extends CoreController {
             }
         }
         if(!alive){
-            write("On vient de te cloner pour que tu puisse encore jouer. sa coute chère tu sais...");
-            write("Par contre tu peux pleurer !! tu vien de perdre un level !!! Hahaha !! ");
+            write("On vient de te cloner pour que tu puisses encore jouer. ça coûte cher tu sais...");
+            write("Par contre tu peux pleurer !! tu viens de perdre un level !!! Hahaha !! ");
         }
     }
 

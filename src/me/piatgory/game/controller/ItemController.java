@@ -115,7 +115,7 @@ public class ItemController extends CoreController {
 
     private void itemSwitchActionRemovePut(Item item){
         if (isInInventory(item)){
-            if(validation("Etes-vous sûre de vouloir jeter cette item ?")){
+            if(validation("Etes-vous sûr de vouloir jeter cet item ?")){
                 getCharacter().getInventory().removeItem(item);
             }else {
                 write("Action annuler.");
@@ -140,7 +140,7 @@ public class ItemController extends CoreController {
         write("A la place de :");
         textSpacer();
         write(this.getCharacter().takePlaceOf((Equipment)item));
-        if(validation("Etes-vous sûre de vouloir Equiper cette item ?")){
+        if(validation("Etes-vous sûr de vouloir Equiper cet item ?")){
             getCharacter().getInventory().addItem(getCharacter().equip((Equipment) item));
             getCharacter().getInventory().removeItem(item);
         }else {
