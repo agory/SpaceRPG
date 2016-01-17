@@ -56,7 +56,7 @@ public class PlanetArenaController extends CoreController {
         textSpacer();
         write("――― Bienvenue sur la planète " + name);
         textSpacer();
-        write("Ici, vous pourrez affronter plein d'adversaires différents dans de multiples arènes.", 200);
+        write("Ici, vous pourrez affronter plein d'adversaires différents dans de multiples arènes.", 500);
         textSpacer();
     }
 
@@ -68,7 +68,7 @@ public class PlanetArenaController extends CoreController {
             i++;
             getCharacter().heal(((getCharacter().computeMaxHealth()/10)*4));
             if(i == 3 || i == 5){
-                write("Voici une pause durement mérité !" , 2000);
+                write("Voici une pause durement mérité !" , 1000);
                 breakMenu();
             }
         }
