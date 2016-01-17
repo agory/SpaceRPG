@@ -2,6 +2,7 @@ package me.piatgory.model.Entity;
 
 import me.grea.antoine.utils.Dice;
 import me.piatgory.model.Item.Chest;
+import me.piatgory.model.Item.Equipment.*;
 import me.piatgory.model.Item.Item;
 import me.piatgory.model.Stats;
 
@@ -9,6 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.WeakHashMap;
 
 /**
  * Created by Alexandre on 09/01/2016.
@@ -105,11 +107,22 @@ public class Monster extends Entity {
     }
 
     public Chest generateChest(){
-
-        if (Dice.roll(100) < 10) {
-            chestItems.add(monsterItems.get(Dice.roll(monsterItems.size()-1)));
+        int nbItems = 0;
+        boolean armor = false;
+        for(Item item : monsterItems){
+            if(item instanceof Weapon){
+                if (Dice.roll(100) < 10) {
+                    monsterItems.add(item);
+                    ++ nbItems;
+                }
+            }
+            else if((item instanceof ChestArmor || item instanceof FootArmor || item instanceof HandArmor || item instanceof HeadArmor || item instanceof LegsArmor) && armor == false){
+                if (Dice.roll(100) < 20) {
+                    monsterItems.add(item);
+                    armor = true;
+                }
+            }
         }
-
         //while(chestItems.size()<nbItems){
             //Ajouter consommable
         //}
