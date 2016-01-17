@@ -7,5 +7,8 @@ me.piatgory.model
 me.piatgory.model.Capacity
 me.piatgory.model.Entity
 me.piatgory.model.Item
+me.piatgory.model.Item.Equipment
+me.piatgory.model.Item.consumable
+me.piatgory.model.state
 me.piatgory.persistance
 me.piatgory.presentation

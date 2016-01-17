@@ -1,7 +1,7 @@
 package me.piatgory.game.controller;
 
 import me.piatgory.game.core.CoreController;
-import me.piatgory.model.Item.Equipment;
+import me.piatgory.model.Item.Equipment.Equipment;
 import me.piatgory.model.Item.Item;
 import me.piatgory.persistance.DataGame;
 
@@ -11,8 +11,7 @@ import java.util.List;
  * Created by Alexandre on 10/01/2016.
  */
 public class ItemController extends CoreController {
-    private List<Item>  itemsTemp;
-    private Item  itemTemp;
+
 
     public ItemController(DataGame dataGame) {
         super(dataGame);
@@ -23,25 +22,31 @@ public class ItemController extends CoreController {
     }
 
     public void showMenuSelectItem(List<Item> items) {
-        itemsTemp = items;
-        int i = showMenu("Selection d'un item", "Tapez 0 ou un autre nombre pour quitter", convertListItemToStringTab(items));
-        if(itemsTemp.size() > i && i >= 0){
-            Item item = itemsTemp.get(i);
+        Item item = getItemByMenuSelectItem(items);
+        if(item != null){
             textSpacer();
             write(item);
             showMenuItemAction(item);
             textSpacer();
+        }
+    }
+
+    public Item getItemByMenuSelectItem(List<Item> items) {
+        Item item = null;
+        int i = showMenu("Selection d'un item", "Tapez 0 ou un autre nombre pour quitter", convertListItemToStringTab(items));
+        if(items.size() > i && i >= 0){
+            item = items.get(i);
         } else {
             write("Choix : quitter");
             textSpacer();
         }
-
+        return item;
     }
 
     public void showMenuItemAction(Item item){
-        itemTemp = item;
+
         List<String> items;
-        final int typeTemp;
+        int typeTemp;
         if(item instanceof Equipment){
             items = Equipment.getMenuInventaireAction();
             typeTemp = 1;
@@ -73,10 +78,11 @@ public class ItemController extends CoreController {
         switch (i)
         {
             case 0:
-                write(itemsTemp);
+                write(item);
+                showMenuItemAction(item);
                 break;
             case 1:
-                this.itemSwitchActionRemovePut(itemTemp);
+                this.itemSwitchActionRemovePut(item);
                 break;
             default:
                 write("Choix : Quitter");
@@ -90,6 +96,7 @@ public class ItemController extends CoreController {
         {
             case 0:
                 write(item);
+                showMenuItemAction(item);
                 break;
             case 1:
                 equipAction(item);
@@ -109,7 +116,7 @@ public class ItemController extends CoreController {
     private void itemSwitchActionRemovePut(Item item){
         if (isInInventory(item)){
             if(validation("Etes-vous sûre de vouloir jeter cette item ?")){
-                getCharacter().getInventory().removeItem(itemTemp);
+                getCharacter().getInventory().removeItem(item);
             }else {
                 write("Action annuler.");
                 textSpacer();

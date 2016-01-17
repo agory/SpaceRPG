@@ -1,5 +1,7 @@
 package me.piatgory.model.Item;
 
+import me.piatgory.model.Item.consumable.Consumable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +45,15 @@ public class Inventory {
         return this.getMyItems().get(i);
     }
 
-
+    public List<Item> getConsumable(){
+        List<Item> consumables = new ArrayList<Item>();
+        for (Item item : myItems){
+            if (item instanceof Consumable){
+                consumables.add(item);
+            }
+        }
+        return consumables;
+    }
 
     public String showItems(){
         String message ="";

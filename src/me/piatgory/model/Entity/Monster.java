@@ -2,12 +2,8 @@ package me.piatgory.model.Entity;
 
 import me.grea.antoine.utils.Dice;
 import me.piatgory.model.Item.Chest;
-import me.piatgory.model.Item.Equipment;
 import me.piatgory.model.Item.Item;
-import me.piatgory.model.Item.Weapon;
 import me.piatgory.model.Stats;
-import me.piatgory.model.StatsBuilder;
-import me.piatgory.persistance.DataGame;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;

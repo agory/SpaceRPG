@@ -2,8 +2,9 @@ package me.piatgory.model.Entity;
 
 import me.piatgory.model.*;
 import me.piatgory.model.Item.*;
+import me.piatgory.model.Item.Equipment.*;
+import me.piatgory.model.state.Buff;
 
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -141,7 +142,7 @@ public class Character extends Entity{
     * Le poids maximun portable augment en fonction de la puissance du personnage
     * */
     public int getWeight(){
-        return this.computeAllStats().getStats().get("Puissance")*5;
+        return this.computeAllStats().getStats().get("Puissance")*20;
     }
 
     public int getDamage(){
@@ -345,6 +346,10 @@ public class Character extends Entity{
             message+= "\n Pas de jambières equipée.";
         message+="\n――――――――――――――――――――――――――――";
         return message;
+    }
+
+    public List<Item> getConsumable(){
+        return inventory.getConsumable();
     }
 
     public String showWeight(){

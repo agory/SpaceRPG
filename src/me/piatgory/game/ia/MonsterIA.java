@@ -20,19 +20,19 @@ public class MonsterIA extends CoreIA{
         Action action = null;
         if(target.getCurrentHealth() < getMonster().getDamage()){
             if(Dice.roll(100)<25){
-                action = getMonster().provokeEvent(target);
+                action = getMonster().provokeAction(target);
             } else if (Dice.roll(100)<10){
-                action = getMonster().passEvent(target);
+                action = getMonster().passAction(target);
             } else {
-                action = getMonster().attackEvent(target);
+                action = getMonster().attackAction(target);
             }
         } else {
             if(Dice.roll(100)<5){
-                action = getMonster().provokeEvent(target);
+                action = getMonster().provokeAction(target);
             } else  if (Dice.roll(100)<5){
-                action = getMonster().passEvent(target);
+                action = getMonster().passAction(target);
             } else {
-                action = getMonster().attackEvent(target);
+                action = getMonster().attackAction(target);
             }
         }
         return action;

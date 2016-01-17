@@ -1,8 +1,5 @@
 package me.piatgory.model.Item;
 
-import me.piatgory.model.Buff;
-
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;

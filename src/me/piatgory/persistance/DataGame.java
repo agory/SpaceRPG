@@ -4,6 +4,7 @@ import me.piatgory.game.Generator.MonsterGenerator;
 import me.piatgory.model.Entity.Character;
 import me.piatgory.model.Entity.Entity;
 import me.piatgory.model.Item.*;
+import me.piatgory.model.Item.Equipment.*;
 import me.piatgory.model.StatsBuilder;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
@@ -20,13 +21,13 @@ import java.util.regex.Pattern;
         me.piatgory.model.Entity.Character.class,
         me.piatgory.model.Entity.Entity.class,
         me.piatgory.model.Entity.Monster.class,
-        me.piatgory.model.Item.Equipment.class,
-        me.piatgory.model.Item.ChestArmor.class,
-        me.piatgory.model.Item.FootArmor.class,
-        me.piatgory.model.Item.HandArmor.class,
-        me.piatgory.model.Item.HeadArmor.class,
-        me.piatgory.model.Item.LegsArmor.class,
-        me.piatgory.model.Item.Weapon.class,
+        Equipment.class,
+        ChestArmor.class,
+        FootArmor.class,
+        HandArmor.class,
+        HeadArmor.class,
+        LegsArmor.class,
+        Weapon.class,
         me.piatgory.model.Stats.class
         })
 public class DataGame {
@@ -217,6 +218,8 @@ public class DataGame {
         description = "Arme ultime de l'armure cybernétique ultime. \n Ça envoie vraiment du paté !!";
         items.add(new Weapon("Canon plasma",description,2,StatsBuilder.make(40,10,80),80));
         items.add(new Weapon("Duo Sabre laser/Bouclier à champs de force",description,2,StatsBuilder.make(80,20,50),50));
+
+
 
         dataGame.items = items;
     }

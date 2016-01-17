@@ -1,4 +1,4 @@
-package me.piatgory.model.Item;
+package me.piatgory.model.Item.Equipment;
 
 import me.piatgory.model.Stats;
 

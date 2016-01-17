@@ -15,12 +15,18 @@ public class Action {
     private Entity target;
     private String action;
     private int priority;
+    private Object element;
 
     public Action(Entity source, Entity target, String action, int priority) {
+        this(source,target,action,priority,null);
+    }
+
+    public Action(Entity source, Entity target, String action, int priority, Object element) {
         this.source = source;
         this.target = target;
         this.action = action;
         this.priority = priority;
+        this.element=null;
     }
 
     public Entity getSource() {
@@ -42,7 +48,11 @@ public class Action {
     public String run(){
         String message = null;
         try {
-            message = (String) source.getMethodAction(action).invoke(source,target);
+
+            if (element != null)
+                message = (String) source.getMethodAction(action).invoke(source,target,element);
+            else
+                message = (String) source.getMethodAction(action).invoke(source,target);
         } catch (Exception e){
             e.printStackTrace();
             message ="Un probléme s'est passé !!!";

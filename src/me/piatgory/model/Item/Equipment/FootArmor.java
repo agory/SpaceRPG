@@ -1,4 +1,4 @@
-package me.piatgory.model.Item;
+package me.piatgory.model.Item.Equipment;
 
 import me.piatgory.model.Stats;
 
@@ -8,24 +8,23 @@ import javax.xml.bind.annotation.XmlRootElement;
  * Created by Grégoire on 17/12/2015.
  */
 @XmlRootElement
-public class ChestArmor extends Equipment {
+public class FootArmor extends Equipment {
 
-    public ChestArmor(String name,int weight , Stats stats) {
+    public FootArmor(String name,int weight , Stats stats) {
         super(name, weight, stats);
     }
 
-    public ChestArmor(String name,String description,int weight , Stats stats) {
+    public FootArmor(String name,String description,int weight , Stats stats) {
         super(name,description ,weight, stats);
     }
 
-    public ChestArmor(){}
+    public FootArmor(){}
 
     @Override
     public String toString() {
-        String message = "Emplacement : Torse\n";
+        String message = "Emplacement : Pied\n";
         message += super.toString();
 
         return message;
     }
-
 }

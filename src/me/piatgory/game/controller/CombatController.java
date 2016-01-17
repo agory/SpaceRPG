@@ -2,9 +2,12 @@ package me.piatgory.game.controller;
 
 import me.piatgory.game.core.CoreController;
 import me.piatgory.game.ia.MonsterIA;
+import me.piatgory.model.Entity.Entity;
 import me.piatgory.model.Entity.Monster;
 import me.piatgory.game.core.Action;
 import me.piatgory.model.Item.Chest;
+import me.piatgory.model.Item.Item;
+import me.piatgory.model.Item.consumable.Consumable;
 import me.piatgory.persistance.DataGame;
 
 import java.util.ArrayList;
@@ -47,15 +50,14 @@ public class CombatController extends CoreController {
         textSpacer();
     }
 
-    private Action getCombatAction() {
+    private Action menuCombatAction() {
 
-        Action action = getCharacter().getCombatAction(
-                showMenu("Veuillez choisir une action","", getCharacter().getCombatAction())
-                , monster
-        );
+        Action action = getCombatAction(
+                showMenu("Veuillez choisir une action","", itemsCombatAction()),
+                monster);
         if (action == null){
             write("Action incorrecte !!!");
-            return this.getCombatAction();
+            return this.menuCombatAction();
         }
         return action;
 
@@ -68,10 +70,8 @@ public class CombatController extends CoreController {
         while (!getCharacter().isDead()&& !monster.isDead()) {
             combatBeginTurn(i);
             List<Action> actions = new ArrayList<Action>();
-            Action evc = getCombatAction();
+            Action evc = menuCombatAction();
             Action evm = monsterIA.getAction(getCharacter());
-            write("debug : " + evc.getAction());
-            write("debug : " + evm.getAction());
             actions.add(evc);
             actions.add(evm);
             (new TurnController(dataGame, monster, actions)).run();
@@ -101,6 +101,39 @@ public class CombatController extends CoreController {
     }
 
 
+    private Action getCombatAction(int i, Entity entity){
+        Action action = null;
+        switch (i){
+            case 0:
+                action = getCharacter().attackAction(entity);
+                break;
+            case 1:
+                Item item = new ItemController(dataGame).getItemByMenuSelectItem(getCharacter().getConsumable());
+                if(item != null) {
+                    action = getCharacter().consumeAction(getCharacter(),
+                            (Consumable)item);
+                } else {
+                    action = menuCombatAction();
+                }
+                break;
+            case 2:
+                action = getCharacter().passAction(entity);
+                break;
+            case 3:
+                action = getCharacter().provokeAction(entity);
+                break;
+        }
+        return action;
+    }
+
+    private static List<String> itemsCombatAction(){
+        List<String> actions = new ArrayList<String>();
+        actions.add("Attaquer");
+        actions.add("Utiliser un consommable");
+        actions.add("Passer");
+        actions.add("Provoquer");
+        return  actions;
+    }
 
 
 }

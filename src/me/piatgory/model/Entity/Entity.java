@@ -1,8 +1,10 @@
 package me.piatgory.model.Entity;
 
 import me.piatgory.game.core.Action;
+import me.piatgory.model.Item.consumable.Consumable;
 import me.piatgory.model.Stats;
 import me.grea.antoine.utils.Dice;
+import me.piatgory.model.state.Buff;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -22,14 +24,17 @@ public abstract class Entity {
     @XmlElement
     protected Integer currentHealth;
     protected Stats stats;
+    protected List<Buff> buffs;
 
     public Entity(String name,int level){
+        this();
         this.level = level;
         this.name = name;
         this.buildStats();
     }
 
     public Entity() {
+        buffs = new ArrayList<Buff>();
     }
 
 
@@ -67,8 +72,6 @@ public abstract class Entity {
             this.heal(statsAdd.getStats().get("Santé"));
     }
 
-
-
     public boolean isDead(){
         return currentHealth == 0;
     }
@@ -78,8 +81,8 @@ public abstract class Entity {
         return "Frappe " + entity.getName()+ " et lui inflige " + entity.damage(damage) + " point(s) de dégats";
     }
 
-    public Action attackEvent(Entity entity){
-        return new Action(this,entity,"attack",5);
+    public Action attackAction(Entity entity){
+        return new Action(this,entity,"attack",3);
     }
 
     public String pass(Entity entity){
@@ -95,8 +98,8 @@ public abstract class Entity {
         return sentences[Dice.roll(sentences.length-1)];
     }
 
-    public Action passEvent(Entity entity){
-        return new Action(this,entity,"pass",5);
+    public Action passAction(Entity entity){
+        return new Action(this,entity,"pass",0);
     }
 
     public String provoke(Entity entity){
@@ -113,8 +116,17 @@ public abstract class Entity {
         return sentences[Dice.roll(sentences.length-1)] ;
     }
 
-    public Action provokeEvent(Entity entity){
+    public Action provokeAction(Entity entity){
         return new Action(this,entity,"provoke",0);
+    }
+
+    public String consume(Entity entity, Consumable consumable){
+        consumable.setOn(entity);
+        return "Utilise : " + consumable.getName();
+    }
+
+    public Action consumeAction(Entity entity,Consumable consumable){
+        return new Action(this,entity,"consume",1,consumable);
     }
 
     public void heal(int value){
@@ -140,8 +152,6 @@ public abstract class Entity {
     public void setName(String name) {
         this.name = name;
     }
-
-
 
     protected abstract Stats computeAllStats();
 
@@ -188,22 +198,8 @@ public abstract class Entity {
         return message;
     }
 
-
-
-    public Action getCombatAction(int i, Entity entity){
-        Action action = null;
-        switch (i){
-            case 0:
-                action = this.attackEvent(entity);
-                break;
-            case 1:
-                action = this.passEvent(entity);
-                break;
-            case 2:
-                action = this.provokeEvent(entity);
-                break;
-        }
-        return action;
+    public void applyBuff(Buff buff){
+        buffs.add(buff);
     }
 
     public Method getMethodAction(String action) throws Exception{
@@ -214,16 +210,12 @@ public abstract class Entity {
             method = this.getClass().getMethod("provoke",Entity.class);
         else if(action == "pass")
             method = this.getClass().getMethod("pass",Entity.class);
+        else if(action == "consume")
+            method = this.getClass().getMethod("pass",Entity.class,Consumable.class);
         else
             throw new Exception("Action not found!");
         return method;
     }
 
-    public static List<String> getCombatAction(){
-        List<String> actions = new ArrayList<String>();
-        actions.add("Attaquer");
-        actions.add("Passer");
-        actions.add("Provoquer");
-        return  actions;
-    }
+
 }

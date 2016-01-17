@@ -1,6 +1,6 @@
-package me.piatgory.model.Item;
+package me.piatgory.model.Item.Equipment;
 
-import me.piatgory.model.Buff;
+import me.piatgory.model.Item.Item;
 import me.piatgory.model.Stats;
 
 import javax.xml.bind.annotation.XmlRootElement;
