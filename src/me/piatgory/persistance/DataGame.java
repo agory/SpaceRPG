@@ -122,7 +122,6 @@ public class DataGame {
         getCharacter().equipHeadArmor((HeadArmor)this.itemFind(3));
         getCharacter().equipLegsArmor((LegsArmor)this.itemFind(4));
         getCharacter().equipWeapon((Weapon)this.itemFind(5));
-        getCharacter().getInventory().addItem(itemFind(20));
     }
 
     public static void addMonsterGenerator(DataGame dataGame){

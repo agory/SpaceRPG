@@ -293,6 +293,16 @@ public class Character extends Entity{
         this.heal(computeMaxHealth());
     }
 
+    public void removeLevel(){
+        this.setLevel(this.getLevel()-1);
+        for (StatsCharacter stat:StatsCharacter.values()) {
+            this.stats.getStats().put(
+                    stat.getName(),
+                    this.stats.getStats().get(stat.getName()) - stat.getValuePerLevel()
+            );
+        }
+    }
+
     public void buildStats(){
         HashMap<String, Integer> stats = new HashMap<String, Integer>();
         for (StatsCharacter stat:StatsCharacter.values()) {

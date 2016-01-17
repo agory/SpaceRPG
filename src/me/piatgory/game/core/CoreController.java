@@ -1,6 +1,6 @@
 package me.piatgory.game.core;
 
-import me.piatgory.model.Entity.Character;
+import me.piatgory.game.controller.CharacterController;
 import me.piatgory.model.Item.Item;
 import me.piatgory.persistance.DataGame;
 
@@ -35,6 +35,41 @@ public abstract class CoreController extends Game{
                 items.remove(items.get(i));
         }
         return items;
+    }
+
+    public void breakMenu(){
+        save();
+
+        switch (showMenu("Menu ", "tapez 0 pour quitter.",itemBreakMenu())){
+            case 0:
+                getCharacter().heal(getCharacter().computeMaxHealth());
+                breakMenu();
+                break;
+            case 1:
+                new CharacterController(dataGame).run();
+                breakMenu();
+                break;
+            case 2:
+                save();
+                System.exit(0);
+                break;
+        }
+    }
+
+    public List<String> itemBreakMenu(){
+        List<String> items = new ArrayList<String>();
+
+        items.add("Se reposer");
+        items.add("Menu Charater");
+        items.add("Arrêter le jeu");
+        return items;
+    }
+
+    public String addSpaceCharacter(String text, int size){
+        while(text.length() < size){
+            text+="\u0020";
+        }
+        return text;
     }
 
 }

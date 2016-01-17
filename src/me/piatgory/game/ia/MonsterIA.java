@@ -14,7 +14,7 @@ public class MonsterIA extends CoreIA{
 
 
     public MonsterIA(Monster monster) {
-        super((Entity) monster);
+        super(monster);
     }
 
     public Event getAction(Entity target){

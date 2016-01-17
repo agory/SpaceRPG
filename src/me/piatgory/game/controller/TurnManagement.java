@@ -2,7 +2,6 @@ package me.piatgory.game.controller;
 
 import me.grea.antoine.utils.Dice;
 import me.piatgory.game.core.CoreController;
-import me.piatgory.model.Entity.Character;
 import me.piatgory.model.Entity.Monster;
 import me.piatgory.model.Event;
 import me.piatgory.persistance.DataGame;

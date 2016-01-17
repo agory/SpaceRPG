@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <dataGame>
     <character>
-        <level>1</level>
-        <currentHealth>100</currentHealth>
+        <level>6</level>
+        <currentHealth>321</currentHealth>
         <name>Phavos</name>
         <stats>
             <stats>
                 <entry>
                     <key>Puissance</key>
-                    <value>20</value>
+                    <value>70</value>
                 </entry>
                 <entry>
                     <key>Endurance</key>
-                    <value>4</value>
+                    <value>14</value>
                 </entry>
                 <entry>
                     <key>Santé</key>
-                    <value>100</value>
+                    <value>300</value>
                 </entry>
             </stats>
         </stats>
@@ -42,7 +42,7 @@
                 </stats>
             </stats>
         </chestArmor>
-        <experience>0</experience>
+        <experience>819</experience>
         <footArmor>
             <descritption>Vétement de départ légérement pourrie.</descritption>
             <id>1</id>
@@ -88,10 +88,9 @@
             </stats>
         </handArmor>
         <headArmor>
-            <descritption>Vétement de départ légérement pourrie.
- Elément de collection porté par sacha lui-même !!!</descritption>
-            <id>3</id>
-            <name>Casquette de sacha</name>
+            <descritption>Vétement de cuire moulant permettant de ressembler à un sadomasochiste(gangster).</descritption>
+            <id>9</id>
+            <name>Corne de gangster</name>
             <weight>2</weight>
             <stats>
                 <stats>
@@ -101,27 +100,48 @@
                     </entry>
                     <entry>
                         <key>Endurance</key>
-                        <value>0</value>
+                        <value>2</value>
                     </entry>
                     <entry>
                         <key>Santé</key>
-                        <value>0</value>
+                        <value>1</value>
                     </entry>
                 </stats>
             </stats>
         </headArmor>
         <inventory>
-            <myItems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="weapon">
-                <descritption>Utilisé en général par les forces de l'ordre
-Permet de se défouler pendant les manifestations civile.</descritption>
-                <id>20</id>
-                <name>Matraque telescopique</name>
+            <myItems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="headArmor">
+                <descritption>Vétement de cuire moulant permettant de ressembler à un sadomasochiste(gangster).</descritption>
+                <id>9</id>
+                <name>Corne de gangster</name>
                 <weight>2</weight>
                 <stats>
                     <stats>
                         <entry>
                             <key>Puissance</key>
-                            <value>10</value>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>Endurance</key>
+                            <value>2</value>
+                        </entry>
+                        <entry>
+                            <key>Santé</key>
+                            <value>1</value>
+                        </entry>
+                    </stats>
+                </stats>
+            </myItems>
+            <myItems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="weapon">
+                <descritption>Arme de départ légérement pourrie.</descritption>
+                <id>5</id>
+                <name>Pistolet à bille</name>
+                <weight>2</weight>
+                <stats>
+                    <stats>
+                        <entry>
+                            <key>Puissance</key>
+                            <value>0</value>
                         </entry>
                         <entry>
                             <key>Endurance</key>
@@ -129,26 +149,140 @@ Permet de se défouler pendant les manifestations civile.</descritption>
                         </entry>
                         <entry>
                             <key>Santé</key>
-                            <value>20</value>
+                            <value>0</value>
+                        </entry>
+                    </stats>
+                </stats>
+            </myItems>
+            <myItems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="headArmor">
+                <descritption>Vétement de départ légérement pourrie.
+ Elément de collection porté par sacha lui-même !!!</descritption>
+                <id>3</id>
+                <name>Casquette de sacha</name>
+                <weight>2</weight>
+                <stats>
+                    <stats>
+                        <entry>
+                            <key>Puissance</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>Endurance</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>Santé</key>
+                            <value>0</value>
+                        </entry>
+                    </stats>
+                </stats>
+            </myItems>
+            <myItems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="legsArmor">
+                <descritption>Vétement de départ légérement pourrie.</descritption>
+                <id>4</id>
+                <name>Jean usé</name>
+                <weight>2</weight>
+                <stats>
+                    <stats>
+                        <entry>
+                            <key>Puissance</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>Endurance</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>Santé</key>
+                            <value>0</value>
+                        </entry>
+                    </stats>
+                </stats>
+            </myItems>
+            <myItems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="headArmor">
+                <descritption>Vétement de départ légérement pourrie.
+ Elément de collection porté par sacha lui-même !!!</descritption>
+                <id>3</id>
+                <name>Casquette de sacha</name>
+                <weight>2</weight>
+                <stats>
+                    <stats>
+                        <entry>
+                            <key>Puissance</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>Endurance</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>Santé</key>
+                            <value>0</value>
+                        </entry>
+                    </stats>
+                </stats>
+            </myItems>
+            <myItems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="weapon">
+                <descritption>Bouclier anti-emeute volé par un gangster plutot bourrin. Arme idéal pour ceux qui aime prendre des coups.
+ </descritption>
+                <id>12</id>
+                <name>Bouclier  anti-emeute volé</name>
+                <weight>2</weight>
+                <stats>
+                    <stats>
+                        <entry>
+                            <key>Puissance</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>Endurance</key>
+                            <value>5</value>
+                        </entry>
+                        <entry>
+                            <key>Santé</key>
+                            <value>30</value>
+                        </entry>
+                    </stats>
+                </stats>
+            </myItems>
+            <myItems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="weapon">
+                <descritption>Bouclier anti-emeute volé par un gangster plutot bourrin. Arme idéal pour ceux qui aime prendre des coups.
+ </descritption>
+                <id>12</id>
+                <name>Bouclier  anti-emeute volé</name>
+                <weight>2</weight>
+                <stats>
+                    <stats>
+                        <entry>
+                            <key>Puissance</key>
+                            <value>0</value>
+                        </entry>
+                        <entry>
+                            <key>Endurance</key>
+                            <value>5</value>
+                        </entry>
+                        <entry>
+                            <key>Santé</key>
+                            <value>30</value>
                         </entry>
                     </stats>
                 </stats>
             </myItems>
         </inventory>
         <legsArmor>
-            <descritption>Vétement de départ légérement pourrie.</descritption>
-            <id>4</id>
-            <name>Jean usé</name>
+            <descritption>Vétement de cuire moulant permettant de ressembler à un sadomasochiste(gangster).</descritption>
+            <id>10</id>
+            <name>Jean de gangster</name>
             <weight>2</weight>
             <stats>
                 <stats>
                     <entry>
                         <key>Puissance</key>
-                        <value>0</value>
+                        <value>1</value>
                     </entry>
                     <entry>
                         <key>Endurance</key>
-                        <value>0</value>
+                        <value>4</value>
                     </entry>
                     <entry>
                         <key>Santé</key>
@@ -158,15 +292,16 @@ Permet de se défouler pendant les manifestations civile.</descritption>
             </stats>
         </legsArmor>
         <weapon>
-            <descritption>Arme de départ légérement pourrie.</descritption>
-            <id>5</id>
-            <name>Pistolet à bille</name>
+            <descritption>Utilisé en général par les forces de l'ordre
+Permet de se défouler pendant les manifestations civile.</descritption>
+            <id>20</id>
+            <name>Matraque telescopique</name>
             <weight>2</weight>
             <stats>
                 <stats>
                     <entry>
                         <key>Puissance</key>
-                        <value>0</value>
+                        <value>10</value>
                     </entry>
                     <entry>
                         <key>Endurance</key>
@@ -174,7 +309,7 @@ Permet de se défouler pendant les manifestations civile.</descritption>
                     </entry>
                     <entry>
                         <key>Santé</key>
-                        <value>0</value>
+                        <value>20</value>
                     </entry>
                 </stats>
             </stats>

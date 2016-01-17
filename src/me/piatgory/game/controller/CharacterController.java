@@ -1,9 +1,7 @@
 package me.piatgory.game.controller;
 
-import me.grea.antoine.utils.Menu;
 import me.piatgory.game.core.CoreController;
 import me.piatgory.persistance.DataGame;
-
 /**
  * Created by Alexandre on 10/01/2016.
  */
@@ -43,6 +41,7 @@ public class CharacterController extends CoreController {
         }
 
     }
+
 
     public void showMenuInventaire() {
         switch (showMenu("Character Menu", "Tapez un autre nombre pour quitter", getCharacter().getInventory().getItemsMenuInventory())) {

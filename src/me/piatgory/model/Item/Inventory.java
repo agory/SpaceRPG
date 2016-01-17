@@ -24,13 +24,7 @@ public class Inventory {
     }
 
     public void removeItem(Item item) {
-        for (int i = 0; i < myItems.size(); ++i) {
-            if (myItems.get(i) == item) {
-                myItems.remove(i);
-            }
-
-            // Faire le décalage dans la liste
-        }
+        myItems.remove(item);
     }
 
     public void addItem(Item item){

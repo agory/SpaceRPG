@@ -5,6 +5,7 @@ import me.piatgory.game.controller.story.PlanetArenaController;
 import me.piatgory.model.Entity.Character;
 import me.piatgory.persistance.DataGame;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -39,12 +40,20 @@ public class Game {
         }
     }
 
+    public static void writeTable3(String colunm1, String colunm2, String colunm3){
+        try {
+            System.out.printf("%1$4s %2$10s %3$10s%n",colunm1,colunm2,colunm3);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
     protected Character getCharacter(){
         return dataGame.getCharacter();
     }
 
     public void run(){
+
         new PlanetArenaController(dataGame).run();
         dataGame.save();
     }
@@ -75,10 +84,7 @@ public class Game {
         List<String> items = new ArrayList<String>();
         items.add("Oui");
         items.add("Non");
-        if(showMenu(question,"",items)==0)
-            return true;
-        else
-            return false;
+        return showMenu(question, "", items) == 0;
     }
 
     public static final String readTexteOutput(String question){
@@ -92,6 +98,13 @@ public class Game {
             return "Erreur";
         }
     }
+
+    public void save(){
+        dataGame.save();
+        write("La partie est sauvegardée.");
+    }
+
+
 
     static {
         scanner = new Scanner(System.in);

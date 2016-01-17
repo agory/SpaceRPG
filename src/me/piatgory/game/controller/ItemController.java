@@ -1,6 +1,5 @@
 package me.piatgory.game.controller;
 
-import me.grea.antoine.utils.Menu;
 import me.piatgory.game.core.CoreController;
 import me.piatgory.model.Item.Equipment;
 import me.piatgory.model.Item.Item;
@@ -94,6 +93,7 @@ public class ItemController extends CoreController {
                 break;
             case 1:
                 equipAction(item);
+                break;
             case 2:
                 this.itemSwitchActionRemovePut(item);
                 break;
@@ -130,13 +130,12 @@ public class ItemController extends CoreController {
     private void equipAction(Item item){
         write(item);
         textSpacer();
-        write("Á la place de :");
+        write("A la place de :");
         textSpacer();
         write(this.getCharacter().takePlaceOf((Equipment)item));
         if(validation("Etes-vous sûre de vouloir Equiper cette item ?")){
             getCharacter().getInventory().addItem(getCharacter().equip((Equipment) item));
-            if(isInInventory(item))
-                getCharacter().getInventory().removeItem(item);
+            getCharacter().getInventory().removeItem(item);
         }else {
             write("Action annuler.");
             textSpacer();

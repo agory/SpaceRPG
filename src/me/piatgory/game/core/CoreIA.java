@@ -1,6 +1,5 @@
 package me.piatgory.game.core;
 
-import me.piatgory.model.Entity.Character;
 import me.piatgory.model.Entity.Entity;
 import me.piatgory.model.Event;
 

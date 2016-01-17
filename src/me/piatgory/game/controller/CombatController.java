@@ -1,13 +1,10 @@
 package me.piatgory.game.controller;
 
-import me.grea.antoine.utils.Menu;
 import me.piatgory.game.core.CoreController;
 import me.piatgory.game.ia.MonsterIA;
-import me.piatgory.model.Entity.Character;
 import me.piatgory.model.Entity.Monster;
 import me.piatgory.model.Event;
 import me.piatgory.model.Item.Chest;
-import me.piatgory.model.Item.Item;
 import me.piatgory.persistance.DataGame;
 
 import java.util.ArrayList;
@@ -19,7 +16,6 @@ import java.util.List;
 public class CombatController extends CoreController {
     private Monster monster;
     private MonsterIA monsterIA;
-    private static Event eventTemp;
 
     public CombatController(DataGame dataGame, Monster monster) {
         super(dataGame);
@@ -32,23 +28,15 @@ public class CombatController extends CoreController {
         textSpacer();
         write("――― Combat");
         textSpacer();
-        write(getCharacter().showName());
-        write(getCharacter().showHealth());
+        writeTable3(addSpaceCharacter(getCharacter().showName(),43)+" |",addSpaceCharacter("",6),"| " + addSpaceCharacter(monster.showName(),35));
+        writeTable3(addSpaceCharacter(getCharacter().showHealth(),43)+" |","Contre  ","| " + addSpaceCharacter(monster.showHealth(),35));
         textSpacer();
-        write("――― Contre");
-        textSpacer();
-        write(monster.showName());
-        write(monster.showHealth());
     }
 
     public void combatEndTurn(){
-
         textSpacer();
-        write(getCharacter().showName());
-        write(getCharacter().showHealth());
-        textSpacer();
-        write(monster.showName());
-        write(monster.showHealth());
+        writeTable3(addSpaceCharacter(getCharacter().showName(),35)+" |","",addSpaceCharacter(monster.showName(),35));
+        writeTable3(addSpaceCharacter(getCharacter().showHealth(),35)+" |","",addSpaceCharacter(monster.showHealth(),35));
     }
 
 
@@ -61,16 +49,16 @@ public class CombatController extends CoreController {
 
     private Event getCombatAction() {
 
-        eventTemp = getCharacter().getCombatAction(
+        Event event = getCharacter().getCombatAction(
                 showMenu("Veuillez choisir une action","", getCharacter().getCombatAction())
                 , monster
         );
-        if (eventTemp == null){
+        if (event == null){
             write("Action incorrecte !!!");
             return this.getCombatAction();
-        }else {
-            return eventTemp;
         }
+        return event;
+
     }
 
     public void run(){
@@ -107,7 +95,10 @@ public class CombatController extends CoreController {
                 new ItemController(dataGame).showMenuSelectItem(chest.openChest());
             }
         } else {
-            write("Bouh vous avez loose! au faite ta une tache pistache !!!!!!!!!!!!");
+            write("Bouh tu as loose! au faite ta une tache pistache !!!!!!!!!!!!");
+            getCharacter().removeLevel();
+            write("On vient de cloner pour que tu puisse encore jouer. sa coute chère tu sais...");
+            write("Par contre pleure !! tu vien de perdre un level !!! Hahaha !! ");
         }
     }
 

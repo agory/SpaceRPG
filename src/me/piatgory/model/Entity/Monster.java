@@ -117,8 +117,7 @@ public class Monster extends Entity {
         //while(chestItems.size()<nbItems){
             //Ajouter consommable
         //}
-        Chest chest = new Chest(chestItems);
-        return chest;
+        return new Chest(chestItems);
     }
 }
 

@@ -30,10 +30,10 @@ public class PlanetArenaController extends CoreController {
             startStage(monsterGenerator);
         }
         if (validation("Voulez vous continuer ?")){
-            new CharacterController(dataGame).run();
+            getCharacter().heal(200);// Pour être simpas
+            breakMenu();
             run();
         }
-
     }
 
 
@@ -56,17 +56,21 @@ public class PlanetArenaController extends CoreController {
         textSpacer();
         write("――― Bienvenue sur la planète " + name);
         textSpacer();
-        write("Ici, vous pourrez affronter plein d'adversaires différents dans de multiples arènes.");
+        write("Ici, vous pourrez affronter plein d'adversaires différents dans de multiples arènes.", 200);
         textSpacer();
     }
 
     private void startStage(MonsterGenerator monsterGenerator){
-        getCharacter().heal(99999);
+
         int i = 0;
         List<CombatController> combatControllers = buildBattleList(monsterGenerator);
         while (startBattle(combatControllers.get(i)) && i < combatControllers.size() - 1  ){
             i++;
             getCharacter().heal(((getCharacter().computeMaxHealth()/10)*4));
+            if(i == 3 || i == 5){
+                write("Voici une pause durement mérité !" , 2000);
+                breakMenu();
+            }
         }
 
     }
@@ -74,11 +78,10 @@ public class PlanetArenaController extends CoreController {
 
     private boolean startBattle(CombatController combatController){
         combatController.run();
-        if(getCharacter().isDead())
-            return false;
-        else
-            return true;
+        return !getCharacter().isDead();
     }
+
+
 
     private List<CombatController> buildBattleList(MonsterGenerator monsterGenerator){
         List<CombatController> combatControllers = new ArrayList<CombatController>();
