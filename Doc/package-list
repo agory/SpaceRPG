@@ -1,0 +1,11 @@
+me.piatgory.game.Generator
+me.piatgory.game.controller
+me.piatgory.game.controller.story
+me.piatgory.game.core
+me.piatgory.game.ia
+me.piatgory.model
+me.piatgory.model.Capacity
+me.piatgory.model.Entity
+me.piatgory.model.Item
+me.piatgory.persistance
+me.piatgory.presentation
