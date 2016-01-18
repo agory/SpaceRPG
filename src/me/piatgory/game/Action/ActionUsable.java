@@ -23,7 +23,7 @@ public class ActionUsable extends Action{
             message = (String) source.getMethodAction(action).invoke(source,target,usable);
         } catch (Exception e){
             e.printStackTrace();
-            message ="Un probléme s'est passé !!!";
+            message ="Un probléme est survenu !!!";
         }
         return message;
     }
