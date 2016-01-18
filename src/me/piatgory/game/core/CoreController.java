@@ -2,6 +2,7 @@ package me.piatgory.game.core;
 
 import me.grea.antoine.utils.Dice;
 import me.grea.antoine.utils.Log;
+import me.piatgory.game.Action.Usable;
 import me.piatgory.game.Generator.MonsterGenerator;
 import me.piatgory.game.controller.CharacterController;
 import me.piatgory.game.controller.CombatController;
@@ -23,9 +24,16 @@ public abstract class CoreController extends Game{
 
     public static List<String> convertListItemToStringTab(List<Item> items){
         List<String> itemsMenu = new ArrayList<String>();
-        int i = 0;
         for (Item item:items) {
             itemsMenu.add(item.getName());
+        }
+        return itemsMenu;
+    }
+
+    public static List<String> convertListUsableToStringTab(List<? extends Usable> usables){
+        List<String> itemsMenu = new ArrayList<String>();
+        for (Usable usable:usables) {
+            itemsMenu.add(usable.getName());
         }
         return itemsMenu;
     }

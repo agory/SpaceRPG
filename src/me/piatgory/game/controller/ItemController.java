@@ -3,6 +3,7 @@ package me.piatgory.game.controller;
 import me.piatgory.game.core.CoreController;
 import me.piatgory.model.Item.Equipment.Equipment;
 import me.piatgory.model.Item.Item;
+import me.piatgory.model.Item.consumable.Consumable;
 import me.piatgory.persistance.DataGame;
 
 import java.util.List;
@@ -43,13 +44,22 @@ public class ItemController extends CoreController {
         return item;
     }
 
+
     public void showMenuItemAction(Item item){
 
         List<String> items;
         int typeTemp;
+        boolean noUse = false;
         if(item instanceof Equipment){
             items = Equipment.getMenuInventaireAction();
             typeTemp = 1;
+        } else if(item instanceof Consumable){
+            items = Consumable.getMenuInventaireAction();
+            if(((Consumable)item).isHarmful() == true){
+                items.remove(0);
+                noUse = true;
+            }
+            typeTemp = 2;
         } else {
             typeTemp = 0;
             items = Item.getMenuInventaireAction();
@@ -69,12 +79,56 @@ public class ItemController extends CoreController {
             case 1:
                 actionEquipementInventaire(i,item);
                 break;
+            case 2:
+                if(noUse)
+                    actionConsumableNoUse(i,item);
+                else
+                    actionConsumable(i,(Consumable) item);
+                break;
         }
 
 
     }
 
-    public void actionItemInventaire(int i,Item item){
+    private void actionConsumable(int i,Consumable item){
+        switch (i)
+        {
+            case 0:
+                write(item.use(getCharacter()));
+                break;
+            case 1:
+                write(item);
+                break;
+            case 2:
+                this.itemSwitchActionRemovePut(item);
+                break;
+            default:
+                write("Choix : Quitter");
+                textSpacer();
+                break;
+        }
+    }
+
+    private void actionConsumableNoUse(int i,Item item){
+        switch (i)
+        {
+
+            case 0:
+                write(item);
+                break;
+            case 1:
+                this.itemSwitchActionRemovePut(item);
+                break;
+            default:
+                write("Choix : Quitter");
+                textSpacer();
+                break;
+        }
+    }
+
+
+
+    private void actionItemInventaire(int i,Item item){
         switch (i)
         {
             case 0:
@@ -91,7 +145,7 @@ public class ItemController extends CoreController {
         }
     }
 
-    public void actionEquipementInventaire(int i,Item item){
+    private void actionEquipementInventaire(int i,Item item){
         switch (i)
         {
             case 0:

@@ -1,6 +1,9 @@
 package me.piatgory.model.Entity;
 
-import me.piatgory.game.core.Action;
+import me.piatgory.game.Action.Action;
+import me.piatgory.game.Action.ActionUsable;
+import me.piatgory.game.Action.Usable;
+import me.piatgory.model.Capacity.Capacity;
 import me.piatgory.model.Item.consumable.Consumable;
 import me.piatgory.model.Stats;
 import me.grea.antoine.utils.Dice;
@@ -25,18 +28,19 @@ public abstract class Entity {
     protected Integer currentHealth;
     protected Stats stats;
     protected List<Buff> buffs;
+    protected List<Capacity> capacities;
 
     public Entity(String name,int level){
         this();
         this.level = level;
         this.name = name;
+        this.capacities = new ArrayList<Capacity>();
         this.buildStats();
     }
 
     public Entity() {
         buffs = new ArrayList<Buff>();
     }
-
 
     public int computeMaxHealth(){
         return this.computeAllStats().getStats().get("Santé");
@@ -78,7 +82,7 @@ public abstract class Entity {
 
     public String attack(Entity entity){
         int damage = this.getDamage() + (int)((float)this.getDamage()*((float)Dice.roll(-20,20)/40));
-        return "Frappe " + entity.getName()+ " et lui inflige " + entity.damage(damage) + " point(s) de dégats";
+        return tryMakeDamage(damage,"Frappe " + entity.getName()+ " et lui inflige " + entity.damage(damage) + " point(s) de dégats");
     }
 
     public Action attackAction(Entity entity){
@@ -120,23 +124,43 @@ public abstract class Entity {
         return new Action(this,entity,"provoke",0);
     }
 
-    public String consume(Entity entity, Consumable consumable){
-        consumable.setOn(entity);
-        return "Utilise : " + consumable.getName();
+    public String use(Entity entity, Usable usable){
+        usable.use(entity);
+        return usable.use(entity);
     }
 
-    public Action consumeAction(Entity entity,Consumable consumable){
-        return new Action(this,entity,"consume",1,consumable);
+    public Action useAction(Entity entity,Usable usable){
+        Action action = null;
+        int priority = usable.getPriority();
+
+        if(usable.isHarmful())
+            action = new ActionUsable(this,entity,"use",priority,usable);
+        else
+            action = new ActionUsable(this,this,"use",priority,usable);
+        return action;
     }
 
-    public void heal(int value){
+    public String tryMakeDamage(int value, String message){
+        if (value == 0){
+            message = "L'action n'a eu aucun effet.";
+        }
+        return  message;
+    }
+
+    public int heal(int value){
+        if(value < 0)
+            value = 0;
         this.setCurrentHealth(this.currentHealth + value);
+        return value;
     }
 
     public int damage(int value){
         value = value - this.computeAllStats().getStats().get("Endurance");
-        if(value <= 0)
+        if(value <= 0 && value > -100)
             value = 1;
+        if(value < -100){
+            value = 0;
+        }
         this.setCurrentHealth(this.currentHealth - value);
         return value;
     }
@@ -186,6 +210,19 @@ public abstract class Entity {
         return  this.name + " : " + this.getClass().getSimpleName() + " ( "+ this.level+" lvl )";
     }
 
+    public List<Capacity> getCapacities() {
+        return capacities;
+    }
+
+    public List<? extends Usable> getUsableCapacities(){
+        List<? extends Usable> usables = capacities;
+        return usables;
+    }
+
+    public void setCapacities(List<Capacity> capacities) {
+        this.capacities = capacities;
+    }
+
     @Override
     public String toString() {
         String message="\n――――――――――――――――――――――――――――";
@@ -210,12 +247,33 @@ public abstract class Entity {
             method = this.getClass().getMethod("provoke",Entity.class);
         else if(action == "pass")
             method = this.getClass().getMethod("pass",Entity.class);
-        else if(action == "consume")
-            method = this.getClass().getMethod("pass",Entity.class,Consumable.class);
+        else if(action == "use")
+            method = this.getClass().getMethod("use",Entity.class,Usable.class);
         else
             throw new Exception("Action not found!");
         return method;
     }
 
+    public List<Buff> listBuff(){
+        return buffs;
+    }
+
+    public void decreasingNbTurnBuffs(){
+        for(int i = 0; i < buffs.size();i++){
+            Buff buff = buffs.get(i);
+            if(buff.decreasingNbTurn() <=0){
+                buffs.remove(buff);
+                i--;
+            }
+        }
+    }
+
+    public Stats computeBuffStats(){
+        Stats stats = new Stats();
+        for (Buff buff: buffs){
+            stats.merge(buff.getStats());
+        }
+        return stats;
+    }
 
 }

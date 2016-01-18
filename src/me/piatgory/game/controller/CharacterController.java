@@ -42,7 +42,6 @@ public class CharacterController extends CoreController {
 
     }
 
-
     public void showMenuInventaire() {
         switch (showMenu("Character Menu", "Tapez un autre nombre pour quitter", getCharacter().getInventory().getItemsMenuInventory())) {
             case 0:

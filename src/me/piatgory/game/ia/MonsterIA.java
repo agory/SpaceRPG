@@ -4,7 +4,7 @@ import me.grea.antoine.utils.Dice;
 import me.piatgory.game.core.CoreIA;
 import me.piatgory.model.Entity.Entity;
 import me.piatgory.model.Entity.Monster;
-import me.piatgory.game.core.Action;
+import me.piatgory.game.Action.Action;
 
 /**
  * Created by Alexandre on 12/01/2016.

@@ -1,7 +1,7 @@
 package me.piatgory.game.controller;
 
 import me.grea.antoine.utils.Dice;
-import me.piatgory.game.core.Action;
+import me.piatgory.game.Action.Action;
 import me.piatgory.game.core.CoreController;
 import me.piatgory.model.Entity.Monster;
 import me.piatgory.persistance.DataGame;
@@ -27,6 +27,8 @@ public class TurnController extends CoreController {
             if(!getCharacter().isDead()&& !monster.isDead())
                 runEventRandom(this.getEventByPriority(i));
         }
+        getCharacter().decreasingNbTurnBuffs();
+        monster.decreasingNbTurnBuffs();
     }
 
     private List<Action> getEventByPriority(int i){

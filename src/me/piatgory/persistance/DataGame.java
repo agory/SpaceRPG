@@ -1,11 +1,18 @@
 package me.piatgory.persistance;
 
+import me.grea.antoine.utils.Dice;
 import me.piatgory.game.Generator.MonsterGenerator;
+import me.piatgory.model.Capacity.Capacity;
 import me.piatgory.model.Entity.Character;
 import me.piatgory.model.Entity.Entity;
 import me.piatgory.model.Item.*;
 import me.piatgory.model.Item.Equipment.*;
+import me.piatgory.model.Item.consumable.Consumable;
+import me.piatgory.model.Stats;
 import me.piatgory.model.StatsBuilder;
+import me.piatgory.model.state.Buff;
+import me.piatgory.model.state.Effect;
+
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import java.util.ArrayList;
@@ -21,6 +28,8 @@ import java.util.regex.Pattern;
         me.piatgory.model.Entity.Character.class,
         me.piatgory.model.Entity.Entity.class,
         me.piatgory.model.Entity.Monster.class,
+        Consumable.class,
+        Capacity.class,
         Equipment.class,
         ChestArmor.class,
         FootArmor.class,
@@ -34,6 +43,8 @@ public class DataGame {
     private Entity character;
     private List<Item> items;
     private List<MonsterGenerator> monsterGenerators;
+    private List<Buff> buffs;
+    private List<Consumable> consumables;
 
 
     public DataGame(){
@@ -48,7 +59,6 @@ public class DataGame {
     public void save(){
         JAXBserializer.Save(this);
     }
-
 
     public Character getCharacter() {
         return (Character) character;
@@ -83,6 +93,16 @@ public class DataGame {
         return items;
     }
 
+    public Buff findBuff(String name){
+        Pattern pattern = Pattern.compile(name);
+        for (Buff buff : this.buffs) {
+            Matcher matcher = pattern.matcher(buff.getName());
+            if (matcher.find() )
+                return buff;
+        }
+        return null;
+    }
+
     public MonsterGenerator monsterFindByText(String text){
         MonsterGenerator monsterGenerator = null;
         Pattern pattern = Pattern.compile(text);
@@ -105,14 +125,21 @@ public class DataGame {
         return  stages;
     }
 
+    public Consumable getRandomConsumable(){
+        return consumables.get(Dice.roll(consumables.size()-1)).getNewInstance();
+    }
+
     public List<MonsterGenerator> getMonsterGenerators() {
         return monsterGenerators;
     }
 
     public void initDataGame(){
         Item.resetID();
-        addItems(this);
-        addMonsterGenerator(this);
+        addBuff();
+        addItems();
+        addConsumable();
+        addMonsterGenerator();
+
     }
 
     public void buildCharacter(String name){
@@ -125,19 +152,19 @@ public class DataGame {
         getCharacter().equipWeapon((Weapon)this.itemFind(5));
     }
 
-    public static void addMonsterGenerator(DataGame dataGame){
+    public void addMonsterGenerator(){
         List<MonsterGenerator> MonsterGenerator =new ArrayList<MonsterGenerator>();
-        MonsterGenerator.add(new MonsterGenerator("Gansters",StatsBuilder.make(5,2,2),dataGame.itemFindByText("gangster")));
-        MonsterGenerator.add(new MonsterGenerator("Policier",StatsBuilder.make(10,3,3),dataGame.itemFindByText("forces de l'ordre")));
-        MonsterGenerator.add(new MonsterGenerator("Mercenaire",StatsBuilder.make(15,4,4),dataGame.itemFindByText("mercenaire")));
-        MonsterGenerator.add(new MonsterGenerator("Inquisiteur Sith",StatsBuilder.make(10,5,7),dataGame.itemFindByText("assassin")));
-        MonsterGenerator.add(new MonsterGenerator("Assemblage de Replicateur ",StatsBuilder.make(25,7,7),dataGame.itemFindByText("cybernétique")));
-        MonsterGenerator.add(new MonsterGenerator("Licorne",StatsBuilder.make(40,10,10),dataGame.itemFindByText("licorne")));
+        MonsterGenerator.add(new MonsterGenerator("Gansters",StatsBuilder.make(5,2,2),this.itemFindByText("gangster")));
+        MonsterGenerator.add(new MonsterGenerator("Policier",StatsBuilder.make(10,3,3),this.itemFindByText("forces de l'ordre")));
+        MonsterGenerator.add(new MonsterGenerator("Mercenaire",StatsBuilder.make(15,4,4),this.itemFindByText("mercenaire")));
+        MonsterGenerator.add(new MonsterGenerator("Inquisiteur Sith",StatsBuilder.make(10,5,7),this.itemFindByText("assassin")));
+        MonsterGenerator.add(new MonsterGenerator("Assemblage de Replicateur ",StatsBuilder.make(30,10,10),this.itemFindByText("cybernétique")));
+        MonsterGenerator.add(new MonsterGenerator("Licorne",StatsBuilder.make(40,10,10),this.itemFindByText("licorne")));
 
-        dataGame.monsterGenerators = MonsterGenerator;
+        this.monsterGenerators = MonsterGenerator;
     }
 
-    public static void addItems(DataGame dataGame){
+    public void addItems(){
         List<Item> items = new ArrayList<Item>();
 
         String description = "Vétement de départ légérement pourrie.";
@@ -221,6 +248,51 @@ public class DataGame {
 
 
 
-        dataGame.items = items;
+
+        this.items = items;
+    }
+
+    private void addBuff(){
+        List<Buff> buffs = new ArrayList<Buff>();
+
+        buffs.add(new Buff("Berserker", StatsBuilder.make(0,-5,5),4));
+        buffs.add(new Buff("Shield", StatsBuilder.make(0,2,0),5));
+        buffs.add(new Buff("Transcendance", StatsBuilder.make(10,2,2),4));
+        buffs.add(new Buff("Steroid", StatsBuilder.make(0,2,2),5));
+        buffs.add(new Buff("AttaquePlus", StatsBuilder.make(0,0,2),10));
+        buffs.add(new Buff("DefensePlus", StatsBuilder.make(0,2,0),10));
+        buffs.add(new Buff("SantéPlus", StatsBuilder.make(10,0,0),10));
+
+        buffs.add(new Buff("Cécité", StatsBuilder.make(0,0,-999),2));
+        buffs.add(new Buff("Brise Armure", StatsBuilder.make(0,-2,0),5));
+        buffs.add(new Buff("Affaibli", StatsBuilder.make(0,0,-2),5));
+        buffs.add(new Buff("Endormi", StatsBuilder.make(0,999,-999),4));
+
+
+        this.buffs = buffs;
+    }
+
+    private void addConsumable(){
+        List<Consumable> consumables = new ArrayList<Consumable>();
+        consumables.add(new Consumable("Potion du Berserker","Permet de rentrer dans une puissante rage.",new Effect(findBuff("Berserker"))));
+        consumables.add(new Consumable("Potion sac à pv","Augmente la vie de l'utilisateur.",new Effect(findBuff("SantéPlus"))));
+        consumables.add(new Consumable("Potion de defense","Augmente l'endurance.",new Effect(findBuff("DefensePlus"))));
+        consumables.add(new Consumable("Steroid","Permet de taper plus fort et d'encaisser plus fort.",new Effect(findBuff("Steroid"))));
+        consumables.add(new Consumable("Potion d'attaque","Augmente la puissance.",new Effect(findBuff("AttaquePlus"))));
+        consumables.add(new Consumable("Potion de Transcendance","Augmente énormément les stats.",new Effect(findBuff("AttaquePlus"))));
+        consumables.add(new Consumable("Générateur de bouclier portable","Fait apparaître un bouclier autour de vous.",new Effect(findBuff("AttaquePlus"))));
+        consumables.add(new Consumable("Potion de soin","Rend des points de vie",new Effect(20)));
+        consumables.add(new Consumable("Potion de soin supérieur","Rend beaucoups de points de vie",new Effect(30)));
+        consumables.add(new Consumable("Potion de soin ultime","Rend tout les points de vie",new Effect(999)));
+
+        consumables.add(new Consumable("Grenade","Inflige des dégats",new Effect(-5),true));
+        consumables.add(new Consumable("Bombe saint","Inflige beaucoups de dégats",new Effect(-15),true));
+        consumables.add(new Consumable("Grenade flash","Rend la cible aveugle un cour instant",new Effect(findBuff("Cécité")),true));
+        consumables.add(new Consumable("Gaz soporifique","Rend la cible la cible endormie",new Effect(findBuff("Endormi")),true));
+        consumables.add(new Consumable("Gaz affaiblissant","Rend la cible la cible Affaiblie",new Effect(findBuff("Affaibli")),true));
+        consumables.add(new Consumable("Belier","Reduit l'armure de la cible",new Effect(findBuff("Brise Armure")),true));
+
+        this.consumables = consumables;
+
     }
 }

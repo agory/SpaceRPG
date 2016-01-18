@@ -38,12 +38,24 @@ public class Effect {
         this.healthGive = healthGive;
     }
 
-    public void setOn(Entity target){
-        if(healthGive > 0)
-            target.heal(healthGive);
-        else
-            target.damage(healthGive);
-        if(buff != null)
-            buff.makeBuff(target);
+    public String use(Entity target){
+        String message = "";
+
+        if(healthGive > 0) {
+            message+= " Soin : " + target.heal(100 + healthGive + target.getLevel());
+        } else {
+            message+= " Degat : " + target.damage(10 + healthGive * target.getLevel() * (-1));
+        }
+
+        if(buff != null) {
+            if(buff.getStats() != null)
+                target.heal(buff.getStats().getStats().get("Santé"));
+            message += buff.makeBuff(target);
+        }
+        return message;
     }
+
+    public Effect() {
+    }
+
 }

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <dataGame>
     <character>
-        <level>2</level>
-        <currentHealth>150</currentHealth>
-        <name>phave</name>
+        <level>3</level>
+        <currentHealth>185</currentHealth>
+        <name>Phave</name>
         <stats>
             <stats>
                 <entry>
                     <key>Puissance</key>
-                    <value>30</value>
+                    <value>40</value>
                 </entry>
                 <entry>
                     <key>Endurance</key>
-                    <value>6</value>
+                    <value>8</value>
                 </entry>
                 <entry>
                     <key>Santé</key>
-                    <value>150</value>
+                    <value>180</value>
                 </entry>
             </stats>
         </stats>
@@ -42,7 +42,7 @@
                 </stats>
             </stats>
         </chestArmor>
-        <experience>40</experience>
+        <experience>396</experience>
         <footArmor>
             <descritption>Vétement de départ légérement pourrie.</descritption>
             <id>1</id>
@@ -66,23 +66,23 @@
             </stats>
         </footArmor>
         <handArmor>
-            <descritption>Vétement de départ légérement pourrie.</descritption>
-            <id>2</id>
-            <name>Gants usés</name>
+            <descritption>Vétement utilisé en général par les forces de l'ordre.</descritption>
+            <id>16</id>
+            <name>Gants de policier</name>
             <weight>2</weight>
             <stats>
                 <stats>
                     <entry>
                         <key>Puissance</key>
-                        <value>0</value>
+                        <value>1</value>
                     </entry>
                     <entry>
                         <key>Endurance</key>
-                        <value>0</value>
+                        <value>2</value>
                     </entry>
                     <entry>
                         <key>Santé</key>
-                        <value>0</value>
+                        <value>5</value>
                     </entry>
                 </stats>
             </stats>
@@ -111,11 +111,10 @@
             </stats>
         </headArmor>
         <inventory>
-            <myItems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="weapon">
-                <descritption>Bouclier anti-emeute volé par un gangster plutot bourrin. Arme idéal pour ceux qui aime prendre des coups.
- </descritption>
-                <id>12</id>
-                <name>Bouclier  anti-emeute volé</name>
+            <myItems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="handArmor">
+                <descritption>Vétement de départ légérement pourrie.</descritption>
+                <id>2</id>
+                <name>Gants usés</name>
                 <weight>2</weight>
                 <stats>
                     <stats>
@@ -125,84 +124,14 @@
                         </entry>
                         <entry>
                             <key>Endurance</key>
-                            <value>5</value>
+                            <value>0</value>
                         </entry>
                         <entry>
                             <key>Santé</key>
-                            <value>30</value>
+                            <value>0</value>
                         </entry>
                     </stats>
                 </stats>
-            </myItems>
-            <myItems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="consumable">
-                <descritption>Augmente la vie de l'utilisateur.</descritption>
-                <id>67</id>
-                <name>Potion sac à pv</name>
-                <weight>1</weight>
-                <effect>
-                    <buff>
-                        <name>SantéPlus</name>
-                        <nbTurn>10</nbTurn>
-                        <stats>
-                            <stats>
-<entry>
-    <key>Puissance</key>
-    <value>0</value>
-</entry>
-<entry>
-    <key>Endurance</key>
-    <value>0</value>
-</entry>
-<entry>
-    <key>Santé</key>
-    <value>10</value>
-</entry>
-                            </stats>
-                        </stats>
-                    </buff>
-                    <healthGive>0</healthGive>
-                </effect>
-                <harmful>false</harmful>
-            </myItems>
-            <myItems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="consumable">
-                <descritption>Inflige des dégats</descritption>
-                <id>68</id>
-                <name>Grenade</name>
-                <weight>1</weight>
-                <effect>
-                    <healthGive>-5</healthGive>
-                </effect>
-                <harmful>true</harmful>
-            </myItems>
-            <myItems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="consumable">
-                <descritption>Fait apparaître un bouclier autour de vous.</descritption>
-                <id>69</id>
-                <name>Générateur de bouclier portable</name>
-                <weight>1</weight>
-                <effect>
-                    <buff>
-                        <name>AttaquePlus</name>
-                        <nbTurn>10</nbTurn>
-                        <stats>
-                            <stats>
-<entry>
-    <key>Puissance</key>
-    <value>2</value>
-</entry>
-<entry>
-    <key>Endurance</key>
-    <value>0</value>
-</entry>
-<entry>
-    <key>Santé</key>
-    <value>0</value>
-</entry>
-                            </stats>
-                        </stats>
-                    </buff>
-                    <healthGive>0</healthGive>
-                </effect>
-                <harmful>false</harmful>
             </myItems>
         </inventory>
         <legsArmor>

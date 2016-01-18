@@ -2,21 +2,20 @@ package me.piatgory.model.state;
 
 import me.piatgory.model.Entity.Entity;
 import me.piatgory.model.Stats;
+import me.piatgory.model.StatsBuilder;
 
 /**
  * Created by Alexandre Gory on 17/12/2015.
  */
 public class Buff {
+    private String name;
     private Stats stats;
     private int nbTurn;
 
-    public Buff(Stats stats,int nbTurn) {
+    public Buff(String name,Stats stats,int nbTurn) {
+        this.name = name;
         this.stats = stats;
         this.nbTurn = nbTurn;
-    }
-
-    private Buff(Buff buff){
-        this(buff.getStats(), buff.getNbTurn());
     }
 
     public Stats getStats() {
@@ -35,7 +34,29 @@ public class Buff {
         this.nbTurn = nbTurn;
     }
 
-    public void makeBuff(Entity target){
-        target.applyBuff(new Buff(this));
+    public String getName() {
+        return name;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String makeBuff(Entity target){
+        Stats stats = StatsBuilder.make(this.stats,target.getLevel());
+        target.applyBuff(new Buff(name,stats,nbTurn));
+        return " Applique : " + name;
+    }
+    public int decreasingNbTurn(){
+        return --nbTurn;
+    }
+
+    @Override
+    public String toString() {
+        return name +  " : " + nbTurn + " tour(s)" ;
+    }
+
+    public Buff() {
+    }
+
 }

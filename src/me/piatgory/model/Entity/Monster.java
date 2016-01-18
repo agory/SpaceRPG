@@ -4,6 +4,7 @@ import me.grea.antoine.utils.Dice;
 import me.piatgory.model.Item.Chest;
 import me.piatgory.model.Item.Item;
 import me.piatgory.model.Stats;
+import me.piatgory.persistance.DataGame;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
@@ -50,6 +51,7 @@ public class Monster extends Entity {
         Stats stats = new Stats();
         stats.merge(this.stats);
         stats.merge(this.bonus);
+        stats.merge(computeBuffStats());
         return stats;
     }
 
@@ -104,15 +106,26 @@ public class Monster extends Entity {
         ID=0;
     }
 
-    public Chest generateChest(){
+    public Chest generateChest(DataGame dataGame){
 
         if (Dice.roll(100) < 10) {
             chestItems.add(monsterItems.get(Dice.roll(monsterItems.size()-1)));
         }
 
-        //while(chestItems.size()<nbItems){
-            //Ajouter consommable
-        //}
+        int roll = Dice.roll(100);
+        // 3 Consumable
+        if(roll < 10) {
+            chestItems.add(dataGame.getRandomConsumable());
+        }
+        // 2 Consumable
+        if(roll < 30) {
+            chestItems.add(dataGame.getRandomConsumable());
+        }
+        // 1 Consumable
+        if(roll < 50) {
+            chestItems.add(dataGame.getRandomConsumable());
+        }
+
         return new Chest(chestItems);
     }
 }

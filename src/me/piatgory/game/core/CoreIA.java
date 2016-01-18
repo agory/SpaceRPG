@@ -1,5 +1,6 @@
 package me.piatgory.game.core;
 
+import me.piatgory.game.Action.Action;
 import me.piatgory.model.Entity.Entity;
 
 /**

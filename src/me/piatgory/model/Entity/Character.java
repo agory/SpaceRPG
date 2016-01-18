@@ -1,8 +1,10 @@
 package me.piatgory.model.Entity;
 
+import me.piatgory.game.Action.Usable;
 import me.piatgory.model.*;
 import me.piatgory.model.Item.*;
 import me.piatgory.model.Item.Equipment.*;
+import me.piatgory.model.Item.consumable.Consumable;
 import me.piatgory.model.state.Buff;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -131,11 +133,13 @@ public class Character extends Entity{
             stats.merge(headArmor.getStats());
         if(this.legsArmor != null)
             stats.merge(legsArmor.getStats());
+
+        stats.merge(computeBuffStats());
         return stats;
     }
 
     public void applyBuff(Buff buff){
-
+        buffs.add(buff);
     }
 
     /*
@@ -154,6 +158,10 @@ public class Character extends Entity{
 
     public void makeItemIntoInventaire(Item item){
         this.getInventory().addItem(item);
+    }
+
+    public void makeItemsIntoInventaire(List<Item> items){
+        this.getInventory().addItems(items);
     }
 
     public Equipment takePlaceOf(Equipment equipment){
@@ -348,7 +356,7 @@ public class Character extends Entity{
         return message;
     }
 
-    public List<Item> getConsumable(){
+    public List<Consumable> getConsumable(){
         return inventory.getConsumable();
     }
 
@@ -377,7 +385,7 @@ public class Character extends Entity{
 
 enum StatsCharacter {
     Stamina("Endurance", 4,2), Power("Puissance",20,10),
-    Health("Santé", 100,40);
+    Health("Santé", 100,50);
 
     private String name;//defaultvalue
     private int value;//defaultvalue
@@ -403,5 +411,6 @@ enum StatsCharacter {
     public void setName(String name) {
         this.name = name;
     }
+
 
 }

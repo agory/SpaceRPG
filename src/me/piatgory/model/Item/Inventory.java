@@ -1,5 +1,6 @@
 package me.piatgory.model.Item;
 
+import me.piatgory.game.Action.Usable;
 import me.piatgory.model.Item.consumable.Consumable;
 
 import java.util.ArrayList;
@@ -45,14 +46,28 @@ public class Inventory {
         return this.getMyItems().get(i);
     }
 
-    public List<Item> getConsumable(){
-        List<Item> consumables = new ArrayList<Item>();
+    public List<Consumable> getConsumable(){
+        return getConsumable(true);
+    }
+
+    public List<Consumable> getConsumable(boolean harmfull){
+        List<Consumable> consumables = new ArrayList<Consumable>();
         for (Item item : myItems){
             if (item instanceof Consumable){
-                consumables.add(item);
+                Consumable consumable = (Consumable) item;
+                if(harmfull){
+                    consumables.add(consumable);
+                } else {
+                    if(consumable.isHarmful() != false)
+                        consumables.add(consumable);
+                }
             }
         }
         return consumables;
+    }
+
+    public void addItems(List<Item> items){
+        myItems.addAll(items);
     }
 
     public String showItems(){
