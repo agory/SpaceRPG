@@ -143,7 +143,7 @@ public class Character extends Entity{
     }
 
     /*
-    * Le poids maximun portable augment en fonction de la puissance du personnage
+    * Le poids maximun portable augmente en fonction de la puissance du personnage
     * */
     public int getWeight(){
         return this.computeAllStats().getStats().get("Puissance")*20;
@@ -336,12 +336,12 @@ public class Character extends Entity{
         if(this.footArmor != null)
             message+=  "\n - " + footArmor.toString();
         else
-            message+= "\n Pas de bottes equipée.";
+            message+= "\n Pas de botte equipée.";
         message+="\n――――――――――――――――――――――――――――";
         if(this.handArmor != null)
             message+=  "\n - " + handArmor.toString();
         else
-            message+= "\n Pas de gants equipé";
+            message+= "\n Pas de gants equipés";
         message+="\n――――――――――――――――――――――――――――";
         if(this.headArmor != null)
             message+=  "\n - " + headArmor.toString();
@@ -351,7 +351,7 @@ public class Character extends Entity{
         if(this.legsArmor != null)
             message+=  "\n - " + legsArmor.toString();
         else
-            message+= "\n Pas de jambières equipée.";
+            message+= "\n Pas de jambières equipées.";
         message+="\n――――――――――――――――――――――――――――";
         return message;
     }

@@ -93,7 +93,7 @@ public class CombatController extends CoreController {
                 new ItemController(dataGame).showMenuSelectItem(chest.openChest());
             }
         } else {
-            write("Bouh tu as loose! au faite ta une tache pistache !!!!!!!!!!!!");
+            write("Bouh tu as loose! au fait t'as une tache pistache !!!!!!!!!!!!");
             getCharacter().removeLevel();
         }
     }

@@ -30,7 +30,7 @@ public class PlanetArenaController extends CoreController {
             startStage(monsterGenerator);
         }
         if (validation("Voulez vous continuer ?")){
-            getCharacter().heal(200);// Pour être simpas
+            getCharacter().heal(200);// Pour être sympa
             breakMenu();
             run();
         }
@@ -41,7 +41,7 @@ public class PlanetArenaController extends CoreController {
         MonsterGenerator monsterGenerator = null;
         int i = showMenu("Quelle arène voulez-vous choisir ?","Entrer 0 pour quitter la planète" + name, dataGame.getStageMonster());
         if(i >= dataGame.getStageMonster().size() ) {
-            write("Choix incorrecte");
+            write("Choix incorrect");
             this.menuArena();
         } else if(i < 0) {
             write("Choix : quitter la planéte");
@@ -69,13 +69,13 @@ public class PlanetArenaController extends CoreController {
             i++;
             getCharacter().heal(((getCharacter().computeMaxHealth()/10)*4));
             if(i == 3 || i == 5){
-                write("Voici une pause durement mérité !" , 1000);
+                write("Voici une pause durement méritée !" , 1000);
                 breakMenu();
             }
         }
         if(!alive){
-            write("On vient de te cloner pour que tu puisse encore jouer. sa coute chère tu sais...");
-            write("Par contre tu peux pleurer !! tu vien de perdre un level !!! Hahaha !! ");
+            write("On vient de te cloner pour que tu puisses encore jouer. ça coûte cher tu sais...");
+            write("Par contre tu peux pleurer !! tu viens de perdre un level !!! Hahaha !! ");
         }
     }
 
