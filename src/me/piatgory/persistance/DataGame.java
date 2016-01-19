@@ -177,13 +177,15 @@ public class DataGame {
     public void addItems(){
         List<Item> items = new ArrayList<Item>();
 
-        String description = "Vétement de départ légérement pourrie.";
+        String description = "Vétement de départ légérement pourri.";
         items.add(new ChestArmor("T-Shirt usé",description,2, StatsBuilder.make(0,0,0)));
         items.add(new FootArmor("Sandales usées",description,2,StatsBuilder.make(0,0,0)));
         items.add(new HandArmor("Gants usés",description,2,StatsBuilder.make(0,0,0)));
         items.add(new HeadArmor("Casquette de sacha",description + "\n Elément de collection porté par sacha lui-même !!!",2,StatsBuilder.make(0,0,0)));
         items.add(new LegsArmor("Jean usé",description,2,StatsBuilder.make(0,0,0)));
         items.add(new Weapon("Pistolet à bille","Arme de départ légérement pourrie.",2,StatsBuilder.make(0,0,0),2));
+        items.add(new Weapon("Lance pierre","Arme de départ moyennement pourrie.",2,StatsBuilder.make(0,0,0),3));
+        items.add(new Weapon("Petite cuillière","Arme de départ extrêmement pourrie.",2,StatsBuilder.make(0,0,0),1));
 
         description = "Vétement de cuire moulant permettant de ressembler à un sadomasochiste(gangster).";
         items.add(new ChestArmor("Veste de gangster",description,2,StatsBuilder.make(2,4,1)));
@@ -204,9 +206,13 @@ public class DataGame {
         items.add(new LegsArmor("Jambières de policier",description,2,StatsBuilder.make(10,4,1)));
 
         description = "Utilisé en général par les forces de l'ordre";
+
         items.add(new Weapon("Bouclier anti-emeute ",description +"\nArme idéal pour ceux qui aime prendre des coups.",2,StatsBuilder.make(60,10,0),10));
         items.add(new Weapon("Matraque telescopique",description +"\nPermet de se défouler pendant les manifestations civile.",2,StatsBuilder.make(20,0,10),20));
+        items.add(new Weapon("Pistolet  ",description +"\nPermet de tirer efficacement à courte portée.",2,StatsBuilder.make(0,10,15),26));
         items.add(new Weapon("Sniper de caitlyn  ",description +"\nPermet de creuser le corp des gens.",2,StatsBuilder.make(0,0,15),30));
+        items.add(new Weapon("Fusil à pompe  ",description +"\nPermet de déchiqueter les ennemis.",2,StatsBuilder.make(5,0,10),30));
+
 
         description = "Vétement utilisé par les mercenaires.";
         items.add(new ChestArmor("Manteau de mercenaire",description,2,StatsBuilder.make(20,8,5)));
@@ -228,22 +234,26 @@ public class DataGame {
         items.add(new LegsArmor("Jean d'assasin",description,2,StatsBuilder.make(0,4,10)));
 
         description = "Arme utilisée par les assassins.";
+
         items.add(new Weapon("Lame caché",description +"\nFacile de se couper les doigts avec !!",2,StatsBuilder.make(20,5,10),30));
         items.add(new Weapon("Lame caché",description +"\n A était utilisé par les inquisiteur sith contre les jedi !!",2,StatsBuilder.make(20,10,15),40));
         items.add(new Weapon("Sniper silencieux",description +"\nArme extrémement létal!!",2,StatsBuilder.make(0,0,30),60));
 
 
 
-        description = "Vétement utilisé par les licornes de l'espace.\n Apparament utilisable sur les humanoïdes, on ne sait comment mais ça marche.";
+
+        description = "Vétement utilisé par les licornes de l'espace.\n Apparement utilisable sur les humanoïdes, on ne sait comment mais ça marche.";
         items.add(new ChestArmor("Manteau de licornes",description,2,StatsBuilder.make(40,15,10)));
-        items.add(new FootArmor("fers arriéres de licornes",description,2,StatsBuilder.make(20,10,5)));
-        items.add(new HandArmor("fers avants de licornes",description,2,StatsBuilder.make(20,10,5)));
-        items.add(new HeadArmor("Extension de corne de licornes",description,2,StatsBuilder.make(20,10,5)));
-        items.add(new LegsArmor("Jean à 4 pattes de licornes",description,2,StatsBuilder.make(40,15,10)));
+        items.add(new FootArmor("Fers arriéres de licorne",description,2,StatsBuilder.make(20,10,5)));
+        items.add(new HandArmor("Fers avants de licorne",description,2,StatsBuilder.make(20,10,5)));
+        items.add(new HeadArmor("Extension de corne de licorne",description,2,StatsBuilder.make(20,10,5)));
+        items.add(new LegsArmor("Jean à 4 pattes de licorne",description,2,StatsBuilder.make(40,15,10)));
+
 
         description = "Arme utilisée par les licornes. \nApparament utilisable sur les humanoïdes, on ne sait comment mais ça marche.";
         items.add(new Weapon("Support dorsale à licorne équipé de canon",description,2,StatsBuilder.make(20,5,40),80));
         items.add(new Weapon("Accélérateur de charge de licorne",description,2,StatsBuilder.make(40,10,25),50));
+
 
         description = "Armure cybernétique ultime.\nAurait été utlisé par nono le petit robot.";
         items.add(new ChestArmor("Torse cybernétique ultime",description,2,StatsBuilder.make(100,30,30)));
