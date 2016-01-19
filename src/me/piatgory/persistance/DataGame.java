@@ -31,6 +31,7 @@ import java.util.regex.Pattern;
         me.piatgory.model.Entity.ClassChar.Alchimiste.class,
         me.piatgory.model.Entity.ClassChar.Mecanicien.class,
         me.piatgory.model.Entity.ClassChar.Berserker.class,
+        me.piatgory.model.Entity.ClassChar.ChasseurLicorne.class,
         Consumable.class,
         Capacity.class,
         Equipment.class,
@@ -177,7 +178,7 @@ public class DataGame {
     public void addItems(){
         List<Item> items = new ArrayList<Item>();
 
-        String description = "Vétement de départ légérement pourri.";
+        String description = "Vêtement de départ légérement pourri.";
         items.add(new ChestArmor("T-Shirt usé",description,2, StatsBuilder.make(0,0,0)));
         items.add(new FootArmor("Sandales usées",description,2,StatsBuilder.make(0,0,0)));
         items.add(new HandArmor("Gants usés",description,2,StatsBuilder.make(0,0,0)));

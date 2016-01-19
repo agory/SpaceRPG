@@ -2,10 +2,7 @@ package me.piatgory.game.controller;
 
 import me.piatgory.game.core.CoreController;
 import me.piatgory.game.core.Game;
-import me.piatgory.model.Entity.ClassChar.Alchimiste;
-import me.piatgory.model.Entity.ClassChar.Berserker;
-import me.piatgory.model.Entity.ClassChar.Mecanicien;
-import me.piatgory.model.Entity.ClassChar.Priest;
+import me.piatgory.model.Entity.ClassChar.*;
 import me.piatgory.persistance.DataGame;
 import me.piatgory.persistance.JAXBserializer;
 
@@ -48,6 +45,7 @@ public class StartMenuController extends CoreController{
         items.add("Alchimiste.");
         items.add("Mécanicien.");
         items.add("Pretre.");
+        items.add("Chasseur de licorne.");
         int i = Game.showMenu("Choix de classe : " , "",items);
         Class classChar = null;
         switch (i){
@@ -62,6 +60,9 @@ public class StartMenuController extends CoreController{
                 break;
             case 3:
                 classChar = Priest.class;
+                break;
+            case 4:
+                classChar = ChasseurLicorne.class;
                 break;
             default:
                 classMenu();

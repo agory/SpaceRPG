@@ -35,6 +35,5 @@ public class Berserker extends Character{
                 this.getCapacities().add(new Capacity("Même pas mal","Reduit les degats subis",new Effect(new Buff("Même pas mal", StatsBuilder.make(0,5,0),10)),1,false));
                 break;
         }
-
     }
 }
