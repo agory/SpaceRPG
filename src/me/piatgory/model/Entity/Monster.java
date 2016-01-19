@@ -131,7 +131,7 @@ public class Monster extends Entity {
 }
 
 enum StatsMonster {
-    Stamina("Endurance", 0,2), Power("Puissance", 5,10),
+    Stamina("Endurance", 0,2), Power("Puissance", 15,10),
     Health("Santé", 40,20);
 
     private String name;//defaultvalue
