@@ -280,7 +280,7 @@ public class DataGame {
         consumables.add(new Consumable("Steroid","Permet de taper plus fort et d'encaisser plus fort.",new Effect(findBuff("Steroid"))));
         consumables.add(new Consumable("Potion d'attaque","Augmente la puissance.",new Effect(findBuff("AttaquePlus"))));
         consumables.add(new Consumable("Potion de Transcendance","Augmente énormément les stats.",new Effect(findBuff("AttaquePlus"))));
-        consumables.add(new Consumable("Générateur de bouclier portable","Fait apparaître un bouclier autour de vous.",new Effect(findBuff("AttaquePlus"))));
+        consumables.add(new Consumable("Générateur de bouclier portable","Fait apparaître un bouclier autour de vous.",new Effect(findBuff("Shield"))));
         consumables.add(new Consumable("Potion de soin","Rend des points de vie",new Effect(20)));
         consumables.add(new Consumable("Potion de soin supérieur","Rend beaucoups de points de vie",new Effect(30)));
         consumables.add(new Consumable("Potion de soin ultime","Rend tout les points de vie",new Effect(999)));

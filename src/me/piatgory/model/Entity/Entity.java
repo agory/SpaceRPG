@@ -125,6 +125,9 @@ public abstract class Entity {
     }
 
     public String use(Entity entity, Usable usable){
+        if(usable instanceof Capacity){
+            usable = ((Capacity)usable).getNewInstance(getStats().getStats().get("Puissance"));
+        }
         usable.use(entity);
         return usable.use(entity);
     }
@@ -211,6 +214,9 @@ public abstract class Entity {
     }
 
     public List<Capacity> getCapacities() {
+        if(capacities == null){
+            capacities = new ArrayList<>();
+        }
         return capacities;
     }
 
@@ -236,7 +242,16 @@ public abstract class Entity {
     }
 
     public void applyBuff(Buff buff){
-        buffs.add(buff);
+        boolean found = false;
+        for(int i = 0; i < buffs.size(); i++){
+            Buff buff1 = buffs.get(i);
+            if(buff1.getName() == buff.getName()){
+                buffs.set(i,buff);
+                found=true;
+            }
+        }
+        if(!found)
+            buffs.add(buff);
     }
 
     public Method getMethodAction(String action) throws Exception{

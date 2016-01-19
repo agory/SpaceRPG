@@ -16,6 +16,13 @@ public class ActionUsable extends Action{
         this.usable = object;
     }
 
+    public Usable getUsable() {
+        return usable;
+    }
+
+    public void setUsable(Usable usable) {
+        this.usable = usable;
+    }
 
     public String run(){
         String message = null;

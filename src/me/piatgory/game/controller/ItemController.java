@@ -95,6 +95,7 @@ public class ItemController extends CoreController {
         {
             case 0:
                 write(item.use(getCharacter()));
+                getCharacter().removeFromInventory(item);
                 break;
             case 1:
                 write(item);

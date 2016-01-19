@@ -15,21 +15,35 @@ public class Capacity implements Usable{
     private String description;
     private Effect effect;
     private int priority;
+    private int power;
     private boolean harmful;
 
     public Capacity(String name, String description, Effect effect,int priority) {
-        this(name,description,effect,priority, false);
+        this(name,description,effect,priority,0 ,false);
     }
 
-    public Capacity(String name, String description, Effect effect ,int priority, boolean harmful) {
+    public Capacity(String name, String description, Effect effect,int priority, boolean harmful) {
+        this(name,description,effect,priority,0 ,harmful);
+    }
+
+    public Capacity(String name, String description, Effect effect,int priority,int  power) {
+        this(name,description,effect,priority,power ,false);
+    }
+
+    public Capacity(String name, String description, Effect effect ,int priority, int power, boolean harmful) {
         this.name = name;
         this.description = description;
         this.effect = effect;
         this.harmful = harmful;
         this.priority = priority;
+        this.power =power;
     }
 
     public Capacity() {
+    }
+
+    public Capacity getNewInstance(int power){
+        return new Capacity(this.name,this.description,this.effect,this.priority,this.power,this.harmful);
     }
 
     public Effect getEffect() {

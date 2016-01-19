@@ -39,12 +39,16 @@ public class Effect {
     }
 
     public String use(Entity target){
+        return use(target,0);
+    }
+
+    public String use(Entity target,int power){
         String message = "";
 
         if(healthGive > 0) {
-            message+= " Soin : " + target.heal(100 + healthGive + target.getLevel());
+            message+= " Soin : " + target.heal(100 + power + healthGive + target.getLevel());
         } else {
-            message+= " Degat : " + target.damage(10 + healthGive * target.getLevel() * (-1));
+            message+= " Degat : " + target.damage(10 + ((power==0)? (power + healthGive) : (healthGive *target.getLevel()) )* (-1));
         }
 
         if(buff != null) {
