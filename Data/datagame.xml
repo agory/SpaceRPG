@@ -1,18 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <dataGame>
-    <character>
+    <character xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="mecanicien">
         <level>3</level>
         <currentHealth>200</currentHealth>
         <capacities>
-            <description>Soigne</description>
+            <description>Attaque qui reduit l'armure</description>
             <effect>
-                <healthGive>30</healthGive>
+                <buff>
+                    <name>Brise Armure 2</name>
+                    <nbTurn>5</nbTurn>
+                    <stats>
+                        <stats>
+                            <entry>
+<key>Puissance</key>
+<value>0</value>
+                            </entry>
+                            <entry>
+<key>Endurance</key>
+<value>-4</value>
+                            </entry>
+                            <entry>
+<key>Santé</key>
+<value>0</value>
+                            </entry>
+                        </stats>
+                    </stats>
+                </buff>
+                <healthGive>-20</healthGive>
             </effect>
-            <harmful>false</harmful>
-            <name>Prière divine </name>
-            <priority>4</priority>
+            <harmful>true</harmful>
+            <name>Coup de clé à molette</name>
+            <priority>3</priority>
         </capacities>
-        <name>phave</name>
+        <name>sdfg</name>
         <stats>
             <stats>
                 <entry>
@@ -21,7 +41,7 @@
                 </entry>
                 <entry>
                     <key>Endurance</key>
-                    <value>6</value>
+                    <value>8</value>
                 </entry>
                 <entry>
                     <key>Santé</key>
@@ -30,7 +50,7 @@
             </stats>
         </stats>
         <chestArmor>
-            <descritption>Vétement de départ légérement pourrie.</descritption>
+            <descritption>Vétement de départ légérement pourri.</descritption>
             <id>0</id>
             <name>T-Shirt usé</name>
             <weight>2</weight>
@@ -53,7 +73,7 @@
         </chestArmor>
         <experience>668</experience>
         <footArmor>
-            <descritption>Vétement de départ légérement pourrie.</descritption>
+            <descritption>Vétement de départ légérement pourri.</descritption>
             <id>1</id>
             <name>Sandales usées</name>
             <weight>2</weight>
@@ -75,7 +95,7 @@
             </stats>
         </footArmor>
         <handArmor>
-            <descritption>Vétement de départ légérement pourrie.</descritption>
+            <descritption>Vétement de départ légérement pourri.</descritption>
             <id>2</id>
             <name>Gants usés</name>
             <weight>2</weight>
@@ -97,7 +117,7 @@
             </stats>
         </handArmor>
         <headArmor>
-            <descritption>Vétement de départ légérement pourrie.
+            <descritption>Vétement de départ légérement pourri.
  Elément de collection porté par sacha lui-même !!!</descritption>
             <id>3</id>
             <name>Casquette de sacha</name>
@@ -120,28 +140,28 @@
             </stats>
         </headArmor>
         <inventory>
-            <myItems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="consumable">
-                <descritption>Augmente la vie de l'utilisateur.</descritption>
-                <id>67</id>
-                <name>Potion sac à pv</name>
+            <myItems xsi:type="consumable">
+                <descritption>Permet de rentrer dans une puissante rage.</descritption>
+                <id>71</id>
+                <name>Potion du Berserker</name>
                 <weight>1</weight>
                 <effect>
                     <buff>
-                        <name>SantéPlus</name>
-                        <nbTurn>10</nbTurn>
+                        <name>Berserker</name>
+                        <nbTurn>4</nbTurn>
                         <stats>
                             <stats>
 <entry>
     <key>Puissance</key>
-    <value>0</value>
+    <value>5</value>
 </entry>
 <entry>
     <key>Endurance</key>
-    <value>0</value>
+    <value>-5</value>
 </entry>
 <entry>
     <key>Santé</key>
-    <value>10</value>
+    <value>0</value>
 </entry>
                             </stats>
                         </stats>
@@ -152,7 +172,7 @@
             </myItems>
         </inventory>
         <legsArmor>
-            <descritption>Vétement de départ légérement pourrie.</descritption>
+            <descritption>Vétement de départ légérement pourri.</descritption>
             <id>4</id>
             <name>Jean usé</name>
             <weight>2</weight>
