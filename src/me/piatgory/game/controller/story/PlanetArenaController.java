@@ -65,13 +65,15 @@ public class PlanetArenaController extends CoreController {
         int i = 0;
         List<CombatController> combatControllers = buildBattleList(monsterGenerator);
         boolean alive = false;
-        while ( alive = startBattle(combatControllers.get(i))&& i < combatControllers.size() - 1  ){
+        while (startBattle(combatControllers.get(i))&& i < combatControllers.size() - 1  ){
             i++;
             getCharacter().heal(((getCharacter().computeMaxHealth()/10)*4));
             if(i == 3 || i == 5){
                 write("Voici une pause durement méritée !" , 1000);
                 breakMenu();
             }
+            getCharacter().upExperience(150*getCharacter().getLevel());
+            alive = !getCharacter().isDead();
         }
         if(!alive){
             write("On vient de te cloner pour que tu puisses encore jouer. ça coûte cher tu sais...");

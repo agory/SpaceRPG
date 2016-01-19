@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <dataGame>
     <character>
-        <level>2</level>
-        <currentHealth>150</currentHealth>
+        <level>3</level>
+        <currentHealth>200</currentHealth>
+        <capacities>
+            <description>Soigne</description>
+            <effect>
+                <healthGive>30</healthGive>
+            </effect>
+            <harmful>false</harmful>
+            <name>Prière divine </name>
+            <priority>4</priority>
+        </capacities>
         <name>phave</name>
         <stats>
             <stats>
                 <entry>
                     <key>Puissance</key>
-                    <value>30</value>
+                    <value>48</value>
                 </entry>
                 <entry>
                     <key>Endurance</key>
@@ -16,7 +25,7 @@
                 </entry>
                 <entry>
                     <key>Santé</key>
-                    <value>150</value>
+                    <value>200</value>
                 </entry>
             </stats>
         </stats>
@@ -42,7 +51,7 @@
                 </stats>
             </stats>
         </chestArmor>
-        <experience>140</experience>
+        <experience>668</experience>
         <footArmor>
             <descritption>Vétement de départ légérement pourrie.</descritption>
             <id>1</id>
@@ -110,7 +119,38 @@
                 </stats>
             </stats>
         </headArmor>
-        <inventory/>
+        <inventory>
+            <myItems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="consumable">
+                <descritption>Augmente la vie de l'utilisateur.</descritption>
+                <id>67</id>
+                <name>Potion sac à pv</name>
+                <weight>1</weight>
+                <effect>
+                    <buff>
+                        <name>SantéPlus</name>
+                        <nbTurn>10</nbTurn>
+                        <stats>
+                            <stats>
+<entry>
+    <key>Puissance</key>
+    <value>0</value>
+</entry>
+<entry>
+    <key>Endurance</key>
+    <value>0</value>
+</entry>
+<entry>
+    <key>Santé</key>
+    <value>10</value>
+</entry>
+                            </stats>
+                        </stats>
+                    </buff>
+                    <healthGive>0</healthGive>
+                </effect>
+                <harmful>false</harmful>
+            </myItems>
+        </inventory>
         <legsArmor>
             <descritption>Vétement de départ légérement pourrie.</descritption>
             <id>4</id>

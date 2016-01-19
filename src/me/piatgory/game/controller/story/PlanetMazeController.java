@@ -39,6 +39,9 @@ public class PlanetMazeController extends CoreController {
             if(mazes.size()-3 < level)
                 generateMaze();
             leave = startMaze(level);
+            if(leave){
+                getCharacter().upExperience(150*getCharacter().getLevel());
+            }
             level++;
         }
 
@@ -92,7 +95,7 @@ public class PlanetMazeController extends CoreController {
                 leave = false;
             } else if(currentMaze.charAt(position) == direction){
                 position++;
-                battleWay();
+                battleWay(getCharacter().getLevel()-3);
             } else {
                 position = 0;
                 write(lost.get(Dice.roll(lost.size()-1)));
@@ -149,9 +152,9 @@ public class PlanetMazeController extends CoreController {
         return items;
     }
 
-    public void battleWay(){
+    public void battleWay(int level){
         if(Dice.roll(100) < 25){
-            if(!this.fightRandom()){
+            if(this.fightRandom(level)){
                 getCharacter().heal(((getCharacter().computeMaxHealth()/10)*1));
             } else {
                 position = 0;

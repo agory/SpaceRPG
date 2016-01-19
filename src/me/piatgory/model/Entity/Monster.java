@@ -99,7 +99,7 @@ public class Monster extends Entity {
     }
 
     public int giveExperience(){
-        return getLevel()*50;
+        return 300 + getLevel()*90;
     }
 
     public static void resetID(){
@@ -131,7 +131,7 @@ public class Monster extends Entity {
 }
 
 enum StatsMonster {
-    Stamina("Endurance", 0,2), Power("Puissance", 5,6),
+    Stamina("Endurance", 0,2), Power("Puissance", 5,10),
     Health("Santé", 40,20);
 
     private String name;//defaultvalue

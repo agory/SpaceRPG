@@ -55,7 +55,7 @@ public class Capacity implements Usable{
     }
 
     public String use(Entity target){
-        return effect.use(target);
+        return effect.use(target,power);
     }
 
     public boolean isHarmful() {

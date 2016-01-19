@@ -17,7 +17,7 @@ import java.util.List;
  * Created by Grégoire on 10/12/2015.
  */
 @XmlRootElement
-public class Character extends Entity{
+public abstract class Character extends Entity{
 
     private Weapon weapon;
     private ChestArmor chestArmor;
@@ -288,7 +288,7 @@ public class Character extends Entity{
     }
 
     public int experienceForUp(){
-        return (int)(this.getLevel() * 100 * Math.pow(1.10,this.getLevel()));
+        return (int)(300 + this.getLevel() * 100 * Math.pow(1.10,this.getLevel()));
     }
 
     public void incrementLevel(){
@@ -299,6 +299,7 @@ public class Character extends Entity{
                     this.stats.getStats().get(stat.getName()) + stat.getValuePerLevel()
             );
         }
+        this.learnSpell(getLevel());
         this.heal(computeMaxHealth());
     }
 
@@ -381,10 +382,11 @@ public class Character extends Entity{
         items.add("voir Character all description");
         return items;
     }
+    public abstract void learnSpell(int level);
 }
 
 enum StatsCharacter {
-    Stamina("Endurance", 4,2), Power("Puissance",20,10),
+    Stamina("Endurance", 4,2), Power("Puissance",20,14),
     Health("Santé", 100,50);
 
     private String name;//defaultvalue

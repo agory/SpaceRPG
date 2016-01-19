@@ -1,3 +1,4 @@
+me.piatgory.game.Action
 me.piatgory.game.Generator
 me.piatgory.game.controller
 me.piatgory.game.controller.story
@@ -6,6 +7,7 @@ me.piatgory.game.ia
 me.piatgory.model
 me.piatgory.model.Capacity
 me.piatgory.model.Entity
+me.piatgory.model.Entity.ClassChar
 me.piatgory.model.Item
 me.piatgory.model.Item.Equipment
 me.piatgory.model.Item.consumable

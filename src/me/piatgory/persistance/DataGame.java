@@ -28,6 +28,9 @@ import java.util.regex.Pattern;
         me.piatgory.model.Entity.Character.class,
         me.piatgory.model.Entity.Entity.class,
         me.piatgory.model.Entity.Monster.class,
+        me.piatgory.model.Entity.ClassChar.Alchimiste.class,
+        me.piatgory.model.Entity.ClassChar.Mecanicien.class,
+        me.piatgory.model.Entity.ClassChar.Berserker.class,
         Consumable.class,
         Capacity.class,
         Equipment.class,
@@ -50,9 +53,9 @@ public class DataGame {
     public DataGame(){
         initDataGame();
     }
-    public DataGame(String name){
+    public DataGame(String name,Class classChar){
         this();
-        buildCharacter(name);
+        buildCharacter(name,classChar);
         JAXBserializer.Save(this);
     }
 
@@ -142,14 +145,21 @@ public class DataGame {
 
     }
 
-    public void buildCharacter(String name){
-        this.character = new Character(name);
-        getCharacter().equipChestArmor((ChestArmor)this.itemFind(0));
-        getCharacter().equipFootArmor((FootArmor)this.itemFind(1));
-        getCharacter().equipHandArmor((HandArmor)this.itemFind(2));
-        getCharacter().equipHeadArmor((HeadArmor)this.itemFind(3));
-        getCharacter().equipLegsArmor((LegsArmor)this.itemFind(4));
-        getCharacter().equipWeapon((Weapon)this.itemFind(5));
+    public void buildCharacter(String name,Class classChar){
+
+        try {
+            this.character = (Character)classChar.getConstructor(String.class).newInstance(name);
+            getCharacter().equipChestArmor((ChestArmor)this.itemFind(0));
+            getCharacter().equipFootArmor((FootArmor)this.itemFind(1));
+            getCharacter().equipHandArmor((HandArmor)this.itemFind(2));
+            getCharacter().equipHeadArmor((HeadArmor)this.itemFind(3));
+            getCharacter().equipLegsArmor((LegsArmor)this.itemFind(4));
+            getCharacter().equipWeapon((Weapon)this.itemFind(5));
+        } catch (Exception e){
+
+        }
+
+
     }
 
     public void addMonsterGenerator(){
@@ -182,9 +192,9 @@ public class DataGame {
         items.add(new HeadArmor("Corne de gangster",description,2,StatsBuilder.make(1,2,0)));
         items.add(new LegsArmor("Jean de gangster",description,2,StatsBuilder.make(0,4,1)));
 
-        items.add(new Weapon("Fouet laser de gangster","L'arme idéale du gangster sadique",2,StatsBuilder.make(10,0,5),5));
-        items.add(new Weapon("Bouclier  anti-emeute volé","Bouclier anti-emeute volé par un gangster plutot bourrin. Arme idéal pour ceux qui aime prendre des coups.\n ",2,StatsBuilder.make(30,5,0),2));
-        items.add(new Weapon("Blaster laser","Utiliser par les tapettes qui tapent à distant. Utiliser par les gangster qui n'assume par leur coté masochiste.",2,StatsBuilder.make(0,0,10),5));
+        items.add(new Weapon("Fouet laser de gangster","L'arme idéale du gangster sadique",2,StatsBuilder.make(10,0,5),10));
+        items.add(new Weapon("Bouclier  anti-emeute volé","Bouclier anti-emeute volé par un gangster plutot bourrin. Arme idéal pour ceux qui aime prendre des coups.\n ",2,StatsBuilder.make(30,5,0),4));
+        items.add(new Weapon("Blaster laser","Utiliser par les tapettes qui tapent à distant. Utiliser par les gangster qui n'assume par leur coté masochiste.",2,StatsBuilder.make(0,0,10),10));
 
         description = "Vétement utilisé en général par les forces de l'ordre.";
         items.add(new ChestArmor("Veste de policier",description,2,StatsBuilder.make(10,4,1)));
@@ -194,9 +204,9 @@ public class DataGame {
         items.add(new LegsArmor("Jambières de policier",description,2,StatsBuilder.make(10,4,1)));
 
         description = "Utilisé en général par les forces de l'ordre";
-        items.add(new Weapon("Bouclier anti-emeute ",description +"\nArme idéal pour ceux qui aime prendre des coups.",2,StatsBuilder.make(60,10,0),5));
-        items.add(new Weapon("Matraque telescopique",description +"\nPermet de se défouler pendant les manifestations civile.",2,StatsBuilder.make(20,0,10),10));
-        items.add(new Weapon("Sniper de caitlyn  ",description +"\nPermet de creuser le corp des gens.",2,StatsBuilder.make(0,0,15),15));
+        items.add(new Weapon("Bouclier anti-emeute ",description +"\nArme idéal pour ceux qui aime prendre des coups.",2,StatsBuilder.make(60,10,0),10));
+        items.add(new Weapon("Matraque telescopique",description +"\nPermet de se défouler pendant les manifestations civile.",2,StatsBuilder.make(20,0,10),20));
+        items.add(new Weapon("Sniper de caitlyn  ",description +"\nPermet de creuser le corp des gens.",2,StatsBuilder.make(0,0,15),30));
 
         description = "Vétement utilisé par les mercenaires.";
         items.add(new ChestArmor("Manteau de mercenaire",description,2,StatsBuilder.make(20,8,5)));
@@ -206,8 +216,8 @@ public class DataGame {
         items.add(new LegsArmor("Jean de mercenaire",description,2,StatsBuilder.make(20,8,5)));
 
         description = "Arme utilisée par les mercenaires.";
-        items.add(new Weapon("Fusil laser",description +"\nPermet de tirer en rafales(malheureusement sa ne sert rien dans ce jeu :-) ).",2,StatsBuilder.make(10,5,15),15));
-        items.add(new Weapon("Blaster laser",description +"\nPermet de ressembler à cowboy de l'espace!!",2,StatsBuilder.make(10,2,15),15));
+        items.add(new Weapon("Fusil laser",description +"\nPermet de tirer en rafales(malheureusement sa ne sert rien dans ce jeu :-) ).",2,StatsBuilder.make(10,5,15),30));
+        items.add(new Weapon("Blaster laser",description +"\nPermet de ressembler à cowboy de l'espace!!",2,StatsBuilder.make(10,2,15),30));
 
 
         description = "Vétement utilisé par les assassins.";
@@ -218,9 +228,9 @@ public class DataGame {
         items.add(new LegsArmor("Jean d'assasin",description,2,StatsBuilder.make(0,4,10)));
 
         description = "Arme utilisée par les assassins.";
-        items.add(new Weapon("Lame caché",description +"\nFacile de se couper les doigts avec !!",2,StatsBuilder.make(20,5,10),15));
-        items.add(new Weapon("Lame caché",description +"\n A était utilisé par les inquisiteur sith contre les jedi !!",2,StatsBuilder.make(20,10,15),20));
-        items.add(new Weapon("Sniper silencieux",description +"\nArme extrémement létal!!",2,StatsBuilder.make(0,0,30),30));
+        items.add(new Weapon("Lame caché",description +"\nFacile de se couper les doigts avec !!",2,StatsBuilder.make(20,5,10),30));
+        items.add(new Weapon("Lame caché",description +"\n A était utilisé par les inquisiteur sith contre les jedi !!",2,StatsBuilder.make(20,10,15),40));
+        items.add(new Weapon("Sniper silencieux",description +"\nArme extrémement létal!!",2,StatsBuilder.make(0,0,30),60));
 
 
 
@@ -232,8 +242,8 @@ public class DataGame {
         items.add(new LegsArmor("Jean à 4 pattes de licornes",description,2,StatsBuilder.make(40,15,10)));
 
         description = "Arme utilisée par les licornes. \nApparament utilisable sur les humanoïdes, on ne sait comment mais ça marche.";
-        items.add(new Weapon("Support dorsale à licorne équipé de canon",description,2,StatsBuilder.make(20,5,40),40));
-        items.add(new Weapon("Accélérateur de charge de licorne",description,2,StatsBuilder.make(40,10,25),25));
+        items.add(new Weapon("Support dorsale à licorne équipé de canon",description,2,StatsBuilder.make(20,5,40),80));
+        items.add(new Weapon("Accélérateur de charge de licorne",description,2,StatsBuilder.make(40,10,25),50));
 
         description = "Armure cybernétique ultime.\nAurait été utlisé par nono le petit robot.";
         items.add(new ChestArmor("Torse cybernétique ultime",description,2,StatsBuilder.make(100,30,30)));
@@ -266,7 +276,7 @@ public class DataGame {
         buffs.add(new Buff("Cécité", StatsBuilder.make(0,0,-999),2));
         buffs.add(new Buff("Brise Armure", StatsBuilder.make(0,-2,0),5));
         buffs.add(new Buff("Affaibli", StatsBuilder.make(0,0,-2),5));
-        buffs.add(new Buff("Endormi", StatsBuilder.make(0,999,-999),4));
+        buffs.add(new Buff("Déphasé", StatsBuilder.make(0,999,-999),4));
 
 
         this.buffs = buffs;
@@ -279,7 +289,7 @@ public class DataGame {
         consumables.add(new Consumable("Potion de defense","Augmente l'endurance.",new Effect(findBuff("DefensePlus"))));
         consumables.add(new Consumable("Steroid","Permet de taper plus fort et d'encaisser plus fort.",new Effect(findBuff("Steroid"))));
         consumables.add(new Consumable("Potion d'attaque","Augmente la puissance.",new Effect(findBuff("AttaquePlus"))));
-        consumables.add(new Consumable("Potion de Transcendance","Augmente énormément les stats.",new Effect(findBuff("AttaquePlus"))));
+        consumables.add(new Consumable("Potion de Transcendance","Augmente énormément les stats.",new Effect(findBuff("Transcendance"))));
         consumables.add(new Consumable("Générateur de bouclier portable","Fait apparaître un bouclier autour de vous.",new Effect(findBuff("Shield"))));
         consumables.add(new Consumable("Potion de soin","Rend des points de vie",new Effect(20)));
         consumables.add(new Consumable("Potion de soin supérieur","Rend beaucoups de points de vie",new Effect(30)));
@@ -288,7 +298,7 @@ public class DataGame {
         consumables.add(new Consumable("Grenade","Inflige des dégats",new Effect(-5),true));
         consumables.add(new Consumable("Bombe saint","Inflige beaucoups de dégats",new Effect(-15),true));
         consumables.add(new Consumable("Grenade flash","Rend la cible aveugle un cour instant",new Effect(findBuff("Cécité")),true));
-        consumables.add(new Consumable("Gaz soporifique","Rend la cible la cible endormie",new Effect(findBuff("Endormi")),true));
+        consumables.add(new Consumable("Bombe néant","Rend la cible la cible Déphasé",new Effect(findBuff("Déphasé")),true));
         consumables.add(new Consumable("Gaz affaiblissant","Rend la cible la cible Affaiblie",new Effect(findBuff("Affaibli")),true));
         consumables.add(new Consumable("Belier","Reduit l'armure de la cible",new Effect(findBuff("Brise Armure")),true));
 

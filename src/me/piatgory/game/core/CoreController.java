@@ -85,9 +85,9 @@ public abstract class CoreController extends Game{
         return text;
     }
 
-    protected boolean fightRandom(){
+    protected boolean fightRandom(int level){
         MonsterGenerator monsterGenerator = dataGame.getMonsterGenerators().get(Dice.roll(dataGame.getMonsterGenerators().size()-1));
-        Monster monster = monsterGenerator.generateRandom(dataGame.getCharacter().getLevel());
+        Monster monster = monsterGenerator.generateRandom(level);
         new CombatController(dataGame,monster).run();
         if(getCharacter().isDead())
             return false;

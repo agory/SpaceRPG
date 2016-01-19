@@ -82,7 +82,8 @@ public abstract class Entity {
 
     public String attack(Entity entity){
         int damage = this.getDamage() + (int)((float)this.getDamage()*((float)Dice.roll(-20,20)/40));
-        return tryMakeDamage(damage,"Frappe " + entity.getName()+ " et lui inflige " + entity.damage(damage) + " point(s) de dégats");
+        damage = entity.damage(damage);
+        return tryMakeDamage(damage,"Frappe " + entity.getName()+ " et lui inflige " + damage + " point(s) de dégats");
     }
 
     public Action attackAction(Entity entity){
@@ -128,7 +129,6 @@ public abstract class Entity {
         if(usable instanceof Capacity){
             usable = ((Capacity)usable).getNewInstance(getStats().getStats().get("Puissance"));
         }
-        usable.use(entity);
         return usable.use(entity);
     }
 
@@ -215,7 +215,7 @@ public abstract class Entity {
 
     public List<Capacity> getCapacities() {
         if(capacities == null){
-            capacities = new ArrayList<>();
+            capacities = new ArrayList<Capacity>();
         }
         return capacities;
     }
