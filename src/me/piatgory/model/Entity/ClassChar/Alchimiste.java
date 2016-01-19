@@ -23,7 +23,7 @@ public class Alchimiste extends Character {
     public void learnSpell(int level){
         switch (level){
             case 2:
-                this.getCapacities().add(new Capacity("Mixture corrosif ","Attaque qui reduit l'armure",new Effect(new Buff("Brise Armure 2", StatsBuilder.make(0,-5,0),-10),5),3,true));
+                this.getCapacities().add(new Capacity("Mixture corrosif ","Attaque qui reduit l'armure",new Effect(new Buff("Brise Armure 2", StatsBuilder.make(0,-5,0),-10),-10),3,true));
                 break;
             case 5:
                 this.getCapacities().add(new Capacity("Mixture affaiblissante","Attaque qui affaibli l'ennemi ",new Effect(new Buff("Affaibli 2", StatsBuilder.make(0,0,-4),-10)),1,true));
