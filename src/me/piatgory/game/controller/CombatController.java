@@ -164,6 +164,4 @@ public class CombatController extends CoreController {
         actions.add("Provoquer");
         return  actions;
     }
-
-
 }
