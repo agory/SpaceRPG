@@ -198,7 +198,9 @@ public class DataGame {
         description = "Utilisé en général par les forces de l'ordre";
         items.add(new Weapon("Bouclier anti-emeute ",description +"\nArme idéal pour ceux qui aime prendre des coups.",2,StatsBuilder.make(60,10,0),5));
         items.add(new Weapon("Matraque telescopique",description +"\nPermet de se défouler pendant les manifestations civile.",2,StatsBuilder.make(20,0,10),10));
+        items.add(new Weapon("Pistolet  ",description +"\nPermet de tirer efficacement à courte portée.",2,StatsBuilder.make(0,10,15),13));
         items.add(new Weapon("Sniper de caitlyn  ",description +"\nPermet de creuser le corp des gens.",2,StatsBuilder.make(0,0,15),15));
+        items.add(new Weapon("Fusil à pompe  ",description +"\nPermet de déchiqueter les ennemis.",2,StatsBuilder.make(0,0,17),15));
 
         description = "Vétement utilisé par les mercenaires.";
         items.add(new ChestArmor("Manteau de mercenaire",description,2,StatsBuilder.make(20,8,5)));
