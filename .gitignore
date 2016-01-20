@@ -1,3 +1,5 @@
-.idea
-SpaceRpg.iml
-out
+/lib/nblibraries.properties
+/lib/CopyLibs
+/nbproject/
+/dist/
+/build/
