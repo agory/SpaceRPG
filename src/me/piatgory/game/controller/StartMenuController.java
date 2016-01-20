@@ -66,7 +66,7 @@ public class StartMenuController extends CoreController{
                 classChar = Priest.class;
                 break;
             case 4:
-                classChar = ChasseurLicorne.class;
+                classChar = UnicornHunter.class;
                 break;
             default:
                 classMenu();
