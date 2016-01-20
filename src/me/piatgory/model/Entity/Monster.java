@@ -99,7 +99,7 @@ public class Monster extends Entity {
     }
 
     public int giveExperience(){
-        return 300 + getLevel()*90;
+        return 300 + getLevel()*70;
     }
 
     public static void resetID(){

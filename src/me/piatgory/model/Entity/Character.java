@@ -288,7 +288,7 @@ public abstract class Character extends Entity{
     }
 
     public int experienceForUp(){
-        return (int)(300 + this.getLevel() * 100 * Math.pow(1.10,this.getLevel()));
+        return (int)(240 + this.getLevel() * 100 * Math.pow(1.10,this.getLevel()));
     }
 
     public void incrementLevel(){
