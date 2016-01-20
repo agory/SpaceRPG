@@ -288,7 +288,7 @@ public abstract class Character extends Entity{
     }
 
     public int experienceForUp(){
-        return (int)(240 + this.getLevel() * 100 * Math.pow(1.10,this.getLevel()));
+        return (int)(145 + this.getLevel() * 100 * Math.pow(1.10,this.getLevel()));
     }
 
     public void incrementLevel(){
@@ -386,7 +386,7 @@ public abstract class Character extends Entity{
 }
 
 enum StatsCharacter {
-    Stamina("Endurance", 4,2), Power("Puissance",20,14),
+    Stamina("Endurance", 4,2), Power("Puissance",15,12),
     Health("Santé", 100,50);
 
     private String name;//defaultvalue

@@ -153,7 +153,7 @@ public class PlanetMazeController extends CoreController {
     }
 
     public void battleWay(int level){
-        if(Dice.roll(100) < 25){
+        if(Dice.roll(100) < 15){
             if(this.fightRandom(level)){
                 getCharacter().heal(((getCharacter().computeMaxHealth()/10)*1));
             } else {

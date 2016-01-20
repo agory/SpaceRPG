@@ -1,32 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <dataGame>
-    <character xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="chasseurLicorne">
-        <level>8</level>
-        <currentHealth>450</currentHealth>
+    <character xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="mecanicien">
+        <level>7</level>
+        <currentHealth>400</currentHealth>
         <capacities>
-            <description>Attaque qui permet de transpercer l'ennemi.</description>
-            <effect>
-                <healthGive>-40</healthGive>
-            </effect>
-            <harmful>true</harmful>
-            <name>Coup de corne</name>
-            <priority>0</priority>
-        </capacities>
-        <capacities>
-            <description>Attaque qui sonne l'enemi.</description>
+            <description>Attaque qui reduit l'armure</description>
             <effect>
                 <buff>
-                    <name>Sonne ennemi</name>
-                    <nbTurn>2</nbTurn>
+                    <name>Brise Armure 2</name>
+                    <nbTurn>5</nbTurn>
                     <stats>
                         <stats>
                             <entry>
 <key>Puissance</key>
-<value>-2</value>
+<value>0</value>
                             </entry>
                             <entry>
 <key>Endurance</key>
-<value>-1</value>
+<value>-4</value>
                             </entry>
                             <entry>
 <key>Santé</key>
@@ -35,26 +26,55 @@
                         </stats>
                     </stats>
                 </buff>
-                <healthGive>-40</healthGive>
+                <healthGive>-20</healthGive>
             </effect>
             <harmful>true</harmful>
-            <name>Coup de sabots</name>
-            <priority>4</priority>
+            <name>Coup de clé à molette</name>
+            <priority>3</priority>
         </capacities>
-        <name>Grégoire</name>
+        <capacities>
+            <description>Protège le Mecanicien des attaque enemie </description>
+            <effect>
+                <buff>
+                    <name>Shield surpuissant</name>
+                    <nbTurn>10</nbTurn>
+                    <stats>
+                        <stats>
+                            <entry>
+<key>Puissance</key>
+<value>0</value>
+                            </entry>
+                            <entry>
+<key>Endurance</key>
+<value>4</value>
+                            </entry>
+                            <entry>
+<key>Santé</key>
+<value>0</value>
+                            </entry>
+                        </stats>
+                    </stats>
+                </buff>
+                <healthGive>0</healthGive>
+            </effect>
+            <harmful>false</harmful>
+            <name>Shield</name>
+            <priority>1</priority>
+        </capacities>
+        <name>toto</name>
         <stats>
             <stats>
                 <entry>
                     <key>Puissance</key>
-                    <value>118</value>
+                    <value>87</value>
                 </entry>
                 <entry>
                     <key>Endurance</key>
-                    <value>18</value>
+                    <value>16</value>
                 </entry>
                 <entry>
                     <key>Santé</key>
-                    <value>450</value>
+                    <value>400</value>
                 </entry>
             </stats>
         </stats>
@@ -80,7 +100,7 @@
                 </stats>
             </stats>
         </chestArmor>
-        <experience>538</experience>
+        <experience>927</experience>
         <footArmor>
             <descritption>Vêtement de départ légérement pourri.</descritption>
             <id>1</id>
@@ -150,23 +170,113 @@
         </headArmor>
         <inventory>
             <myItems xsi:type="consumable">
-                <descritption>Permet de rentrer dans une puissante rage.</descritption>
-                <id>79</id>
-                <name>Potion du Berserker</name>
+                <descritption>Rend la cible la cible Affaiblie</descritption>
+                <id>71</id>
+                <name>Gaz affaiblissant</name>
                 <weight>1</weight>
                 <effect>
                     <buff>
-                        <name>Berserker</name>
-                        <nbTurn>4</nbTurn>
+                        <name>Affaibli</name>
+                        <nbTurn>5</nbTurn>
                         <stats>
                             <stats>
 <entry>
     <key>Puissance</key>
-    <value>5</value>
+    <value>-2</value>
 </entry>
 <entry>
     <key>Endurance</key>
-    <value>-5</value>
+    <value>0</value>
+</entry>
+<entry>
+    <key>Santé</key>
+    <value>0</value>
+</entry>
+                            </stats>
+                        </stats>
+                    </buff>
+                    <healthGive>0</healthGive>
+                </effect>
+                <harmful>true</harmful>
+            </myItems>
+            <myItems xsi:type="consumable">
+                <descritption>Augmente la vie de l'utilisateur.</descritption>
+                <id>74</id>
+                <name>Potion sac à pv</name>
+                <weight>1</weight>
+                <effect>
+                    <buff>
+                        <name>SantéPlus</name>
+                        <nbTurn>10</nbTurn>
+                        <stats>
+                            <stats>
+<entry>
+    <key>Puissance</key>
+    <value>0</value>
+</entry>
+<entry>
+    <key>Endurance</key>
+    <value>0</value>
+</entry>
+<entry>
+    <key>Santé</key>
+    <value>10</value>
+</entry>
+                            </stats>
+                        </stats>
+                    </buff>
+                    <healthGive>0</healthGive>
+                </effect>
+                <harmful>false</harmful>
+            </myItems>
+            <myItems xsi:type="consumable">
+                <descritption>Permet de taper plus fort et d'encaisser plus fort.</descritption>
+                <id>76</id>
+                <name>Steroid</name>
+                <weight>1</weight>
+                <effect>
+                    <buff>
+                        <name>Steroid</name>
+                        <nbTurn>5</nbTurn>
+                        <stats>
+                            <stats>
+<entry>
+    <key>Puissance</key>
+    <value>2</value>
+</entry>
+<entry>
+    <key>Endurance</key>
+    <value>2</value>
+</entry>
+<entry>
+    <key>Santé</key>
+    <value>0</value>
+</entry>
+                            </stats>
+                        </stats>
+                    </buff>
+                    <healthGive>0</healthGive>
+                </effect>
+                <harmful>false</harmful>
+            </myItems>
+            <myItems xsi:type="consumable">
+                <descritption>Augmente la puissance.</descritption>
+                <id>78</id>
+                <name>Potion d'attaque</name>
+                <weight>1</weight>
+                <effect>
+                    <buff>
+                        <name>AttaquePlus</name>
+                        <nbTurn>10</nbTurn>
+                        <stats>
+                            <stats>
+<entry>
+    <key>Puissance</key>
+    <value>2</value>
+</entry>
+<entry>
+    <key>Endurance</key>
+    <value>0</value>
 </entry>
 <entry>
     <key>Santé</key>
@@ -181,7 +291,7 @@
             </myItems>
             <myItems xsi:type="consumable">
                 <descritption>Augmente énormément les stats.</descritption>
-                <id>80</id>
+                <id>79</id>
                 <name>Potion de Transcendance</name>
                 <weight>1</weight>
                 <effect>
@@ -209,68 +319,25 @@
                 </effect>
                 <harmful>false</harmful>
             </myItems>
-            <myItems xsi:type="handArmor">
-                <descritption>Armure cybernétique ultime.
-Aurait été utlisé par nono le petit robot.</descritption>
-                <id>50</id>
-                <name>Gants cybernétique ultime</name>
-                <weight>2</weight>
-                <stats>
-                    <stats>
-                        <entry>
-                            <key>Puissance</key>
-                            <value>15</value>
-                        </entry>
-                        <entry>
-                            <key>Endurance</key>
-                            <value>20</value>
-                        </entry>
-                        <entry>
-                            <key>Santé</key>
-                            <value>50</value>
-                        </entry>
-                    </stats>
-                </stats>
-            </myItems>
             <myItems xsi:type="consumable">
-                <descritption>Fait apparaître un bouclier autour de vous.</descritption>
-                <id>81</id>
-                <name>Générateur de bouclier portable</name>
+                <descritption>Inflige des dégats</descritption>
+                <id>80</id>
+                <name>Grenade</name>
                 <weight>1</weight>
                 <effect>
-                    <buff>
-                        <name>Shield</name>
-                        <nbTurn>5</nbTurn>
-                        <stats>
-                            <stats>
-<entry>
-    <key>Puissance</key>
-    <value>0</value>
-</entry>
-<entry>
-    <key>Endurance</key>
-    <value>2</value>
-</entry>
-<entry>
-    <key>Santé</key>
-    <value>0</value>
-</entry>
-                            </stats>
-                        </stats>
-                    </buff>
-                    <healthGive>0</healthGive>
+                    <healthGive>-5</healthGive>
                 </effect>
-                <harmful>false</harmful>
+                <harmful>true</harmful>
             </myItems>
             <myItems xsi:type="consumable">
-                <descritption>Rend la cible aveugle un cour instant</descritption>
-                <id>82</id>
-                <name>Grenade flash</name>
+                <descritption>Rend la cible la cible Déphasé</descritption>
+                <id>81</id>
+                <name>Bombe néant</name>
                 <weight>1</weight>
                 <effect>
                     <buff>
-                        <name>Cécité</name>
-                        <nbTurn>2</nbTurn>
+                        <name>Déphasé</name>
+                        <nbTurn>4</nbTurn>
                         <stats>
                             <stats>
 <entry>
@@ -279,7 +346,7 @@ Aurait été utlisé par nono le petit robot.</descritption>
 </entry>
 <entry>
     <key>Endurance</key>
-    <value>0</value>
+    <value>999</value>
 </entry>
 <entry>
     <key>Santé</key>
@@ -291,16 +358,6 @@ Aurait été utlisé par nono le petit robot.</descritption>
                     <healthGive>0</healthGive>
                 </effect>
                 <harmful>true</harmful>
-            </myItems>
-            <myItems xsi:type="consumable">
-                <descritption>Rend beaucoups de points de vie</descritption>
-                <id>83</id>
-                <name>Potion de soin supérieur</name>
-                <weight>1</weight>
-                <effect>
-                    <healthGive>30</healthGive>
-                </effect>
-                <harmful>false</harmful>
             </myItems>
         </inventory>
         <legsArmor>

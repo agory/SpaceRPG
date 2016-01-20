@@ -51,7 +51,7 @@ public class Effect {
         }
         if(healthGive < 0)
         {
-            int damage = (10 + ((power==0)? ((int)(power * 1.4) + healthGive * target.getLevel()) : (healthGive * target.getLevel()) )* (-1));
+            int damage = (10 + ((power==0)? (power + healthGive * target.getLevel()) : (healthGive * target.getLevel()) )* (-1));
             message+= " Degat : " + target.damage(damage + (int)((float)damage*((float) Dice.roll(-20,20)/40)));
         }
 

@@ -24,6 +24,10 @@ public class StartMenuController extends CoreController{
     }
 
     public static void startMenu(){
+
+        textSpacer();
+        write("####  SpaceRPG - Bienvenue");
+        textSpacer();
         List<String> items = new ArrayList<String>();
         items.add("Reprendre la précédente partie.");
         items.add("Recommencer une nouvelle partie.");
