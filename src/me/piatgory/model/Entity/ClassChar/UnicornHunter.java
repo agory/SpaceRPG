@@ -34,6 +34,7 @@ public class UnicornHunter extends Character{
             case 20:
                 this.getCapacities().add(new Capacity("Unicorn Powa !","Augmente vos degats infligés et la resistance. Rend des points vie.",new Effect(new Buff("Unicorn Ultime", StatsBuilder.make(0,6,14),20)),1,false));
                 break;
+
         }
     }
 }
