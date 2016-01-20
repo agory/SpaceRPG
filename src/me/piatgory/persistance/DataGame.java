@@ -4,11 +4,11 @@ import me.grea.antoine.utils.Dice;
 import me.piatgory.game.Generator.MonsterGenerator;
 import me.piatgory.model.Capacity.Capacity;
 import me.piatgory.model.Entity.Character;
+import me.piatgory.model.Entity.ClassChar.UnicornHunter;
 import me.piatgory.model.Entity.Entity;
 import me.piatgory.model.Item.*;
 import me.piatgory.model.Item.Equipment.*;
 import me.piatgory.model.Item.consumable.Consumable;
-import me.piatgory.model.Stats;
 import me.piatgory.model.StatsBuilder;
 import me.piatgory.model.state.Buff;
 import me.piatgory.model.state.Effect;
@@ -31,7 +31,7 @@ import java.util.regex.Pattern;
         me.piatgory.model.Entity.ClassChar.Alchimiste.class,
         me.piatgory.model.Entity.ClassChar.Mecanicien.class,
         me.piatgory.model.Entity.ClassChar.Berserker.class,
-        me.piatgory.model.Entity.ClassChar.ChasseurLicorne.class,
+        UnicornHunter.class,
         Consumable.class,
         Capacity.class,
         Equipment.class,

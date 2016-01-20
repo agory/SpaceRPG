@@ -12,12 +12,12 @@ import javax.xml.bind.annotation.XmlRootElement;
  * Created by Gregoire on 19/01/2016.
  */
 @XmlRootElement
-public class ChasseurLicorne extends Character{
-    public ChasseurLicorne(String name) {
+public class UnicornHunter extends Character{
+    public UnicornHunter(String name) {
         super(name);
     }
 
-    public ChasseurLicorne() {
+    public UnicornHunter() {
     }
 
     public void learnSpell(int level){
