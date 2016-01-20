@@ -23,10 +23,10 @@ public class Berserker extends Character{
     public void learnSpell(int level){
         switch (level){
             case 2:
-                this.getCapacities().add(new Capacity("Attaque rapide","Attaque qui permet d'agir en premier.",new Effect(-40),0,true));
+                this.getCapacities().add(new Capacity("Attaque rapide","Attaque qui permet d'agir en premier.",new Effect(-20),0,true));
                 break;
             case 5:
-                this.getCapacities().add(new Capacity("Coup puissant","Attaque qui sonne légérement l'enemi.",new Effect(new Buff("Affaibli 2", StatsBuilder.make(0,-1,-2),2),-40),4,true));
+                this.getCapacities().add(new Capacity("Coup puissant","Attaque qui sonne légérement l'enemi.",new Effect(new Buff("Affaibli 2", StatsBuilder.make(0,-1,-2),2),-15),4,true));
                 break;
             case 10:
                 this.getCapacities().add(new Capacity("Berserker","Augmente vos degats infligés et subis",new Effect(new Buff("Berserker Ultime", StatsBuilder.make(0,-7,14),10)),1,false));
